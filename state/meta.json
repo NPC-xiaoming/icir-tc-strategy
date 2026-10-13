@@ -1,0 +1,38 @@
+{
+  "initialized": true,
+  "last_rebalance": "2026-10-13",
+  "last_signal_date": "2026-10-12",
+  "factor_weights": {
+    "momentum_120_20": 0.3333333333333333,
+    "volatility_60": 0.3333333333333333,
+    "turnover_20": 0.3333333333333333
+  },
+  "last_status": "optimal",
+  "last_run": "2026-10-13",
+  "nav": 0.99934,
+  "benchmark_nav": 1.0,
+  "version": "1.0.1",
+  "config_hash": "e07c8939eb7feacd86ee66027a706e354570ff814392f355522451f37921dfcb",
+  "recorded_at": "2026-10-13T21:39:40.163739+08:00",
+  "benchmark": "沪深300官方价格指数",
+  "missing_symbols": [
+    "001280",
+    "002049",
+    "002602",
+    "300442",
+    "600438",
+    "600958",
+    "601059",
+    "601238",
+    "601995",
+    "688012",
+    "688072"
+  ],
+  "held_missing_symbols": [],
+  "chart_metrics": {
+    "online_nav": 1.0,
+    "benchmark_nav": 1.0,
+    "excess": 0.0,
+    "drawdown": 0.0
+  }
+}
