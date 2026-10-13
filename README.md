@@ -36,6 +36,7 @@
 | `reports/daily/YYYY-MM-DD.md` | 当日净值、收益、超额、持仓和近20日记录 |
 | `reports/rebalance/YYYY-MM-DD.md` | 因子权重、约束、成本和调仓诊断 |
 | `reports/rebalance/YYYY-MM-DD_trades.csv` | 成功调仓的完整前后权重清单 |
+| `reports/nav_curve.png` | 线上首日归一化组合、2015 回测（若已导入）、沪深300、超额和回撤图 |
 
 仓库是小规模模拟组合的持久存储。Actions Artifact 是额外排错/恢复包，配置保留 30 天，**不能替代账本**。推送失败时任务报错，不强推或自动合并冲突账本。长年高频保存大表会增加仓库体积，届时再迁移对象存储；无需现在部署数据库。
 
@@ -48,6 +49,6 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 ```
 
-测试使用临时目录和模拟行情，不联网拉取全市场、不写真实账本。直接运行 `python run.py` 会写本地模拟账本；云端启用后不要再以这份本地目录并行运行另一条账本。
+测试使用临时目录和模拟行情，不联网拉取全市场、不写真实账本。将本地回测导出为 `state/backtest_nav_history.csv`（两列 `date,nav`，可从 2015 年开始）并上传，图表会叠加“本地回测（首日=1）”；不提供时仍绘制线上组合和沪深300。这个文件只接入图表，不伪造线上账本。直接运行 `python run.py` 会写本地模拟账本；云端启用后不要再以这份本地目录并行运行另一条账本。
 
 直接依赖版本已固定，传递依赖由 pip 解析。CI 在 Ubuntu/Python 3.12 执行离线测试。AKShare 免费接口可能限流、调整字段或拒绝云端 IP，因此首次云端全量运行需要验收；不能仅凭本地测试声称可长期无人值守。

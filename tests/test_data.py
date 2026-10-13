@@ -19,5 +19,13 @@ class DataTests(unittest.TestCase):
         with patch.object(data.ak,'index_stock_cons_weight_csindex',return_value=raw):
             with self.assertRaises(ValueError): data.fetch_constituents()
 
+    def test_partial_history_can_be_recorded_for_retry(self):
+        raw=pd.DataFrame({'日期':['2026-06-03'],'收盘':[10.], '涨跌幅':[1.],'换手率':[1.]})
+        with patch.object(data.ak,'stock_zh_a_hist',side_effect=[raw,pd.DataFrame()]), \
+             patch.object(data.time,'sleep'):
+            frame=data.fetch_stock_history(['000001','000002'],pause=0,allow_partial=True)
+        self.assertEqual(frame.attrs['failed_symbols'],['000002'])
+        self.assertEqual(frame.symbol.tolist(),['000001'])
+
 
 if __name__ == '__main__': unittest.main()

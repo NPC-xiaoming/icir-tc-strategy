@@ -106,12 +106,14 @@ class RunnerTests(unittest.TestCase):
         self.assertAlmostEqual(s.nav_history.iloc[-1]['nav'], 1.0201)
         self.assertTrue((self.root/'reports/daily/2026-06-02.md').exists())
 
-    def test_stale_or_missing_quote_does_not_advance_ledger(self):
+    def test_missing_quote_is_recorded_and_ledger_advances(self):
         self.seed()
         self.history = self.history[self.history.date < self.day]
         self.spot['pct_chg'] = np.nan
-        with self.assertRaises(ValueError): self.invoke()
-        self.assertEqual(State.load(self.root/'state').meta['last_run'], '2026-06-02')
+        self.invoke()
+        s=State.load(self.root/'state')
+        self.assertEqual(s.meta['last_run'], '2026-06-03')
+        self.assertTrue(s.meta['missing_symbols'])
 
     def test_removed_constituent_still_earns_its_return(self):
         self.seed(symbols=['000001','000002'], weights=[.5,.5])
@@ -187,6 +189,13 @@ class RunnerTests(unittest.TestCase):
         self.spot['pct_chg']=.03
         with self.assertRaises(ValueError): self.invoke()
         self.assertFalse((self.root/'state/book.json').exists())
+
+    def test_failed_current_constituent_is_reported_and_excluded(self):
+        self.history=self.history[self.history.symbol!='000012']
+        self.invoke()
+        s=State.load(self.root/'state')
+        self.assertIn('000012',s.meta['missing_symbols'])
+        self.assertTrue((self.root/'reports/daily/2026-06-03.md').read_text().find('000012')>=0)
 
 
 if __name__ == '__main__': unittest.main()

@@ -91,10 +91,14 @@ def run_daily():
     if needs_rebalance:
         warm_start=trade_date-pd.Timedelta(days=int(cfg['data']['history_days']*1.7))
         start=min(warm_start,pending[0],state.last_rebalance) if state.last_rebalance is not None else warm_start
-    history=data_mod.fetch_stock_history(sorted(symbols),days=int(cfg['data']['history_days']),
+    requested_symbols=sorted(symbols)
+    history=data_mod.fetch_stock_history(requested_symbols,days=int(cfg['data']['history_days']),
         start_date=start,end_date=trade_date,workers=int(cfg['data'].get('workers',3)),
-        timeout=float(cfg['data'].get('timeout_seconds',20))) if symbols else pd.DataFrame()
-    held_returns=dated_returns(history,pending,held)
+        timeout=float(cfg['data'].get('timeout_seconds',20)),allow_partial=True) if symbols else pd.DataFrame()
+    missing=set(history.attrs.get('failed_symbols', []))
+    missing.update(set(requested_symbols)-set(history.symbol.unique()))
+    held_missing=sorted(set(held)&missing)
+    held_returns=dated_returns(history,pending,held,allow_missing=True)
     index=data_mod.fetch_index_history(cfg['index']['code'],start_date=previous[-1],end_date=trade_date)
     if index.date.duplicated().any():
         raise ValueError('Duplicate official index dates')
@@ -116,11 +120,27 @@ def run_daily():
         if len(pending)>1:
             notes.append('缺日按原持仓补估值；未倒填过去调仓。')
         if day==trade_date and needs_rebalance:
+            available=set(history.symbol.unique())
+            before=len(constituents)
+            constituents=constituents[constituents.symbol.isin(available)].copy()
+            if constituents.empty:
+                raise ValueError('当前没有可用成分股，等待下次行情补齐')
+            constituents['weight']=constituents['weight']/constituents['weight'].sum()
+            missing.update(set(requested_symbols)-available)
             industry=data_mod.load_industry(ROOT/'state/industry_sw_l1.parquet')
             spot=data_mod.fetch_spot()
+            spot_symbols=set(spot.loc[spot['close'].notna() & spot['circ_mv'].notna(),'symbol'])
+            missing.update(set(constituents.symbol)-spot_symbols)
+            constituents=constituents[constituents.symbol.isin(spot_symbols)].copy()
+            if constituents.empty:
+                raise ValueError('当前没有可用收盘/流通市值数据，等待下次行情补齐')
+            constituents['weight']=constituents['weight']/constituents['weight'].sum()
             unadjusted=data_mod.fetch_stock_history(constituents.symbol.tolist(),adjust='',
                 start_date=day,end_date=day,workers=int(cfg['data'].get('workers',3)),
-                timeout=float(cfg['data'].get('timeout_seconds',20)))
+                timeout=float(cfg['data'].get('timeout_seconds',20)),allow_partial=True)
+            missing.update(unadjusted.attrs.get('failed_symbols', []))
+            constituents=constituents[constituents.symbol.isin(set(unadjusted.symbol.unique()))].copy()
+            constituents['weight']=constituents['weight']/constituents['weight'].sum()
             holdings,changes,diag,fw=build_plan(state,history,constituents,industry,spot,cfg,day,signal_date,calendar,
                                               unadjusted_history=unadjusted)
             actual_rebalance=not diag['fallback']
@@ -146,12 +166,17 @@ def run_daily():
         text+=f'\n- 本日交易费用（净资产比例）：{fee:.6%}\n- 版本：{cfg["version"]}\n'
         text+='- 基准：沪深300官方价格指数；组合为含固定费用的权重型研究模拟。\n'
         text+='- 收益口径沿用原策略的后复权涨跌幅代理，可能与当日股票实际涨跌幅不同；此净值不代表真实资金盈亏。\n'
+        text+=f'- 当日行情未获取股票：{", ".join(sorted(missing)) if missing else "无"}。下次运行会重试；已有持仓缺行情按 0% 暂估，需重点复核。\n'
         text+='- 因子使用前一交易日收盘数据，风险约束和成交采用执行日可用信息；收盘模拟并非可执行成交承诺。\n'
         text+='- '+cold_note+'\n'+'\n'.join('- '+n for n in notes if n!=cold_note)+'\n'
         outputs[ROOT/'reports/daily'/f'{day.date()}.md']=text
     state.meta.update(nav=nav,benchmark_nav=benchmark_nav,version=cfg['version'],
         config_hash=hashlib.sha256(json.dumps(cfg,sort_keys=True).encode()).hexdigest(),
-        recorded_at=now.isoformat(),benchmark='沪深300官方价格指数')
+        recorded_at=now.isoformat(),benchmark='沪深300官方价格指数',
+        missing_symbols=sorted(missing),held_missing_symbols=held_missing)
+    metrics=report_mod.make_nav_plot(state.nav_history,ROOT/'reports/nav_curve.png',
+                                     ROOT/'state/backtest_nav_history.csv')
+    state.meta['chart_metrics']=metrics
     state.validate()
     for path,text in outputs.items(): atomic_text(path,text)
     state.save()

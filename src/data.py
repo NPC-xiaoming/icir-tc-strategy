@@ -102,6 +102,7 @@ def fetch_stock_history(
     end_date=None,
     workers: int = 1,
     timeout: float = 20,
+    allow_partial: bool = False,
 ) -> pd.DataFrame:
     """Daily history for the given symbols.
 
@@ -149,12 +150,16 @@ def fetch_stock_history(
                 failures.append(symbol)
             else:
                 frames.append(frame)
-    if failures:
+    if failures and not allow_partial:
         raise RuntimeError(f'历史行情下载不完整：{len(failures)} 只失败 {failures[:10]}，未提交状态')
     if not frames:
-        return pd.DataFrame(columns=["date", "symbol", "close", "pct_chg", "turnover"])
+        out = pd.DataFrame(columns=["date", "symbol", "close", "pct_chg", "turnover"])
+        out.attrs['failed_symbols'] = failures
+        return out
     out = pd.concat(frames, ignore_index=True)
-    return out.sort_values(["symbol", "date"]).reset_index(drop=True)
+    out = out.sort_values(["symbol", "date"]).reset_index(drop=True)
+    out.attrs['failed_symbols'] = failures
+    return out
 
 
 def fetch_index_history(index_code='000300', start_date=None, end_date=None):

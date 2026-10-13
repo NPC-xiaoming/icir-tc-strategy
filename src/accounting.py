@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 
-def dated_returns(history: pd.DataFrame, dates, symbols) -> pd.DataFrame:
+def dated_returns(history: pd.DataFrame, dates, symbols, allow_missing: bool = False) -> pd.DataFrame:
     dates = pd.DatetimeIndex(dates)
     symbols = list(symbols)
     if not symbols:
@@ -14,6 +14,8 @@ def dated_returns(history: pd.DataFrame, dates, symbols) -> pd.DataFrame:
     wide = history.pivot(index='date', columns='symbol', values='pct_chg').reindex(index=dates, columns=symbols)
     values = wide.to_numpy(dtype=float)
     if not np.isfinite(values).all() or (values <= -1.).any():
+        if allow_missing:
+            return wide.fillna(0.0)
         missing = [(str(d.date()), s) for d, row in wide.iterrows() for s, v in row.items() if not np.isfinite(v)]
         raise ValueError(f'行情缺失或无效，不能当作停牌/零收益：{missing[:8]}')
     return wide
