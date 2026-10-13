@@ -32,7 +32,13 @@ def main():
                 saved=json.loads(metadata.read_text())
                 if saved.get('month')==now.strftime('%Y-%m'):
                     print('Industry cache already refreshed this month.'); return 0
-        frame=data.refresh_industry(cache)
+        try:
+            frame=data.refresh_industry(cache)
+        except Exception as exc:
+            if not cache.exists():
+                raise
+            print(f'WARNING: industry refresh failed; retaining existing cache: {exc}', file=sys.stderr)
+            return 0
         atomic_text(metadata,json.dumps({'month':now.strftime('%Y-%m'),'refreshed_at':now.isoformat(),
             'symbols':len(frame),'industries':int(frame.industry.nunique())},ensure_ascii=False,indent=2))
     print(f'Saved {len(frame)} symbols / {frame.industry.nunique()} industries.')
