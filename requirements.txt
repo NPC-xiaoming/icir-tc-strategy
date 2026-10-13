@@ -1,0 +1,9 @@
+# Direct dependencies verified together on Python 3.12; transitive dependencies resolve via pip.
+akshare==1.18.81
+pandas==2.3.3
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+cvxpy==1.7.3
+pyarrow==19.0.1
+requests==2.32.5

@@ -1,0 +1,67 @@
+name: ICIR-TC daily run
+
+on:
+  schedule:
+    # Beijing 17:10 and 18:30; the second run safely skips an already-saved date.
+    - cron: "10 9 * * 1-5"
+    - cron: "30 10 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: icir-tc-daily
+  cancel-in-progress: false
+
+jobs:
+  run:
+    if: github.event_name == 'workflow_dispatch' || vars.ENABLE_DAILY == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUNBUFFERED: "1"
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+    steps:
+      - name: Checkout latest default-branch ledger
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Offline regression tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Run after-close paper portfolio
+        timeout-minutes: 35
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p logs
+          python scripts/refresh_industry.py --if-due 2>&1 | tee logs/industry.log
+          python run.py 2>&1 | tee logs/run.log
+
+      - name: Persist successful state and reports
+        shell: bash
+        run: bash scripts/commit_results.sh
+
+      - name: Upload recovery files and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: icir-tc-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            state/
+            reports/
+            logs/
+            config/strategy.json
+          if-no-files-found: warn
+          retention-days: 30

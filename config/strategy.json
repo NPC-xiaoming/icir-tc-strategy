@@ -1,0 +1,62 @@
+{
+  "strategy_name": "ICIR-TC",
+  "version": "1.0.1",
+  "description": "CSI 300 index enhancement: industry-neutral IC-IR factor composite with a tracking-error penalty optimizer (kappa=100).",
+  "index": {
+    "code": "000300",
+    "name": "沪深300",
+    "rebalance_rule": "monthly_first_trading_day"
+  },
+  "factors": {
+    "momentum_120_20": {
+      "direction": 1.0,
+      "lookback": 120,
+      "skip": 20
+    },
+    "volatility_60": {
+      "direction": -1.0,
+      "window": 60
+    },
+    "turnover_20": {
+      "direction": -1.0,
+      "window": 20
+    }
+  },
+  "signal": {
+    "ic_window": 24,
+    "ic_lag": 2,
+    "min_industry_size": 5,
+    "industry_source": "sw_l1"
+  },
+  "risk_model": {
+    "type": "ledoit_wolf",
+    "window": 250,
+    "ridge": 1e-08
+  },
+  "optimizer": {
+    "type": "te_penalty_qp",
+    "kappa": 100.0,
+    "max_weight": 0.1,
+    "min_position": 0.0005,
+    "deviation": 0.015,
+    "industry_theta": 0.04,
+    "size_theta": 0.02,
+    "turnover_theta": 0.25,
+    "solver": "OSQP"
+  },
+  "cost": {
+    "commission_bps": 1.5,
+    "transfer_fee_bps": 0.1,
+    "stamp_duty_bps": 5.0,
+    "slippage_bps": 5.0
+  },
+  "data": {
+    "provider": "akshare",
+    "history_days": 300,
+    "workers": 3,
+    "timeout_seconds": 20,
+    "expected_constituents": 300,
+    "max_weight_age_days": 45
+  },
+  "annualization": 242
+}
