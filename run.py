@@ -128,9 +128,11 @@ def run_daily():
             constituents['weight']=constituents['weight']/constituents['weight'].sum()
             missing.update(set(requested_symbols)-available)
             required_dates=calendar[calendar<=signal_date][-max(int(cfg['risk_model']['window']),121):]
-            valid=history.loc[history.date.isin(required_dates)].pivot_table(
-                index='symbol',columns='date',values=['pct_chg','close','turnover'],aggfunc='last')
-            valid_symbols=set(valid.index[(valid.notna().all(axis=1)) & (valid.to_numpy(dtype=float)>-1).all(axis=1)])
+            valid_symbols=set()
+            for symbol in constituents.symbol:
+                rows=history[history.symbol==symbol].set_index('date').reindex(required_dates)
+                if not rows[['pct_chg','close','turnover']].isna().any().any() and (rows[['pct_chg','close','turnover']].to_numpy(dtype=float)>-1).all():
+                    valid_symbols.add(symbol)
             missing.update(set(constituents.symbol)-valid_symbols)
             constituents=constituents[constituents.symbol.isin(valid_symbols)].copy()
             if constituents.empty:
