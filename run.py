@@ -127,6 +127,15 @@ def run_daily():
                 raise ValueError('当前没有可用成分股，等待下次行情补齐')
             constituents['weight']=constituents['weight']/constituents['weight'].sum()
             missing.update(set(requested_symbols)-available)
+            required_dates=calendar[calendar<=signal_date][-max(int(cfg['risk_model']['window']),121):]
+            valid=history.loc[history.date.isin(required_dates)].pivot_table(
+                index='symbol',columns='date',values=['pct_chg','close','turnover'],aggfunc='last')
+            valid_symbols=set(valid.index[(valid.notna().all(axis=1)) & (valid.to_numpy(dtype=float)>-1).all(axis=1)])
+            missing.update(set(constituents.symbol)-valid_symbols)
+            constituents=constituents[constituents.symbol.isin(valid_symbols)].copy()
+            if constituents.empty:
+                raise ValueError('没有成分股满足完整因子历史窗口，等待后续行情补齐')
+            constituents['weight']=constituents['weight']/constituents['weight'].sum()
             industry=data_mod.load_industry(ROOT/'state/industry_sw_l1.parquet')
             spot=data_mod.fetch_spot()
             spot_symbols=set(spot.loc[spot['close'].notna() & spot['circ_mv'].notna(),'symbol'])
