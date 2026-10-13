@@ -153,8 +153,8 @@ class RunnerTests(unittest.TestCase):
 
     def test_missing_whole_historical_session_blocks_initialization(self):
         self.history=self.history[self.history.date!='2026-05-15']
-        self.invoke()
-        self.assertIn('000001',State.load(self.root/'state').meta['missing_symbols'])
+        with self.assertRaises(ValueError): self.invoke()
+        self.assertFalse((self.root/'state/book.json').exists())
 
     def test_missing_turnover_is_not_averaged_away(self):
         self.history.loc[(self.history.date=='2026-06-02')&(self.history.symbol=='000001'),'turnover']=np.nan
