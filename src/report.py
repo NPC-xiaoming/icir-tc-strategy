@@ -75,6 +75,7 @@ def make_nav_plot(nav_history: pd.DataFrame, output: Path, backtest_path: Path |
     """Save one comparison chart and return the latest derived metrics."""
     frame=nav_history.copy()
     frame['date']=pd.to_datetime(frame['date'])
+    frame=frame.sort_values('date').drop_duplicates('date', keep='last')
     online=frame['nav']/float(frame['nav'].iloc[0])
     benchmark=frame['benchmark_nav']/float(frame['benchmark_nav'].iloc[0])
     excess=online/benchmark-1
@@ -83,13 +84,28 @@ def make_nav_plot(nav_history: pd.DataFrame, output: Path, backtest_path: Path |
     axes[0].plot(frame.date,online,label='线上组合（首日=1）')
     axes[0].plot(frame.date,benchmark,label='沪深300（线上首日=1）')
     if backtest_path and backtest_path.is_file():
-        bt=pd.read_csv(backtest_path); bt['date']=pd.to_datetime(bt['date']); bt=bt.sort_values('date')
-        bt_nav=pd.to_numeric(bt['nav'],errors='coerce'); bt_nav=bt_nav/bt_nav.iloc[0]
-        axes[0].plot(bt.date,bt_nav,label='本地回测（首日=1）',alpha=.8)
+        bt=pd.read_csv(backtest_path)
+        required={'date','nav','benchmark_nav'}
+        if required.issubset(bt.columns):
+            bt['date']=pd.to_datetime(bt['date'], errors='coerce')
+            bt['nav']=pd.to_numeric(bt['nav'], errors='coerce')
+            bt['benchmark_nav']=pd.to_numeric(bt['benchmark_nav'], errors='coerce')
+            bt=bt.dropna(subset=list(required)).sort_values('date').drop_duplicates('date', keep='last')
+            if not bt.empty and (bt[['nav','benchmark_nav']] > 0).all().all():
+                bt_nav=bt['nav']/float(bt['nav'].iloc[0])
+                bt_benchmark=bt['benchmark_nav']/float(bt['benchmark_nav'].iloc[0])
+                bt_excess=bt_nav/bt_benchmark-1
+                bt_drawdown=bt_nav/bt_nav.cummax()-1
+                axes[0].plot(bt.date,bt_nav,label='本地回测组合（首日=1）',alpha=.8)
+                axes[0].plot(bt.date,bt_benchmark,label='本地回测沪深300（首日=1）',alpha=.8)
+                axes[1].plot(bt.date,bt_excess,label='本地回测超额',alpha=.8)
+                axes[2].plot(bt.date,bt_drawdown,label='本地回测回撤',alpha=.8)
     axes[0].set_ylabel('净值'); axes[0].legend(); axes[0].grid(alpha=.25)
-    axes[1].plot(frame.date,excess,label='相对沪深300超额'); axes[1].axhline(0,color='black',lw=.7)
-    axes[1].set_ylabel('超额'); axes[1].grid(alpha=.25)
-    axes[2].fill_between(frame.date,drawdown,0,alpha=.25,label='组合回撤')
+    axes[1].plot(frame.date,excess,label='线上超额')
+    axes[1].axhline(0,color='black',lw=.7)
+    axes[1].set_ylabel('超额'); axes[1].legend(); axes[1].grid(alpha=.25)
+    axes[2].plot(frame.date,drawdown,label='线上回撤')
+    axes[2].fill_between(frame.date,drawdown,0,alpha=.25)
     axes[2].set_ylabel('回撤'); axes[2].legend(); axes[2].grid(alpha=.25)
     fig.suptitle('ICIR-TC 模拟组合净值跟踪'); fig.tight_layout(); output.parent.mkdir(parents=True,exist_ok=True)
     fig.savefig(output,dpi=150); plt.close(fig)
