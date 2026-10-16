@@ -43,4 +43,25 @@ class DataTests(unittest.TestCase):
         self.assertEqual(len(got),2)
 
 
-if __name__ == '__main__': unittest.main()
+
+    def test_fixed_sina_index_does_not_use_other_providers(self):
+        required=pd.to_datetime(['2026-10-14','2026-10-15'])
+        frame=pd.DataFrame({'date':required,'close':[100.,101.]})
+        with patch.object(data.ak,'stock_zh_index_daily',return_value=frame), \
+             patch.object(data.ak,'stock_zh_index_daily_em') as em, \
+             patch.object(data.ak,'stock_zh_index_daily_tx') as tx:
+            got=data.fetch_index_history(start_date=required[0],end_date=required[-1],
+                                         required_dates=required,provider='sina')
+        em.assert_not_called();tx.assert_not_called()
+        self.assertEqual(got.attrs['provider'],'sina')
+
+    def test_sina_snapshot_uses_dated_raw_cap(self):
+        raw=pd.DataFrame({'date':pd.to_datetime(['2026-10-16']),'symbol':['000001'],
+            'provider':['sina'],'adjust':[''],'close':[11.5],'pct_chg':[.01],
+            'turnover':[.5],'circ_mv':[123456.]})
+        with patch.object(data.ak,'stock_zh_a_spot_em') as em:
+            got=data.fetch_spot(history=raw)
+        em.assert_not_called()
+        self.assertEqual(got.iloc[0].circ_mv,123456.)
+        raw['adjust']='hfq'
+        with self.assertRaises(ValueError): data.fetch_spot(history=raw)

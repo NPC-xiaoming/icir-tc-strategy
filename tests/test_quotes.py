@@ -108,3 +108,34 @@ class QuoteTests(unittest.TestCase):
             out=self.fetch(self.dates[:8])
         self.assertEqual(out.attrs['failed_symbols'],['000001'])
         self.assertNotIn('000001',out.attrs['sources'])
+
+    def test_sina_primary_ignores_eastmoney_cache_and_needs_no_reference(self):
+        self.seed()
+        fresh=self.raw.copy(); fresh['pct_chg']=.02
+        with patch.object(quotes,'_provider_frame',return_value=fresh) as fn,patch.object(quotes.time,'sleep'):
+            out=quotes.fetch_history(['000001'],start_date=self.dates[0],end_date=self.dates[-1],
+                required_dates=self.dates,cache_path=self.cache,workers=1,pause=0,
+                primary_provider='sina')
+        self.assertEqual(out.attrs['sources'],{'000001':'sina'})
+        self.assertTrue((out.pct_chg==.02).all())
+        self.assertEqual([c.args[0] for c in fn.call_args_list],['sina'])
+        with patch.object(quotes,'_provider_frame',side_effect=AssertionError('network')) as fn:
+            cached=quotes.fetch_history(['000001'],start_date=self.dates[0],end_date=self.dates[-1],
+                required_dates=self.dates,cache_path=self.cache,primary_provider='sina')
+        fn.assert_not_called()
+        self.assertEqual(len(cached),9)
+
+    def test_sina_failure_does_not_fall_back_to_other_source(self):
+        self.seed()
+        with patch.object(quotes,'_provider_frame',side_effect=ConnectionError('offline')) as fn,patch.object(quotes.time,'sleep'):
+            out=quotes.fetch_history(['000001'],start_date=self.dates[0],end_date=self.dates[-1],
+                required_dates=self.dates,cache_path=self.cache,primary_provider='sina',allow_partial=True)
+        self.assertTrue(out.empty)
+        self.assertTrue(all(c.args[0]=='sina' for c in fn.call_args_list))
+
+    def test_sina_unadjusted_market_cap_uses_float_shares(self):
+        raw=pd.DataFrame({'date':self.dates[:2],'close':[10.,11.],
+            'turnover':[.02,.03],'outstanding_share':[1000.,1200.]})
+        with patch.object(quotes.ak,'stock_zh_a_daily',return_value=raw):
+            out=quotes._provider_frame('sina','000001',self.dates[0],self.dates[1],'',10,calendar=self.dates)
+        self.assertEqual(out.iloc[-1].circ_mv,13200.)

@@ -75,11 +75,18 @@ def fetch_constituents(index_code: str = "000300") -> pd.DataFrame:
     return frame.reset_index(drop=True)
 
 
-def fetch_spot() -> pd.DataFrame:
+def fetch_spot(history=None) -> pd.DataFrame:
     """Whole-market snapshot; after the close this is the day's close.
 
     Returns columns: symbol, name, close, pct_chg, turnover.
     """
+    if history is not None:
+        # Dated Sina raw close * outstanding shares gives float market cap in yuan.
+        frame=history.sort_values('date').drop_duplicates('symbol',keep='last').copy()
+        if not frame.empty and (not frame.provider.eq('sina').all() or not frame.adjust.eq('').all()):
+            raise ValueError('Sina snapshot requires unadjusted Sina history')
+        frame['name']=frame.symbol
+        return frame[['symbol','name','close','pct_chg','turnover','circ_mv']]
     raw = _retry(lambda: ak.stock_zh_a_spot_em(), "spot snapshot")
     return pd.DataFrame(
         {
@@ -98,7 +105,7 @@ def fetch_stock_history(*args, **kwargs):
     return fetch_history(*args, **kwargs)
 
 
-def fetch_index_history(index_code='000300', start_date=None, end_date=None, required_dates=None):
+def fetch_index_history(index_code='000300', start_date=None, end_date=None, required_dates=None, provider=None):
     start=pd.Timestamp(start_date); end=pd.Timestamp(end_date)
     required=pd.DatetimeIndex(required_dates) if required_dates is not None else None
     providers=[
@@ -108,6 +115,9 @@ def fetch_index_history(index_code='000300', start_date=None, end_date=None, req
             start_date=start.strftime('%Y%m%d'),end_date=end.strftime('%Y%m%d'))),
         ('sina',lambda:ak.stock_zh_index_daily(symbol='sh'+index_code)),
     ]
+    if provider is not None:
+        if provider != 'sina': raise ValueError('Unsupported fixed index provider')
+        providers=[item for item in providers if item[0]==provider]
     errors=[]
     for provider,fn in providers:
         def validated():

@@ -48,7 +48,7 @@ class RunnerTests(unittest.TestCase):
         s.holdings = pd.DataFrame({'symbol': syms, 'name': syms,
             'weight': weights or [1/len(syms)]*len(syms), 'industry': 'I',
             'benchmark_weight': [1/len(syms)]*len(syms)})
-        s.meta.update(initialized=True, last_run=last, last_rebalance=rebalance)
+        s.meta.update(initialized=True, last_run=last, last_rebalance=rebalance, quote_provider='sina')
         s.append_nav(pd.Timestamp(last), 1., 1.)
         s.save()
         return s
@@ -74,7 +74,7 @@ class RunnerTests(unittest.TestCase):
                 (app, 'trading_calendar', lambda: self.calendar),
                 (app, 'resolve_trade_date', lambda *_: date),
                 (app.data_mod, 'fetch_constituents', lambda *_: self.cons.copy()),
-                (app.data_mod, 'fetch_spot', lambda: self.spot.copy()),
+                (app.data_mod, 'fetch_spot', lambda **kw: self.spot.copy()),
                 (app.data_mod, 'fetch_stock_history', history),
                 (app.data_mod, 'fetch_index_history', lambda *a, **kw: index.copy()),
                 (app.data_mod, 'load_industry', lambda *_: pd.Series('I', index=self.symbols)),
@@ -250,4 +250,36 @@ class RunnerTests(unittest.TestCase):
         self.invoke()
         self.assertAlmostEqual(State.load(self.root/'state').meta['nav'],1.01**2)
 
-if __name__ == '__main__': unittest.main()
+
+    def test_source_migration_rebases_without_applying_old_returns(self):
+        old=self.seed(); old.meta.pop('quote_provider'); old.save()
+        old.ic_history=pd.DataFrame([{'momentum_120_20':.5}]); old.save()
+        original=(self.root/'state/book.json').read_text()
+        self.invoke()
+        new=State.load(self.root/'state')
+        self.assertEqual(new.meta['quote_provider'],'sina')
+        self.assertEqual(new.meta['baseline_date'],'2026-06-03')
+        self.assertEqual(len(new.nav_history),1)
+        self.assertEqual(new.nav_history.iloc[0]['nav'],1.)
+        self.assertEqual(new.nav_history.iloc[0]['benchmark_nav'],1.)
+        self.assertTrue(new.ic_history.empty)
+        self.assertTrue(new.signal_cache.empty)
+        pd.testing.assert_series_equal(new.weights(),old.weights())
+        self.assertEqual((self.root/'state/archive/pre-sina/book.json').read_text(),original)
+        rows=self.history[self.history.date==self.day].copy();rows['date']=pd.Timestamp('2026-06-04')
+        self.history=pd.concat([self.history,rows],ignore_index=True)
+        self.invoke('2026-06-04')
+        self.assertAlmostEqual(State.load(self.root/'state').nav_history.iloc[-1]['nav'],1.01)
+
+    def test_source_migration_failure_keeps_old_book(self):
+        old=self.seed();old.meta.pop('quote_provider');old.save()
+        original=(self.root/'state/book.json').read_bytes()
+        self.history=self.history[self.history.date!=self.day]
+        with self.assertRaises(ValueError): self.invoke()
+        self.assertEqual((self.root/'state/book.json').read_bytes(),original)
+
+    def test_source_migration_rejects_even_small_gap_at_baseline(self):
+        old=self.seed(weights=[.001]+[.999/11]*11);old.meta.pop('quote_provider');old.save()
+        self.history=self.history[~((self.history.date==self.day)&(self.history.symbol=='000001'))]
+        with self.assertRaises(ValueError): self.invoke()
+        self.assertNotIn('quote_provider',State.load(self.root/'state').meta)

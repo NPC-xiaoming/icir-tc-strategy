@@ -3,6 +3,7 @@
 Never splice adjusted prices from different providers to calculate a return.
 Eastmoney's rounded HFQ return is the existing strategy convention; a backup
 must match at least three overlapping Eastmoney returns within one basis point.
+The production Sina mode is isolated and never falls back to another provider.
 """
 from __future__ import annotations
 import os
@@ -15,7 +16,7 @@ import akshare as ak
 import numpy as np
 import pandas as pd
 
-COLUMNS = ['date','symbol','close','pct_chg','turnover','provider','adjust']
+COLUMNS = ['date','symbol','close','pct_chg','turnover','provider','adjust','circ_mv']
 PROVIDERS = ('eastmoney','tencent','sina')
 RETURN_TOLERANCE = .0001
 
@@ -48,6 +49,8 @@ def _provider_frame(provider, symbol, start, end, adjust, timeout, calendar=None
             steps=out.date.map(positions).diff()
             out.loc[steps!=1,'pct_chg']=np.nan
         out['turnover']=pd.to_numeric(out['turnover'],errors='coerce')*100. if 'turnover' in out else np.nan
+    out['circ_mv']=(pd.to_numeric(out.outstanding_share,errors='coerce')*out.close
+                    if adjust=='' and 'outstanding_share' in out else np.nan)
     out['date']=pd.to_datetime(out.date,errors='coerce')
     out['symbol']=symbol
     out['close']=pd.to_numeric(out.close,errors='coerce')
@@ -55,18 +58,22 @@ def _provider_frame(provider, symbol, start, end, adjust, timeout, calendar=None
     out=out[out.date.notna() & (out.date<=end)].copy()
     if out.date.duplicated().any(): raise ValueError('duplicate quote dates')
     valid=np.isfinite(out.close)&(out.close>0)&np.isfinite(out.pct_chg)&(out.pct_chg>-1)
-    return out.loc[valid,['date','symbol','close','pct_chg','turnover']].sort_values('date')
+    return out.loc[valid,['date','symbol','close','pct_chg','turnover','circ_mv']].sort_values('date')
 
 
 def fetch_history(symbols, days=300, adjust='hfq', pause=.15, start_date=None,
                   end_date=None, workers=2, timeout=12, allow_partial=False,
-                  cache_path=None, required_dates=None, calendar=None, require_turnover=False):
+                  cache_path=None, required_dates=None, calendar=None, require_turnover=False, primary_provider='eastmoney'):
+    if primary_provider not in ('eastmoney','sina'):
+        raise ValueError('Unsupported primary quote provider')
+    providers=PROVIDERS if primary_provider=='eastmoney' else ('sina',)
     end=pd.Timestamp(end_date) if end_date is not None else pd.Timestamp.now(tz='Asia/Shanghai').tz_localize(None).normalize()
     start=pd.Timestamp(start_date) if start_date is not None else end-pd.Timedelta(days=int(days*1.7))
     required=pd.DatetimeIndex(required_dates) if required_dates is not None else pd.bdate_range(start,end)
     cached=pd.read_parquet(cache_path) if cache_path and Path(cache_path).is_file() else pd.DataFrame(columns=COLUMNS)
+    cached=cached.reindex(columns=COLUMNS)
     if not cached.empty: cached['date']=pd.to_datetime(cached.date)
-    lock=threading.Lock(); unavailable=set(); provider_failures={p:0 for p in PROVIDERS}
+    lock=threading.Lock(); unavailable=set(); provider_failures={p:0 for p in providers}
     errors=[]; writes=[]; sources={}; failed=[]; results=[]
 
     def eligible(frame):
@@ -77,20 +84,20 @@ def fetch_history(symbols, days=300, adjust='hfq', pause=.15, start_date=None,
 
     def one(symbol):
         local=cached[(cached.symbol==symbol)&(cached.adjust==adjust)]
-        reference=local[local.provider=='eastmoney'].copy()
+        reference=local[local.provider==primary_provider].copy()
         best=pd.DataFrame(columns=COLUMNS)
         best_source=None
-        for provider in PROVIDERS:
+        for provider in providers:
             old=local[local.provider==provider].copy()
             subset=eligible(old)
-            if provider == 'eastmoney' and len(subset) > len(reference):
+            if provider == primary_provider and len(subset) > len(reference):
                 reference=subset.copy()
-            if provider == 'eastmoney' and len(subset)==len(required):
+            if provider == primary_provider and len(subset)==len(required):
                 return symbol,subset,provider,[] ,[]
         events=[]; updates=[]
-        for provider in PROVIDERS:
+        for provider in providers:
             old=local[local.provider==provider].copy()
-            if provider!='eastmoney' and len(reference)<3:
+            if provider!=primary_provider and len(reference)<3:
                 events.append({'symbol':symbol,'provider':provider,'error':'fewer than 3 trusted reference returns; backup not used'})
                 continue
             with lock: disabled=provider in unavailable
@@ -115,8 +122,8 @@ def fetch_history(symbols, days=300, adjust='hfq', pause=.15, start_date=None,
                     if provider_failures[provider]>=3: unavailable.add(provider)
                 continue
             # Responses are validated before accepting them into the durable cache.
-            fresh=fresh.copy(); fresh['provider']=provider; fresh['adjust']=adjust
-            if provider=='eastmoney':
+            fresh=fresh.reindex(columns=COLUMNS).copy(); fresh['provider']=provider; fresh['adjust']=adjust
+            if provider==primary_provider:
                 reference=pd.concat([reference,fresh],ignore_index=True).drop_duplicates('date',keep='last')
             else:
                 overlap=reference[['date','pct_chg']].merge(fresh[['date','pct_chg']],on='date',suffixes=('_ref','_backup')).tail(20)
@@ -129,9 +136,9 @@ def fetch_history(symbols, days=300, adjust='hfq', pause=.15, start_date=None,
             combined=pd.concat([old,fresh],ignore_index=True).drop_duplicates('date',keep='last').sort_values('date')
             updates.append(fresh[COLUMNS])
             subset=eligible(combined)
-            if provider == 'eastmoney':
+            if provider == primary_provider:
                 reference=subset.copy()
-            if provider != 'eastmoney' and len(reference) >= 3:
+            if provider != primary_provider and len(reference) >= 3:
                 overlap=reference[['date','pct_chg']].merge(subset[['date','pct_chg']],on='date',suffixes=('_ref','_backup')).tail(20)
                 diff=(overlap.pct_chg_ref-overlap.pct_chg_backup).abs()
                 if len(overlap) < 3 or not np.isfinite(diff).all() or diff.max() > RETURN_TOLERANCE:
@@ -139,7 +146,7 @@ def fetch_history(symbols, days=300, adjust='hfq', pause=.15, start_date=None,
             if len(subset)>len(best): best,best_source=subset,provider
             if len(subset)==len(required): return symbol,subset,provider,events,updates
             events.append({'symbol':symbol,'provider':provider,'error':f'incomplete dates/fields: {len(subset)}/{len(required)}'})
-        if best_source != 'eastmoney' and len(reference) >= 3 and not best.empty:
+        if best_source != primary_provider and len(reference) >= 3 and not best.empty:
             overlap=reference[['date','pct_chg']].merge(best[['date','pct_chg']],on='date',suffixes=('_ref','_backup')).tail(20)
             diff=(overlap.pct_chg_ref-overlap.pct_chg_backup).abs()
             if len(overlap) < 3 or not np.isfinite(diff).all() or diff.max() > RETURN_TOLERANCE:

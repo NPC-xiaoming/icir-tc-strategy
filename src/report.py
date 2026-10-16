@@ -6,6 +6,15 @@ from pathlib import Path
 
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
+
+# Use a CJK font when available on the runner or local workstation.
+_fonts={font.name for font in font_manager.fontManager.ttflist}
+for _name in ("Noto Sans CJK SC", "Noto Sans CJK JP", "PingFang HK", "STHeiti"):
+    if _name in _fonts:
+        plt.rcParams["font.sans-serif"]=[_name, "DejaVu Sans"]
+        break
+plt.rcParams["axes.unicode_minus"]=False
 
 
 def _pct(value: float, digits: int = 2) -> str:
@@ -81,8 +90,8 @@ def make_nav_plot(nav_history: pd.DataFrame, output: Path, backtest_path: Path |
     excess=online/benchmark-1
     drawdown=online/online.cummax()-1
     fig, axes=plt.subplots(3,1,figsize=(12,10),sharex=True,gridspec_kw={'height_ratios':[2,1,1]})
-    axes[0].plot(frame.date,online,label='线上组合（首日=1）')
-    axes[0].plot(frame.date,benchmark,label='沪深300（线上首日=1）')
+    axes[0].plot(frame.date,online,label='线上组合（首日=1）',marker='o' if len(frame)==1 else None)
+    axes[0].plot(frame.date,benchmark,label='沪深300（线上首日=1）',marker='o' if len(frame)==1 else None)
     if backtest_path and backtest_path.is_file():
         bt=pd.read_csv(backtest_path)
         required={'date','nav','benchmark_nav'}
@@ -101,10 +110,10 @@ def make_nav_plot(nav_history: pd.DataFrame, output: Path, backtest_path: Path |
                 axes[1].plot(bt.date,bt_excess,label='本地回测超额',alpha=.8)
                 axes[2].plot(bt.date,bt_drawdown,label='本地回测回撤',alpha=.8)
     axes[0].set_ylabel('净值'); axes[0].legend(); axes[0].grid(alpha=.25)
-    axes[1].plot(frame.date,excess,label='线上超额')
+    axes[1].plot(frame.date,excess,label='线上超额',marker='o' if len(frame)==1 else None)
     axes[1].axhline(0,color='black',lw=.7)
     axes[1].set_ylabel('超额'); axes[1].legend(); axes[1].grid(alpha=.25)
-    axes[2].plot(frame.date,drawdown,label='线上回撤')
+    axes[2].plot(frame.date,drawdown,label='线上回撤',marker='o' if len(frame)==1 else None)
     axes[2].fill_between(frame.date,drawdown,0,alpha=.25)
     axes[2].set_ylabel('回撤'); axes[2].legend(); axes[2].grid(alpha=.25)
     fig.suptitle('ICIR-TC 模拟组合净值跟踪'); fig.tight_layout(); output.parent.mkdir(parents=True,exist_ok=True)

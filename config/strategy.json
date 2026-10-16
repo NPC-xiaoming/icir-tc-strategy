@@ -1,6 +1,6 @@
 {
   "strategy_name": "ICIR-TC",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "CSI 300 index enhancement: industry-neutral IC-IR factor composite with a tracking-error penalty optimizer (kappa=100).",
   "index": {
     "code": "000300",
@@ -57,7 +57,8 @@
     "timeout_seconds": 12,
     "expected_constituents": 300,
     "max_weight_age_days": 45,
-    "max_missing_weight": 0.05
+    "max_missing_weight": 0.05,
+    "quote_provider": "sina"
   },
   "annualization": 242
 }
