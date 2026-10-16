@@ -3,9 +3,15 @@ set -euo pipefail
 branch="${DEFAULT_BRANCH:-$(git symbolic-ref --short HEAD)}"
 git check-ref-format --branch "$branch" >/dev/null
 paths=()
-for path in state reports; do
-  if [[ -d "$path" ]]; then paths+=("$path"); fi
-done
+if [[ "${CACHE_ONLY:-0}" == "1" ]]; then
+  for path in state/market_history.parquet state/market_calendar.parquet; do
+    if [[ -f "$path" ]]; then paths+=("$path"); fi
+  done
+else
+  for path in state reports; do
+    if [[ -d "$path" ]]; then paths+=("$path"); fi
+  done
+fi
 if [[ ${#paths[@]} -eq 0 ]]; then
   echo 'No state or reports to save.'
   exit 0

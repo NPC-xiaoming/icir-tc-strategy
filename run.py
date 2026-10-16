@@ -34,8 +34,19 @@ def current_time():
 
 
 def trading_calendar():
-    raw=data_mod._retry(lambda:data_mod.ak.tool_trade_date_hist_sina(),'trading calendar')
-    return pd.DatetimeIndex(pd.to_datetime(raw['trade_date'])).drop_duplicates().sort_values()
+    cache=ROOT/'state/market_calendar.parquet'
+    try:
+        raw=data_mod._retry(lambda:data_mod.ak.tool_trade_date_hist_sina(),'trading calendar')
+        dates=pd.DatetimeIndex(pd.to_datetime(raw['trade_date'])).drop_duplicates().sort_values()
+        if dates.empty: raise ValueError('Empty trading calendar')
+        cache.parent.mkdir(parents=True,exist_ok=True)
+        temp=cache.with_suffix('.parquet.tmp')
+        pd.DataFrame({'date':dates}).to_parquet(temp,index=False); os.replace(temp,cache)
+        return dates
+    except Exception as exc:
+        if not cache.exists(): raise
+        print(f'[calendar] using cached exchange calendar: {exc}',flush=True)
+        return pd.DatetimeIndex(pd.read_parquet(cache).date).drop_duplicates().sort_values()
 
 
 def resolve_trade_date(calendar,today):
@@ -50,7 +61,11 @@ def is_rebalance_day(calendar,trade_date):
 
 def run_daily():
     cfg=load_config()
-    state=State.load(ROOT/'state')
+    checkpoint_path=ROOT/'state/valuation_checkpoint.json'
+    state=State.load(ROOT/'state', 'valuation_checkpoint.json' if checkpoint_path.is_file() else 'book.json')
+    replaying=checkpoint_path.is_file()
+    checkpoint_payload=None
+    unresolved=[]
     now=current_time()
     today=now.tz_localize(None).normalize()
     calendar=trading_calendar()
@@ -94,12 +109,18 @@ def run_daily():
     requested_symbols=sorted(symbols)
     history=data_mod.fetch_stock_history(requested_symbols,days=int(cfg['data']['history_days']),
         start_date=start,end_date=trade_date,workers=int(cfg['data'].get('workers',3)),
-        timeout=float(cfg['data'].get('timeout_seconds',20)),allow_partial=True) if symbols else pd.DataFrame()
+        timeout=float(cfg['data'].get('timeout_seconds',12)),allow_partial=True,
+        cache_path=ROOT/'state/market_history.parquet',
+        required_dates=calendar[(calendar>=start)&(calendar<=trade_date)],calendar=calendar,
+        require_turnover=needs_rebalance) if symbols else pd.DataFrame()
+    quality={'through':str(trade_date.date()),'sources':history.attrs.get('sources',{}),
+             'errors':history.attrs.get('errors',[]),'days':[]}
+    atomic_text(ROOT/'logs/data_quality.json',json.dumps(quality,ensure_ascii=False,indent=2))
     missing=set(history.attrs.get('failed_symbols', []))
     missing.update(set(requested_symbols)-set(history.symbol.unique()))
-    held_missing=sorted(set(held)&missing)
     held_returns=dated_returns(history,pending,held,allow_missing=True)
-    index=data_mod.fetch_index_history(cfg['index']['code'],start_date=previous[-1],end_date=trade_date)
+    index=data_mod.fetch_index_history(cfg['index']['code'],start_date=previous[-1],end_date=trade_date,
+        required_dates=pd.DatetimeIndex([previous[-1],*pending]))
     if index.date.duplicated().any():
         raise ValueError('Duplicate official index dates')
     closes=index.set_index('date').close.reindex(pd.DatetimeIndex([previous[-1],*pending])).astype(float)
@@ -109,6 +130,19 @@ def run_daily():
     outputs={}
     cold_note='历史 IC 未充分预热时使用等权因子回退；不代表已复现研究回测。'
     for day in pending:
+        current=history.loc[history.date==day].set_index('symbol')['pct_chg'].reindex(held)
+        bad=~np.isfinite(current)|(current<=-1)
+        day_missing=current.index[bad].tolist()
+        missing_weight=float(state.weights().reindex(day_missing,fill_value=0.).sum())
+        quality['days'].append({'date':str(day.date()),'held_missing':day_missing,'missing_weight':missing_weight})
+        atomic_text(ROOT/'logs/data_quality.json',json.dumps(quality,ensure_ascii=False,indent=2))
+        limit=float(cfg['data'].get('max_missing_weight',.05))
+        if held and (len(day_missing)==len(held) or missing_weight>limit):
+            raise ValueError(f'{day.date()} 持仓行情缺失 {len(day_missing)}/{len(held)} 只、权重 {missing_weight:.2%}，超过 {limit:.0%} 保护阈值；未提交账本，缓存保留供重试')
+        if day_missing:
+            if checkpoint_payload is None:
+                checkpoint_payload=state.payload()
+            unresolved.extend({'date':str(day.date()),'symbol':symbol} for symbol in day_missing)
         had_nav=not state.nav_history.empty
         old_nav=float(state.nav_history.iloc[-1]['nav']) if had_nav else 1.
         old_bench=float(state.nav_history.iloc[-1]['benchmark_nav']) if had_nav else 1.
@@ -117,11 +151,14 @@ def run_daily():
             state.holdings['weight']=state.holdings.symbol.map(pretrade)
         bench_ret=float(index_returns.loc[day]) if had_nav else 0.
         fee=0.; actual_rebalance=False; notes=[]
+        if unresolved and needs_rebalance:
+            notes.append('持仓行情尚有缺失，暂缓调仓，补齐估值后重试。')
+        if replaying:
+            notes.append('已从暂估前检查点重新计算，本报告替代此前暂估结果。')
         if len(pending)>1:
             notes.append('缺日按原持仓补估值；未倒填过去调仓。')
-        if day==trade_date and needs_rebalance:
+        if day==trade_date and needs_rebalance and not unresolved:
             available=set(history.symbol.unique())
-            before=len(constituents)
             constituents=constituents[constituents.symbol.isin(available)].copy()
             if constituents.empty:
                 raise ValueError('当前没有可用成分股，等待下次行情补齐')
@@ -148,7 +185,8 @@ def run_daily():
             constituents['weight']=constituents['weight']/constituents['weight'].sum()
             unadjusted=data_mod.fetch_stock_history(constituents.symbol.tolist(),adjust='',
                 start_date=day,end_date=day,workers=int(cfg['data'].get('workers',3)),
-                timeout=float(cfg['data'].get('timeout_seconds',20)),allow_partial=True)
+                timeout=float(cfg['data'].get('timeout_seconds',12)),allow_partial=True,
+                cache_path=ROOT/'state/market_history.parquet',required_dates=pd.DatetimeIndex([day]),calendar=calendar)
             missing.update(unadjusted.attrs.get('failed_symbols', []))
             constituents=constituents[constituents.symbol.isin(set(unadjusted.symbol.unique()))].copy()
             constituents['weight']=constituents['weight']/constituents['weight'].sum()
@@ -172,31 +210,42 @@ def run_daily():
         net=(1+gross)*(1-fee)-1
         benchmark_nav=old_bench*(1+bench_ret)
         state.append_nav(day,nav,benchmark_nav)
+        state.meta.update(nav=nav,benchmark_nav=benchmark_nav)
         text=report_mod.render_daily(day,nav,benchmark_nav,net,bench_ret,nav/benchmark_nav-1,
                                      state.holdings,actual_rebalance,state.nav_history)
         text+=f'\n- 本日交易费用（净资产比例）：{fee:.6%}\n- 版本：{cfg["version"]}\n'
         text+='- 基准：沪深300官方价格指数；组合为含固定费用的权重型研究模拟。\n'
         text+='- 收益口径沿用原策略的后复权涨跌幅代理，可能与当日股票实际涨跌幅不同；此净值不代表真实资金盈亏。\n'
-        text+=f'- 当日行情未获取股票：{", ".join(sorted(missing)) if missing else "无"}。下次运行会重试；已有持仓缺行情按 0% 暂估，需重点复核。\n'
+        text+=f'- 当日持仓行情缺失：{", ".join(day_missing) if day_missing else "无"}；缺失权重 {missing_weight:.2%}。\n'
+        if actual_rebalance:
+            text+=f'- 调仓数据不完整或被过滤的股票：{", ".join(sorted(missing)) if missing else "无"}。\n'
+        text+=f'- 数据来源：{json.dumps(pd.Series(list(quality['sources'].values()),dtype=str).value_counts().to_dict(),ensure_ascii=False)}\n' if quality['sources'] else ''
+        if unresolved:
+            text='> **暂估报告：存在未补齐持仓行情，收益和超额暂不可作为有效绩效；下次从检查点重新计算。**\n\n'+text
         text+='- 因子使用前一交易日收盘数据，风险约束和成交采用执行日可用信息；收盘模拟并非可执行成交承诺。\n'
         text+='- '+cold_note+'\n'+'\n'.join('- '+n for n in notes if n!=cold_note)+'\n'
         outputs[ROOT/'reports/daily'/f'{day.date()}.md']=text
     state.meta.update(nav=nav,benchmark_nav=benchmark_nav,version=cfg['version'],
         config_hash=hashlib.sha256(json.dumps(cfg,sort_keys=True).encode()).hexdigest(),
         recorded_at=now.isoformat(),benchmark='沪深300官方价格指数',
-        missing_symbols=sorted(missing),held_missing_symbols=held_missing)
+        missing_symbols=sorted(missing),held_missing_symbols=sorted({x['symbol'] for x in unresolved}),
+        provisional=bool(unresolved),unresolved_quotes=unresolved)
     metrics=report_mod.make_nav_plot(state.nav_history,ROOT/'reports/nav_curve.png',
                                      ROOT/'state/backtest_nav_history.csv')
     state.meta['chart_metrics']=metrics
     state.validate()
     for path,text in outputs.items(): atomic_text(path,text)
+    # Save the replay checkpoint first; interruption may cause replay, never lost corrections.
+    if checkpoint_payload is not None:
+        atomic_text(checkpoint_path,json.dumps(checkpoint_payload,ensure_ascii=False,indent=2))
     state.save()
+    if not unresolved and checkpoint_path.exists(): checkpoint_path.unlink()
     print(f'[done] nav={nav:.6f} benchmark={benchmark_nav:.6f}; reports and ledger saved',flush=True)
     return 0
 
 
 def main():
-    with data_mod.network_timeout(20):
+    with data_mod.network_timeout(12):
         return run_daily()
 
 

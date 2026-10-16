@@ -8,7 +8,6 @@ always stable.
 from __future__ import annotations
 
 import time
-from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
 from pathlib import Path
 
@@ -26,7 +25,8 @@ def network_timeout(seconds: float = 20):
     """Bound AKShare endpoints which do not expose a timeout parameter."""
     original = requests.sessions.Session.request
     def bounded(self, *args, **kwargs):
-        kwargs['timeout'] = seconds
+        requested=kwargs.get('timeout')
+        kwargs['timeout'] = seconds if requested is None else (tuple(min(seconds,x) if x is not None else seconds for x in requested) if isinstance(requested,tuple) else min(seconds,requested))
         return original(self, *args, **kwargs)
     requests.sessions.Session.request = bounded
     try:
@@ -93,86 +93,42 @@ def fetch_spot() -> pd.DataFrame:
     ).drop_duplicates("symbol")
 
 
-def fetch_stock_history(
-    symbols: list[str],
-    days: int = 300,
-    adjust: str = "hfq",
-    pause: float = 0.15,
-    start_date=None,
-    end_date=None,
-    workers: int = 1,
-    timeout: float = 20,
-    allow_partial: bool = False,
-) -> pd.DataFrame:
-    """Daily history for the given symbols.
+def fetch_stock_history(*args, **kwargs):
+    from .quotes import fetch_history
+    return fetch_history(*args, **kwargs)
 
-    ``adjust='hfq'`` preserves the original research price/return convention.
-    Its pct_chg differs from unadjusted returns; it is not share-account P&L.
-    Use adjust='' when comparing dated quotes with the unadjusted spot feed.
 
-    Returns columns: date, symbol, close, pct_chg, turnover.
-    """
-    frames: list[pd.DataFrame] = []
-    end = pd.Timestamp(end_date) if end_date is not None else pd.Timestamp.now(tz='Asia/Shanghai').tz_localize(None).normalize()
-    start = pd.Timestamp(start_date) if start_date is not None else end - pd.Timedelta(days=int(days * 1.7))
-    failures: list[str] = []
-    def fetch_one(symbol):
+def fetch_index_history(index_code='000300', start_date=None, end_date=None, required_dates=None):
+    start=pd.Timestamp(start_date); end=pd.Timestamp(end_date)
+    required=pd.DatetimeIndex(required_dates) if required_dates is not None else None
+    providers=[
+        ('eastmoney',lambda:ak.stock_zh_index_daily_em(symbol='sh'+index_code,
+            start_date=start.strftime('%Y%m%d'),end_date=end.strftime('%Y%m%d'))),
+        ('tencent',lambda:ak.stock_zh_index_daily_tx(symbol='sh'+index_code,
+            start_date=start.strftime('%Y%m%d'),end_date=end.strftime('%Y%m%d'))),
+        ('sina',lambda:ak.stock_zh_index_daily(symbol='sh'+index_code)),
+    ]
+    errors=[]
+    for provider,fn in providers:
+        def validated():
+            raw=fn()
+            frame=raw[['date','close']].copy()
+            frame['date']=pd.to_datetime(frame.date)
+            frame['close']=pd.to_numeric(frame.close,errors='coerce')
+            frame=frame[frame.date.between(start,end)].sort_values('date')
+            if (frame.empty or frame.date.duplicated().any() or not np.isfinite(frame.close).all()
+                    or (frame.close<=0).any() or (required is not None and not required.isin(frame.date).all())):
+                raise ValueError('official index dates/values incomplete')
+            return frame
         try:
-            raw = _retry(
-                lambda s=symbol: ak.stock_zh_a_hist(
-                    symbol=s,
-                    period="daily",
-                    start_date=start.strftime("%Y%m%d"),
-                    end_date=end.strftime("%Y%m%d"),
-                    adjust=adjust,
-                    timeout=timeout,
-                ),
-                f"history {symbol}",
-            )
-        except Exception:  # noqa: BLE001
-            return symbol, None
-        if raw is None or raw.empty:
-            return symbol, None
-        result = pd.DataFrame(
-                {
-                    "date": pd.to_datetime(raw["日期"]),
-                    "symbol": symbol,
-                    "close": pd.to_numeric(raw["收盘"], errors="coerce"),
-                    "pct_chg": pd.to_numeric(raw["涨跌幅"], errors="coerce") / 100.0,
-                    "turnover": pd.to_numeric(raw["换手率"], errors="coerce"),
-                }
-            )
-        time.sleep(pause)
-        return symbol, result
-    with ThreadPoolExecutor(max_workers=max(1, min(workers, 4))) as pool:
-        for symbol, frame in pool.map(fetch_one, sorted(set(symbols))):
-            if frame is None:
-                failures.append(symbol)
-            else:
-                frames.append(frame)
-    if failures and not allow_partial:
-        raise RuntimeError(f'历史行情下载不完整：{len(failures)} 只失败 {failures[:10]}，未提交状态')
-    if not frames:
-        out = pd.DataFrame(columns=["date", "symbol", "close", "pct_chg", "turnover"])
-        out.attrs['failed_symbols'] = failures
-        return out
-    out = pd.concat(frames, ignore_index=True)
-    out = out.sort_values(["symbol", "date"]).reset_index(drop=True)
-    out.attrs['failed_symbols'] = failures
-    return out
-
-
-def fetch_index_history(index_code='000300', start_date=None, end_date=None):
-    raw = _retry(lambda: ak.stock_zh_index_daily_em(
-        symbol='sh' + index_code,
-        start_date=pd.Timestamp(start_date).strftime('%Y%m%d'),
-        end_date=pd.Timestamp(end_date).strftime('%Y%m%d')), 'official index history')
-    frame = raw[['date', 'close']].copy()
-    frame['date'] = pd.to_datetime(frame.date)
-    frame['close'] = pd.to_numeric(frame.close, errors='coerce')
-    if frame.empty or frame.date.duplicated().any() or not np.isfinite(frame.close).all() or (frame.close <= 0).any():
-        raise ValueError('Invalid official index data')
-    return frame.sort_values('date')
+            frame=_retry(validated,f'index {provider}')
+            frame.attrs['provider']=provider
+            print(f'[index] source={provider} rows={len(frame)}',flush=True)
+            return frame
+        except Exception as exc:
+            errors.append(f'{provider}: {exc}')
+            print(f'[index] {errors[-1]}',flush=True)
+    raise RuntimeError('All official index sources failed: '+'; '.join(errors))
 
 
 def load_industry(cache_path: Path, index_code: str = "000300") -> pd.Series:

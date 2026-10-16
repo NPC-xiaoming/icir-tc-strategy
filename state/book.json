@@ -604,7 +604,10 @@
       "benchmark_nav": 0.9743502787860644,
       "excess": 0.026324948811932813,
       "drawdown": 0.0
-    }
+    },
+    "provisional": true,
+    "needs_replay_from": "2026-10-14",
+    "data_quality": "invalid_all_held_quotes_missing"
   },
   "holdings": {
     "columns": [

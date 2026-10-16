@@ -41,6 +41,7 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Run after-close paper portfolio
+        id: track
         timeout-minutes: 35
         shell: bash
         run: |
@@ -51,6 +52,12 @@ jobs:
 
       - name: Persist successful state and reports
         shell: bash
+        run: bash scripts/commit_results.sh
+
+      - name: Preserve valid quote cache after a failed valuation
+        if: failure() && steps.track.outcome == 'failure'
+        env:
+          CACHE_ONLY: '1'
         run: bash scripts/commit_results.sh
 
       - name: Upload recovery files and logs

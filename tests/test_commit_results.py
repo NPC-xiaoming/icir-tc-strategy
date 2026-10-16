@@ -47,3 +47,16 @@ class CommitTests(unittest.TestCase):
         self.assertNotEqual(result.returncode,0)
         self.assertEqual((self.root/'state/book.json').read_text(),'{}')
         self.assertEqual(self.git('show','HEAD:state/book.json'),'{}')
+
+    def test_cache_only_commit_excludes_ledger_and_reports(self):
+        (self.root/'state').mkdir(); (self.root/'reports').mkdir()
+        (self.root/'state/market_history.parquet').write_bytes(b'cache')
+        (self.root/'state/book.json').write_text('uncommitted valuation')
+        (self.root/'reports/day.md').write_text('uncommitted report')
+        result=subprocess.run(['bash',str(SCRIPT)],cwd=self.root,capture_output=True,text=True,
+                              env={**os.environ,'DEFAULT_BRANCH':'main','CACHE_ONLY':'1'})
+        self.assertEqual(result.returncode,0,result.stderr)
+        tree=self.git('ls-tree','-r','--name-only','origin/main')
+        self.assertIn('market_history.parquet',tree)
+        self.assertNotIn('book.json',tree)
+        self.assertNotIn('reports/',tree)

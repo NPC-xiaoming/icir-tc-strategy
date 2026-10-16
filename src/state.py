@@ -29,9 +29,9 @@ class State:
         self.nav_history = pd.DataFrame(columns=['date', 'nav', 'benchmark_nav'])
 
     @classmethod
-    def load(cls, root: Path) -> 'State':
+    def load(cls, root: Path, book_name: str = 'book.json') -> 'State':
         state = cls(root)
-        book = state.root / 'book.json'
+        book = state.root / book_name
         if not book.exists():
             legacy = [state.root / (n + '.parquet') for n in cls.TABLES]
             if (state.root / 'meta.json').exists() or any(p.exists() for p in legacy):
@@ -70,14 +70,18 @@ class State:
             if self.meta.get('last_run') != dates.iloc[-1].date().isoformat():
                 raise ValueError('last_run must match final NAV date')
 
-    def save(self) -> None:
+    def payload(self) -> dict:
         self.validate()
-        self.root.mkdir(parents=True, exist_ok=True)
-        payload = {'schema_version': 2, 'meta': self.meta}
+        payload = {'schema_version': 2, 'meta': json.loads(json.dumps(self.meta))}
         for name in self.TABLES:
             frame = getattr(self, name)
             payload[name] = {'columns': list(frame.columns),
                              'rows': json.loads(frame.to_json(orient='records', date_format='iso'))}
+        return payload
+
+    def save(self) -> None:
+        payload = self.payload()
+        self.root.mkdir(parents=True, exist_ok=True)
         # Only book.json is authoritative. A failed mirror write never advances it.
         for name in self.TABLES:
             path = self.root / (name + '.parquet')

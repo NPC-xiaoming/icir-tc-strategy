@@ -106,14 +106,13 @@ class RunnerTests(unittest.TestCase):
         self.assertAlmostEqual(s.nav_history.iloc[-1]['nav'], 1.0201)
         self.assertTrue((self.root/'reports/daily/2026-06-02.md').exists())
 
-    def test_missing_quote_is_recorded_and_ledger_advances(self):
+    def test_all_missing_quotes_do_not_advance_ledger(self):
         self.seed()
         self.history = self.history[self.history.date < self.day]
         self.spot['pct_chg'] = np.nan
-        self.invoke()
-        s=State.load(self.root/'state')
-        self.assertEqual(s.meta['last_run'], '2026-06-03')
-        self.assertTrue(s.meta['missing_symbols'])
+        before=(self.root/'state/book.json').read_bytes()
+        with self.assertRaises(ValueError): self.invoke()
+        self.assertEqual((self.root/'state/book.json').read_bytes(),before)
 
     def test_removed_constituent_still_earns_its_return(self):
         self.seed(symbols=['000001','000002'], weights=[.5,.5])
@@ -196,6 +195,32 @@ class RunnerTests(unittest.TestCase):
         s=State.load(self.root/'state')
         self.assertIn('000012',s.meta['missing_symbols'])
         self.assertTrue((self.root/'reports/daily/2026-06-03.md').read_text().find('000012')>=0)
+
+
+    def test_small_missing_position_is_provisional_then_replayed(self):
+        self.seed(symbols=['000001','000002'],weights=[.01,.99])
+        complete=self.history.copy()
+        self.history=self.history[~((self.history.symbol=='000001')&(self.history.date==self.day))]
+        self.invoke()
+        state=State.load(self.root/'state')
+        self.assertTrue(state.meta['provisional'])
+        self.assertTrue((self.root/'state/valuation_checkpoint.json').exists())
+        self.history=complete
+        self.history.loc[(self.history.symbol=='000001')&(self.history.date==self.day),'pct_chg']=.1
+        self.invoke()  # same date must retry unresolved quotes, without double counting
+        state=State.load(self.root/'state')
+        self.assertFalse(state.meta['provisional'])
+        self.assertAlmostEqual(state.meta['nav'],1.0109)
+        self.assertFalse((self.root/'state/valuation_checkpoint.json').exists())
+        self.assertEqual(len(state.nav_history),2)
+
+    def test_failure_after_partial_day_leaves_authoritative_book_unchanged(self):
+        self.seed(last='2026-06-01')
+        before=(self.root/'state/book.json').read_bytes()
+        self.history=self.history[self.history.date!=self.day]
+        with self.assertRaises(ValueError): self.invoke()
+        self.assertEqual((self.root/'state/book.json').read_bytes(),before)
+        self.assertFalse((self.root/'reports/daily/2026-06-02.md').exists())
 
 
 if __name__ == '__main__': unittest.main()
