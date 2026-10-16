@@ -62,7 +62,15 @@ def is_rebalance_day(calendar,trade_date):
 def run_daily():
     cfg=load_config()
     checkpoint_path=ROOT/'state/valuation_checkpoint.json'
-    state=State.load(ROOT/'state', 'valuation_checkpoint.json' if checkpoint_path.is_file() else 'book.json')
+    # A completed book is authoritative even if cleanup of an old checkpoint was interrupted.
+    book_path=ROOT/'state/book.json'
+    load_name='book.json'
+    if checkpoint_path.is_file() and book_path.is_file():
+        book_meta=json.loads(book_path.read_text(encoding='utf-8')).get('meta', {})
+        load_name='valuation_checkpoint.json' if book_meta.get('provisional') else 'book.json'
+    elif checkpoint_path.is_file():
+        load_name='valuation_checkpoint.json'
+    state=State.load(ROOT/'state', load_name)
     replaying=checkpoint_path.is_file()
     checkpoint_payload=None
     unresolved=[]
@@ -131,6 +139,7 @@ def run_daily():
     cold_note='历史 IC 未充分预热时使用等权因子回退；不代表已复现研究回测。'
     for day in pending:
         current=history.loc[history.date==day].set_index('symbol')['pct_chg'].reindex(held)
+        current=pd.to_numeric(current,errors='coerce')
         bad=~np.isfinite(current)|(current<=-1)
         day_missing=current.index[bad].tolist()
         missing_weight=float(state.weights().reindex(day_missing,fill_value=0.).sum())

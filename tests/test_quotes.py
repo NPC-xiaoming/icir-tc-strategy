@@ -39,7 +39,7 @@ class QuoteTests(unittest.TestCase):
         with patch.object(quotes,'_provider_frame',side_effect=provider),patch.object(quotes.time,'sleep'):
             out=self.fetch()
         self.assertEqual(out.attrs['failed_symbols'],['000001'])
-        self.assertEqual(len(out),6)  # verified cached dates survive, missing days remain missing
+        self.assertEqual(len(out),0)  # incompatible cached backup is invalidated
     def test_all_providers_down_preserves_cache_and_errors(self):
         self.seed()
         with patch.object(quotes,'_provider_frame',side_effect=ConnectionError('offline')),patch.object(quotes.time,'sleep'):
@@ -93,3 +93,18 @@ class QuoteTests(unittest.TestCase):
                 required_dates=self.dates,workers=1,pause=0,allow_partial=True)
         self.assertLessEqual(call.call_count,18)
         self.assertEqual(len(out.attrs['failed_symbols']),20)
+
+    def test_cached_backup_is_rechecked_after_primary_correction(self):
+        ref=self.raw.iloc[:6].copy(); ref['provider']='eastmoney'; ref['adjust']='hfq'
+        backup=self.raw.iloc[:8].copy(); backup['provider']='tencent'; backup['adjust']='hfq'
+        pd.concat([ref,backup],ignore_index=True).to_parquet(self.cache,index=False)
+        def provider(name,*args,**kw):
+            frame=self.raw.copy(); frame['pct_chg']=.02 if name=='eastmoney' else .03
+            return frame.iloc[:7] if name=='eastmoney' else frame
+        with patch.object(quotes,'_provider_frame',side_effect=provider),patch.object(quotes.time,'sleep'):
+            out=self.fetch()
+        self.assertEqual(out.attrs['failed_symbols'],['000001'])
+        with patch.object(quotes,'_provider_frame',side_effect=ConnectionError('offline')),patch.object(quotes.time,'sleep'):
+            out=self.fetch(self.dates[:8])
+        self.assertEqual(out.attrs['failed_symbols'],['000001'])
+        self.assertNotIn('000001',out.attrs['sources'])

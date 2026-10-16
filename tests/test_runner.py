@@ -223,4 +223,31 @@ class RunnerTests(unittest.TestCase):
         self.assertFalse((self.root/'reports/daily/2026-06-02.md').exists())
 
 
+    def test_empty_provider_frame_is_a_controlled_failure(self):
+        self.seed()
+        before=(self.root/'state/book.json').read_bytes()
+        self.history=pd.DataFrame(columns=['date','symbol','pct_chg','close','turnover'])
+        with self.assertRaisesRegex(ValueError,'持仓行情缺失'):
+            self.invoke()
+        self.assertEqual((self.root/'state/book.json').read_bytes(),before)
+
+    def test_completed_checkpoint_is_ignored_after_cleanup_interruption(self):
+        state=self.seed(symbols=['000001','000002'],weights=[.01,.99])
+        checkpoint=self.root/'state/valuation_checkpoint.json'
+        checkpoint.write_text(json.dumps(state.payload()))
+        with patch.object(Path,'unlink',side_effect=OSError('interrupted cleanup')):
+            try: self.invoke()
+            except OSError: pass
+        completed=State.load(self.root/'state')
+        self.assertEqual(completed.meta['last_run'],'2026-06-03')
+        self.assertTrue(checkpoint.exists())
+        # Simulate corrected historic input. A committed complete valuation must not replay.
+        self.history.loc[self.history.date==self.day,'pct_chg']=.5
+        self.day=pd.Timestamp('2026-06-04')
+        next_rows=self.history[self.history.date==pd.Timestamp('2026-06-03')].copy()
+        next_rows['date']=self.day; next_rows['pct_chg']=.01
+        self.history=pd.concat([self.history,next_rows],ignore_index=True)
+        self.invoke()
+        self.assertAlmostEqual(State.load(self.root/'state').meta['nav'],1.01**2)
+
 if __name__ == '__main__': unittest.main()

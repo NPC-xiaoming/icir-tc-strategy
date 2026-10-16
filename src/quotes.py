@@ -83,11 +83,16 @@ def fetch_history(symbols, days=300, adjust='hfq', pause=.15, start_date=None,
         for provider in PROVIDERS:
             old=local[local.provider==provider].copy()
             subset=eligible(old)
-            if len(subset)>len(best): best,best_source=subset,provider
-            if len(subset)==len(required): return symbol,subset,provider,[] ,[]
+            if provider == 'eastmoney' and len(subset) > len(reference):
+                reference=subset.copy()
+            if provider == 'eastmoney' and len(subset)==len(required):
+                return symbol,subset,provider,[] ,[]
         events=[]; updates=[]
         for provider in PROVIDERS:
             old=local[local.provider==provider].copy()
+            if provider!='eastmoney' and len(reference)<3:
+                events.append({'symbol':symbol,'provider':provider,'error':'fewer than 3 trusted reference returns; backup not used'})
+                continue
             with lock: disabled=provider in unavailable
             if disabled:
                 events.append({'symbol':symbol,'provider':provider,'error':'provider circuit open after repeated request failures'})
@@ -124,9 +129,21 @@ def fetch_history(symbols, days=300, adjust='hfq', pause=.15, start_date=None,
             combined=pd.concat([old,fresh],ignore_index=True).drop_duplicates('date',keep='last').sort_values('date')
             updates.append(fresh[COLUMNS])
             subset=eligible(combined)
+            if provider == 'eastmoney':
+                reference=subset.copy()
+            if provider != 'eastmoney' and len(reference) >= 3:
+                overlap=reference[['date','pct_chg']].merge(subset[['date','pct_chg']],on='date',suffixes=('_ref','_backup')).tail(20)
+                diff=(overlap.pct_chg_ref-overlap.pct_chg_backup).abs()
+                if len(overlap) < 3 or not np.isfinite(diff).all() or diff.max() > RETURN_TOLERANCE:
+                    subset=pd.DataFrame(columns=COLUMNS)
             if len(subset)>len(best): best,best_source=subset,provider
             if len(subset)==len(required): return symbol,subset,provider,events,updates
             events.append({'symbol':symbol,'provider':provider,'error':f'incomplete dates/fields: {len(subset)}/{len(required)}'})
+        if best_source != 'eastmoney' and len(reference) >= 3 and not best.empty:
+            overlap=reference[['date','pct_chg']].merge(best[['date','pct_chg']],on='date',suffixes=('_ref','_backup')).tail(20)
+            diff=(overlap.pct_chg_ref-overlap.pct_chg_backup).abs()
+            if len(overlap) < 3 or not np.isfinite(diff).all() or diff.max() > RETURN_TOLERANCE:
+                best=pd.DataFrame(columns=COLUMNS); best_source=None
         return symbol,best,best_source,events,updates
 
     with ThreadPoolExecutor(max_workers=max(1,min(workers,3))) as pool:
