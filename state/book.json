@@ -6,22 +6,22 @@
     "quote_provider": "sina",
     "baseline_date": "2026-10-16",
     "migration_note": "沿用旧口径最后可信持仓权重；切换日收盘建立新基准，不计算此前收益",
-    "last_run": "2026-10-16",
-    "nav": 1.0,
-    "benchmark_nav": 1.0,
+    "last_run": "2026-10-20",
+    "nav": 0.9920268499477838,
+    "benchmark_nav": 0.995563002369196,
     "version": "1.1.0",
     "config_hash": "7affd102c8272645a27e82b61bccb6e751b97cc984f62c606060260277669b35",
-    "recorded_at": "2026-10-16T19:39:58.786736+08:00",
+    "recorded_at": "2026-10-20T22:17:05.979264+08:00",
     "benchmark": "沪深300官方价格指数",
     "missing_symbols": [],
     "held_missing_symbols": [],
     "provisional": false,
     "unresolved_quotes": [],
     "chart_metrics": {
-      "online_nav": 1.0,
-      "benchmark_nav": 1.0,
-      "excess": 0.0,
-      "drawdown": 0.0
+      "online_nav": 0.9920268499477838,
+      "benchmark_nav": 0.995563002369196,
+      "excess": -0.0035519122476398435,
+      "drawdown": -0.00813429211397143
     }
   },
   "holdings": {
@@ -36,2023 +36,2023 @@
       {
         "symbol": "000001",
         "name": "平安银行",
-        "weight": 0.0005,
+        "weight": 0.0005013895,
         "benchmark_weight": 0.0046596309,
         "industry": "银行"
       },
       {
         "symbol": "000002",
         "name": "万科A",
-        "weight": 0.0005,
+        "weight": 0.0004750998,
         "benchmark_weight": 0.0012034808,
         "industry": "房地产"
       },
       {
         "symbol": "000063",
         "name": "中兴通讯",
-        "weight": 0.0005,
+        "weight": 0.0005125789,
         "benchmark_weight": 0.0040938921,
         "industry": "通信"
       },
       {
         "symbol": "000100",
         "name": "TCL科技",
-        "weight": 0.0193716184,
+        "weight": 0.0189223356,
         "benchmark_weight": 0.0043716184,
         "industry": "电子"
       },
       {
         "symbol": "000157",
         "name": "中联重科",
-        "weight": 0.0005,
+        "weight": 0.0005100109,
         "benchmark_weight": 0.0012343393,
         "industry": "机械设备"
       },
       {
         "symbol": "000166",
         "name": "申万宏源",
-        "weight": 0.0005,
+        "weight": 0.0004969397,
         "benchmark_weight": 0.0016354996,
         "industry": "非银金融"
       },
       {
         "symbol": "000301",
         "name": "东方盛虹",
-        "weight": 0.0005,
+        "weight": 0.0005049097,
         "benchmark_weight": 0.0014194902,
         "industry": "石油石化"
       },
       {
         "symbol": "000333",
         "name": "美的集团",
-        "weight": 0.0311801313,
+        "weight": 0.0316828766,
         "benchmark_weight": 0.0161801313,
         "industry": "家用电器"
       },
       {
         "symbol": "000338",
         "name": "潍柴动力",
-        "weight": 0.0005,
+        "weight": 0.0004970789,
         "benchmark_weight": 0.0056059577,
         "industry": "汽车"
       },
       {
         "symbol": "000408",
         "name": "藏格矿业",
-        "weight": 0.0005,
+        "weight": 0.0005119891,
         "benchmark_weight": 0.0023041001,
         "industry": "基础化工"
       },
       {
         "symbol": "000425",
         "name": "徐工机械",
-        "weight": 0.0005,
+        "weight": 0.0005266327,
         "benchmark_weight": 0.0024481063,
         "industry": "机械设备"
       },
       {
         "symbol": "000538",
         "name": "云南白药",
-        "weight": 0.0168720813,
+        "weight": 0.0171038568,
         "benchmark_weight": 0.0018720813,
         "industry": "医药生物"
       },
       {
         "symbol": "000568",
         "name": "泸州老窖",
-        "weight": 0.0005,
+        "weight": 0.0004994658,
         "benchmark_weight": 0.0022115246,
         "industry": "食品饮料"
       },
       {
         "symbol": "000596",
         "name": "古井贡酒",
-        "weight": 0.0005,
+        "weight": 0.0005119043,
         "benchmark_weight": 0.000637742,
         "industry": "食品饮料"
       },
       {
         "symbol": "000617",
         "name": "中油资本",
-        "weight": 0.0005,
+        "weight": 0.0005032463,
         "benchmark_weight": 0.0006891728,
         "industry": "非银金融"
       },
       {
         "symbol": "000625",
         "name": "长安汽车",
-        "weight": 0.0005,
+        "weight": 0.0005040186,
         "benchmark_weight": 0.001470921,
         "industry": "汽车"
       },
       {
         "symbol": "000630",
         "name": "铜陵有色",
-        "weight": 0.0098654401,
+        "weight": 0.0095750052,
         "benchmark_weight": 0.0019337983,
         "industry": "有色金属"
       },
       {
         "symbol": "000651",
         "name": "格力电器",
-        "weight": 0.0221283096,
+        "weight": 0.0218034524,
         "benchmark_weight": 0.0071283096,
         "industry": "家用电器"
       },
       {
         "symbol": "000657",
         "name": "中钨高新",
-        "weight": 0.0005,
+        "weight": 0.0005057646,
         "benchmark_weight": 0.0019955152,
         "industry": "有色金属"
       },
       {
         "symbol": "000708",
         "name": "中信特钢",
-        "weight": 0.0005,
+        "weight": 0.0005044244,
         "benchmark_weight": 0.0005451665,
         "industry": "钢铁"
       },
       {
         "symbol": "000725",
         "name": "京东方A",
-        "weight": 0.0005,
+        "weight": 0.0004952014,
         "benchmark_weight": 0.0086403752,
         "industry": "电子"
       },
       {
         "symbol": "000768",
         "name": "中航西飞",
-        "weight": 0.0005,
+        "weight": 0.0005057376,
         "benchmark_weight": 0.0013372009,
         "industry": "国防军工"
       },
       {
         "symbol": "000776",
         "name": "广发证券",
-        "weight": 0.0005,
+        "weight": 0.0004938125,
         "benchmark_weight": 0.0024378202,
         "industry": "非银金融"
       },
       {
         "symbol": "000792",
         "name": "盐湖股份",
-        "weight": 0.0005,
+        "weight": 0.0005057867,
         "benchmark_weight": 0.0031475653,
         "industry": "基础化工"
       },
       {
         "symbol": "000807",
         "name": "云铝股份",
-        "weight": 0.0005,
+        "weight": 0.000506207,
         "benchmark_weight": 0.0022629554,
         "industry": "有色金属"
       },
       {
         "symbol": "000858",
         "name": "五 粮 液",
-        "weight": 0.0005,
+        "weight": 0.000509473,
         "benchmark_weight": 0.0056471024,
         "industry": "食品饮料"
       },
       {
         "symbol": "000895",
         "name": "双汇发展",
-        "weight": 0.0005,
+        "weight": 0.0005036005,
         "benchmark_weight": 0.0010183299,
         "industry": "食品饮料"
       },
       {
         "symbol": "000938",
         "name": "紫光股份",
-        "weight": 0.0005,
+        "weight": 0.0005117775,
         "benchmark_weight": 0.0029521282,
         "industry": "计算机"
       },
       {
         "symbol": "000963",
         "name": "华东医药",
-        "weight": 0.0005,
+        "weight": 0.0005128401,
         "benchmark_weight": 0.0010080438,
         "industry": "医药生物"
       },
       {
         "symbol": "000975",
         "name": "山金国际",
-        "weight": 0.0005,
+        "weight": 0.0004968616,
         "benchmark_weight": 0.0015737826,
         "industry": "有色金属"
       },
       {
         "symbol": "000977",
         "name": "浪潮信息",
-        "weight": 0.0005,
+        "weight": 0.0005135592,
         "benchmark_weight": 0.0028184081,
         "industry": "计算机"
       },
       {
         "symbol": "000988",
         "name": "华工科技",
-        "weight": 0.0005,
+        "weight": 0.000507349,
         "benchmark_weight": 0.0038573104,
         "industry": "机械设备"
       },
       {
         "symbol": "000999",
         "name": "华润三九",
-        "weight": 0.0005,
+        "weight": 0.0005087735,
         "benchmark_weight": 0.0006686005,
         "industry": "医药生物"
       },
       {
         "symbol": "001391",
         "name": "国货航",
-        "weight": 0.0005,
+        "weight": 0.0005076534,
         "benchmark_weight": 0.0002365817,
         "industry": "交通运输"
       },
       {
         "symbol": "001965",
         "name": "招商公路",
-        "weight": 0.0158537514,
+        "weight": 0.0159475978,
         "benchmark_weight": 0.0008537514,
         "industry": "交通运输"
       },
       {
         "symbol": "001979",
         "name": "招商蛇口",
-        "weight": 0.0005,
+        "weight": 0.0004903583,
         "benchmark_weight": 0.0011314777,
         "industry": "房地产"
       },
       {
         "symbol": "002001",
         "name": "新和成",
-        "weight": 0.0005,
+        "weight": 0.0005071038,
         "benchmark_weight": 0.0016560719,
         "industry": "基础化工"
       },
       {
         "symbol": "002027",
         "name": "分众传媒",
-        "weight": 0.0125795266,
+        "weight": 0.0127286532,
         "benchmark_weight": 0.0019852291,
         "industry": "传媒"
       },
       {
         "symbol": "002028",
         "name": "思源电气",
-        "weight": 0.0005,
+        "weight": 0.0004807888,
         "benchmark_weight": 0.0031167068,
         "industry": "电力设备"
       },
       {
         "symbol": "002050",
         "name": "三花智控",
-        "weight": 0.0005,
+        "weight": 0.0005298481,
         "benchmark_weight": 0.00332243,
         "industry": "家用电器"
       },
       {
         "symbol": "002074",
         "name": "国轩高科",
-        "weight": 0.0005,
+        "weight": 0.0005047715,
         "benchmark_weight": 0.0013269148,
         "industry": "电力设备"
       },
       {
         "symbol": "002142",
         "name": "宁波银行",
-        "weight": 0.0005,
+        "weight": 0.0005050486,
         "benchmark_weight": 0.0048653542,
         "industry": "银行"
       },
       {
         "symbol": "002179",
         "name": "中航光电",
-        "weight": 0.0005,
+        "weight": 0.0005057216,
         "benchmark_weight": 0.0017589335,
         "industry": "国防军工"
       },
       {
         "symbol": "002202",
         "name": "金风科技",
-        "weight": 0.0005,
+        "weight": 0.0005043716,
         "benchmark_weight": 0.0019749429,
         "industry": "电力设备"
       },
       {
         "symbol": "002230",
         "name": "科大讯飞",
-        "weight": 0.0005,
+        "weight": 0.0005185763,
         "benchmark_weight": 0.0029727005,
         "industry": "计算机"
       },
       {
         "symbol": "002236",
         "name": "大华股份",
-        "weight": 0.0162446255,
+        "weight": 0.0167318951,
         "benchmark_weight": 0.0012446255,
         "industry": "计算机"
       },
       {
         "symbol": "002241",
         "name": "歌尔股份",
-        "weight": 0.0005,
+        "weight": 0.0005442263,
         "benchmark_weight": 0.0023555309,
         "industry": "电子"
       },
       {
         "symbol": "002304",
         "name": "洋河股份",
-        "weight": 0.0005,
+        "weight": 0.0005044242,
         "benchmark_weight": 0.0009360407,
         "industry": "食品饮料"
       },
       {
         "symbol": "002311",
         "name": "海大集团",
-        "weight": 0.0005,
+        "weight": 0.0005055321,
         "benchmark_weight": 0.0014400625,
         "industry": "农林牧渔"
       },
       {
         "symbol": "002352",
         "name": "顺丰控股",
-        "weight": 0.0005,
+        "weight": 0.0005090275,
         "benchmark_weight": 0.0030549898,
         "industry": "交通运输"
       },
       {
         "symbol": "002353",
         "name": "杰瑞股份",
-        "weight": 0.0005,
+        "weight": 0.0005116992,
         "benchmark_weight": 0.0028184081,
         "industry": "机械设备"
       },
       {
         "symbol": "002371",
         "name": "北方华创",
-        "weight": 0.0260781954,
+        "weight": 0.0250859629,
         "benchmark_weight": 0.0110781954,
         "industry": "电子"
       },
       {
         "symbol": "002384",
         "name": "东山精密",
-        "weight": 0.0005,
+        "weight": 0.0005018797,
         "benchmark_weight": 0.0089181016,
         "industry": "电子"
       },
       {
         "symbol": "002415",
         "name": "海康威视",
-        "weight": 0.0199476434,
+        "weight": 0.0196061065,
         "benchmark_weight": 0.0049476434,
         "industry": "计算机"
       },
       {
         "symbol": "002422",
         "name": "科伦药业",
-        "weight": 0.0005,
+        "weight": 0.0005450366,
         "benchmark_weight": 0.0018926536,
         "industry": "医药生物"
       },
       {
         "symbol": "002460",
         "name": "赣锋锂业",
-        "weight": 0.0005,
+        "weight": 0.0004849026,
         "benchmark_weight": 0.0020366599,
         "industry": "有色金属"
       },
       {
         "symbol": "002463",
         "name": "沪电股份",
-        "weight": 0.0005,
+        "weight": 0.0004934861,
         "benchmark_weight": 0.0064905676,
         "industry": "电子"
       },
       {
         "symbol": "002466",
         "name": "天齐锂业",
-        "weight": 0.0005,
+        "weight": 0.0005048538,
         "benchmark_weight": 0.001728075,
         "industry": "有色金属"
       },
       {
         "symbol": "002475",
         "name": "立讯精密",
-        "weight": 0.0060640562,
+        "weight": 0.006513784,
         "benchmark_weight": 0.0104713119,
         "industry": "电子"
       },
       {
         "symbol": "002493",
         "name": "荣盛石化",
-        "weight": 0.0005,
+        "weight": 0.0005083951,
         "benchmark_weight": 0.0016560719,
         "industry": "石油石化"
       },
       {
         "symbol": "002532",
         "name": "天山铝业",
-        "weight": 0.0005,
+        "weight": 0.0005031197,
         "benchmark_weight": 0.0016354996,
         "industry": "有色金属"
       },
       {
         "symbol": "002558",
         "name": "巨人网络",
-        "weight": 0.0005,
+        "weight": 0.0005102461,
         "benchmark_weight": 0.0012446255,
         "industry": "传媒"
       },
       {
         "symbol": "002594",
         "name": "比亚迪",
-        "weight": 0.0005,
+        "weight": 0.0005032865,
         "benchmark_weight": 0.0094015512,
         "industry": "汽车"
       },
       {
         "symbol": "002600",
         "name": "领益智造",
-        "weight": 0.0005,
+        "weight": 0.0005613272,
         "benchmark_weight": 0.0018000782,
         "industry": "电子"
       },
       {
         "symbol": "002625",
         "name": "光启技术",
-        "weight": 0.0005,
+        "weight": 0.0005200263,
         "benchmark_weight": 0.0016869304,
         "industry": "国防军工"
       },
       {
         "symbol": "002648",
         "name": "卫星化学",
-        "weight": 0.0005,
+        "weight": 0.0005129159,
         "benchmark_weight": 0.001851509,
         "industry": "基础化工"
       },
       {
         "symbol": "002709",
         "name": "天赐材料",
-        "weight": 0.0005,
+        "weight": 0.0004927892,
         "benchmark_weight": 0.001851509,
         "industry": "电力设备"
       },
       {
         "symbol": "002714",
         "name": "牧原股份",
-        "weight": 0.0005,
+        "weight": 0.0005000915,
         "benchmark_weight": 0.0048139233,
         "industry": "农林牧渔"
       },
       {
         "symbol": "002736",
         "name": "国信证券",
-        "weight": 0.0005,
+        "weight": 0.0004998811,
         "benchmark_weight": 0.0012549116,
         "industry": "非银金融"
       },
       {
         "symbol": "002837",
         "name": "英维克",
-        "weight": 0.0005,
+        "weight": 0.0005056021,
         "benchmark_weight": 0.0017177889,
         "industry": "机械设备"
       },
       {
         "symbol": "002916",
         "name": "深南电路",
-        "weight": 0.0027558993,
+        "weight": 0.0026974137,
         "benchmark_weight": 0.0042276122,
         "industry": "电子"
       },
       {
         "symbol": "002920",
         "name": "德赛西威",
-        "weight": 0.0005,
+        "weight": 0.0005233054,
         "benchmark_weight": 0.0009874715,
         "industry": "计算机"
       },
       {
         "symbol": "002938",
         "name": "鹏鼎控股",
-        "weight": 0.0172938139,
+        "weight": 0.0173558601,
         "benchmark_weight": 0.0022938139,
         "industry": "电子"
       },
       {
         "symbol": "003816",
         "name": "中国广核",
-        "weight": 0.0005,
+        "weight": 0.0005003463,
         "benchmark_weight": 0.0013783456,
         "industry": "公用事业"
       },
       {
         "symbol": "300014",
         "name": "亿纬锂能",
-        "weight": 0.0005,
+        "weight": 0.0004718737,
         "benchmark_weight": 0.0031475653,
         "industry": "电力设备"
       },
       {
         "symbol": "300015",
         "name": "爱尔眼科",
-        "weight": 0.0005,
+        "weight": 0.0005130688,
         "benchmark_weight": 0.0015429241,
         "industry": "医药生物"
       },
       {
         "symbol": "300033",
         "name": "同花顺",
-        "weight": 0.0005,
+        "weight": 0.0004903707,
         "benchmark_weight": 0.0024686786,
         "industry": "计算机"
       },
       {
         "symbol": "300059",
         "name": "东方财富",
-        "weight": 0.0005,
+        "weight": 0.0004998417,
         "benchmark_weight": 0.0093604065,
         "industry": "非银金融"
       },
       {
         "symbol": "300122",
         "name": "智飞生物",
-        "weight": 0.0005,
+        "weight": 0.0005012509,
         "benchmark_weight": 0.0006994589,
         "industry": "医药生物"
       },
       {
         "symbol": "300124",
         "name": "汇川技术",
-        "weight": 0.0005,
+        "weight": 0.0005151704,
         "benchmark_weight": 0.0040836059,
         "industry": "机械设备"
       },
       {
         "symbol": "300251",
         "name": "光线传媒",
-        "weight": 0.0005,
+        "weight": 0.0005131521,
         "benchmark_weight": 0.0006686005,
         "industry": "传媒"
       },
       {
         "symbol": "300274",
         "name": "阳光电源",
-        "weight": 0.0005,
+        "weight": 0.0004986433,
         "benchmark_weight": 0.0049785019,
         "industry": "电力设备"
       },
       {
         "symbol": "300308",
         "name": "中际旭创",
-        "weight": 0.0264410108,
+        "weight": 0.0257743597,
         "benchmark_weight": 0.0374621984,
         "industry": "通信"
       },
       {
         "symbol": "300316",
         "name": "晶盛机电",
-        "weight": 0.003035113,
+        "weight": 0.0031155422,
         "benchmark_weight": 0.0009771853,
         "industry": "电力设备"
       },
       {
         "symbol": "300394",
         "name": "天孚通信",
-        "weight": 0.0005,
+        "weight": 0.0004844556,
         "benchmark_weight": 0.0070871649,
         "industry": "通信"
       },
       {
         "symbol": "300408",
         "name": "三环集团",
-        "weight": 0.010613812,
+        "weight": 0.0101563802,
         "benchmark_weight": 0.0065419984,
         "industry": "电子"
       },
       {
         "symbol": "300413",
         "name": "芒果超媒",
-        "weight": 0.0005,
+        "weight": 0.0004995142,
         "benchmark_weight": 0.0006480281,
         "industry": "传媒"
       },
       {
         "symbol": "300418",
         "name": "昆仑万维",
-        "weight": 0.0005,
+        "weight": 0.0004988482,
         "benchmark_weight": 0.0015017795,
         "industry": "传媒"
       },
       {
         "symbol": "300433",
         "name": "蓝思科技",
-        "weight": 0.0005,
+        "weight": 0.0005410539,
         "benchmark_weight": 0.0026744019,
         "industry": "电子"
       },
       {
         "symbol": "300450",
         "name": "先导智能",
-        "weight": 0.0005,
+        "weight": 0.0004962246,
         "benchmark_weight": 0.001594355,
         "industry": "电力设备"
       },
       {
         "symbol": "300476",
         "name": "胜宏科技",
-        "weight": 0.0005,
+        "weight": 0.0005114984,
         "benchmark_weight": 0.0053385176,
         "industry": "电子"
       },
       {
         "symbol": "300498",
         "name": "温氏股份",
-        "weight": 0.0005,
+        "weight": 0.0005049203,
         "benchmark_weight": 0.0033430023,
         "industry": "农林牧渔"
       },
       {
         "symbol": "300502",
         "name": "新易盛",
-        "weight": 0.0075369787,
+        "weight": 0.0073812078,
         "benchmark_weight": 0.0225369787,
         "industry": "通信"
       },
       {
         "symbol": "300628",
         "name": "亿联网络",
-        "weight": 0.0005,
+        "weight": 0.0005186109,
         "benchmark_weight": 0.000833179,
         "industry": "通信"
       },
       {
         "symbol": "300661",
         "name": "圣邦股份",
-        "weight": 0.0005,
+        "weight": 0.0004990571,
         "benchmark_weight": 0.0019852291,
         "industry": "电子"
       },
       {
         "symbol": "300750",
         "name": "宁德时代",
-        "weight": 0.0437708089,
+        "weight": 0.0412679242,
         "benchmark_weight": 0.0319899607,
         "industry": "电力设备"
       },
       {
         "symbol": "300760",
         "name": "迈瑞医疗",
-        "weight": 0.0005,
+        "weight": 0.000511435,
         "benchmark_weight": 0.0040630336,
         "industry": "医药生物"
       },
       {
         "symbol": "300803",
         "name": "指南针",
-        "weight": 0.0005,
+        "weight": 0.0004908812,
         "benchmark_weight": 0.0011726224,
         "industry": "计算机"
       },
       {
         "symbol": "300832",
         "name": "新产业",
-        "weight": 0.0005,
+        "weight": 0.0005335161,
         "benchmark_weight": 0.0008228929,
         "industry": "医药生物"
       },
       {
         "symbol": "300866",
         "name": "安克创新",
-        "weight": 0.0148306064,
+        "weight": 0.0149830273,
         "benchmark_weight": 0.0011109054,
         "industry": "电子"
       },
       {
         "symbol": "300896",
         "name": "爱美客",
-        "weight": 0.0005,
+        "weight": 0.0005200599,
         "benchmark_weight": 0.0005965973,
         "industry": "美容护理"
       },
       {
         "symbol": "300999",
         "name": "金龙鱼",
-        "weight": 0.0005,
+        "weight": 0.0005063324,
         "benchmark_weight": 0.0005965973,
         "industry": "农林牧渔"
       },
       {
         "symbol": "301165",
         "name": "锐捷网络",
-        "weight": 0.0155554527,
+        "weight": 0.0157608642,
         "benchmark_weight": 0.0005554527,
         "industry": "通信"
       },
       {
         "symbol": "301236",
         "name": "软通动力",
-        "weight": 0.0005,
+        "weight": 0.0005275085,
         "benchmark_weight": 0.0009051822,
         "industry": "计算机"
       },
       {
         "symbol": "301269",
         "name": "华大九天",
-        "weight": 0.0005,
+        "weight": 0.0005165541,
         "benchmark_weight": 0.0007714621,
         "industry": "计算机"
       },
       {
         "symbol": "301308",
         "name": "江波龙",
-        "weight": 0.0005,
+        "weight": 0.0005110174,
         "benchmark_weight": 0.0031887099,
         "industry": "电子"
       },
       {
         "symbol": "302132",
         "name": "中航成飞",
-        "weight": 0.0005,
+        "weight": 0.0005204312,
         "benchmark_weight": 0.0007097451,
         "industry": "国防军工"
       },
       {
         "symbol": "600000",
         "name": "浦发银行",
-        "weight": 0.0005,
+        "weight": 0.0005055674,
         "benchmark_weight": 0.0052459421,
         "industry": "银行"
       },
       {
         "symbol": "600009",
         "name": "上海机场",
-        "weight": 0.0005,
+        "weight": 0.0004967266,
         "benchmark_weight": 0.0011623362,
         "industry": "交通运输"
       },
       {
         "symbol": "600010",
         "name": "包钢股份",
-        "weight": 0.0005,
+        "weight": 0.0004991778,
         "benchmark_weight": 0.0019646568,
         "industry": "钢铁"
       },
       {
         "symbol": "600011",
         "name": "华能国际",
-        "weight": 0.0005,
+        "weight": 0.0005019785,
         "benchmark_weight": 0.0012857701,
         "industry": "公用事业"
       },
       {
         "symbol": "600015",
         "name": "华夏银行",
-        "weight": 0.0005,
+        "weight": 0.0005047507,
         "benchmark_weight": 0.0016560719,
         "industry": "银行"
       },
       {
         "symbol": "600016",
         "name": "民生银行",
-        "weight": 0.0005,
+        "weight": 0.00050258,
         "benchmark_weight": 0.0036207287,
         "industry": "银行"
       },
       {
         "symbol": "600018",
         "name": "上港集团",
-        "weight": 0.0156891728,
+        "weight": 0.0157495787,
         "benchmark_weight": 0.0006891728,
         "industry": "交通运输"
       },
       {
         "symbol": "600019",
         "name": "宝钢股份",
-        "weight": 0.0005,
+        "weight": 0.0005024017,
         "benchmark_weight": 0.0021498076,
         "industry": "钢铁"
       },
       {
         "symbol": "600023",
         "name": "浙能电力",
-        "weight": 0.0005,
+        "weight": 0.0005040186,
         "benchmark_weight": 0.0008743237,
         "industry": "公用事业"
       },
       {
         "symbol": "600025",
         "name": "华能水电",
-        "weight": 0.0005,
+        "weight": 0.000512086,
         "benchmark_weight": 0.0007611759,
         "industry": "公用事业"
       },
       {
         "symbol": "600026",
         "name": "中远海能",
-        "weight": 0.0005,
+        "weight": 0.0004876015,
         "benchmark_weight": 0.0014297764,
         "industry": "交通运输"
       },
       {
         "symbol": "600027",
         "name": "华电国际",
-        "weight": 0.0005,
+        "weight": 0.0005040186,
         "benchmark_weight": 0.0008126067,
         "industry": "公用事业"
       },
       {
         "symbol": "600028",
         "name": "中国石化",
-        "weight": 0.0005,
+        "weight": 0.0004967307,
         "benchmark_weight": 0.0031989961,
         "industry": "石油石化"
       },
       {
         "symbol": "600029",
         "name": "南方航空",
-        "weight": 0.0005,
+        "weight": 0.0004977575,
         "benchmark_weight": 0.0011006192,
         "industry": "交通运输"
       },
       {
         "symbol": "600030",
         "name": "中信证券",
-        "weight": 0.0005,
+        "weight": 0.0004939783,
         "benchmark_weight": 0.0104918842,
         "industry": "非银金融"
       },
       {
         "symbol": "600031",
         "name": "三一重工",
-        "weight": 0.0005,
+        "weight": 0.0005185447,
         "benchmark_weight": 0.0043099015,
         "industry": "机械设备"
       },
       {
         "symbol": "600036",
         "name": "招商银行",
-        "weight": 0.0062203501,
+        "weight": 0.0062806413,
         "benchmark_weight": 0.0212203501,
         "industry": "银行"
       },
       {
         "symbol": "600039",
         "name": "四川路桥",
-        "weight": 0.0005,
+        "weight": 0.0005022875,
         "benchmark_weight": 0.0009463268,
         "industry": "建筑装饰"
       },
       {
         "symbol": "600048",
         "name": "保利发展",
-        "weight": 0.0005,
+        "weight": 0.0004921267,
         "benchmark_weight": 0.0017177889,
         "industry": "房地产"
       },
       {
         "symbol": "600050",
         "name": "中国联通",
-        "weight": 0.0005,
+        "weight": 0.0005144805,
         "benchmark_weight": 0.002746405,
         "industry": "通信"
       },
       {
         "symbol": "600061",
         "name": "国投资本",
-        "weight": 0.0005,
+        "weight": 0.0005040186,
         "benchmark_weight": 0.0006583143,
         "industry": "非银金融"
       },
       {
         "symbol": "600066",
         "name": "宇通客车",
-        "weight": 0.0005,
+        "weight": 0.000503492,
         "benchmark_weight": 0.001470921,
         "industry": "汽车"
       },
       {
         "symbol": "600085",
         "name": "同仁堂",
-        "weight": 0.0005,
+        "weight": 0.0005166383,
         "benchmark_weight": 0.0006788866,
         "industry": "医药生物"
       },
       {
         "symbol": "600089",
         "name": "特变电工",
-        "weight": 0.0005,
+        "weight": 0.0005043149,
         "benchmark_weight": 0.003641301,
         "industry": "电力设备"
       },
       {
         "symbol": "600104",
         "name": "上汽集团",
-        "weight": 0.0170778045,
+        "weight": 0.016993176,
         "benchmark_weight": 0.0020778045,
         "industry": "汽车"
       },
       {
         "symbol": "600111",
         "name": "北方稀土",
-        "weight": 0.001786342,
+        "weight": 0.0018139595,
         "benchmark_weight": 0.0037133041,
         "industry": "有色金属"
       },
       {
         "symbol": "600115",
         "name": "中国东航",
-        "weight": 0.0005,
+        "weight": 0.0004948128,
         "benchmark_weight": 0.0012034808,
         "industry": "交通运输"
       },
       {
         "symbol": "600118",
         "name": "中国卫星",
-        "weight": 0.0005,
+        "weight": 0.0005128307,
         "benchmark_weight": 0.0013474871,
         "industry": "国防军工"
       },
       {
         "symbol": "600150",
         "name": "中国船舶",
-        "weight": 0.0005,
+        "weight": 0.0004962568,
         "benchmark_weight": 0.0073340328,
         "industry": "国防军工"
       },
       {
         "symbol": "600160",
         "name": "巨化股份",
-        "weight": 0.0005,
+        "weight": 0.00050028,
         "benchmark_weight": 0.0018617951,
         "industry": "基础化工"
       },
       {
         "symbol": "600176",
         "name": "中国巨石",
-        "weight": 0.0005,
+        "weight": 0.0005153171,
         "benchmark_weight": 0.0039293135,
         "industry": "建筑材料"
       },
       {
         "symbol": "600183",
         "name": "生益科技",
-        "weight": 0.0228689132,
+        "weight": 0.0235817442,
         "benchmark_weight": 0.0078689132,
         "industry": "电子"
       },
       {
         "symbol": "600188",
         "name": "兖矿能源",
-        "weight": 0.0005,
+        "weight": 0.0005000142,
         "benchmark_weight": 0.0014400625,
         "industry": "煤炭"
       },
       {
         "symbol": "600196",
         "name": "复星医药",
-        "weight": 0.0005,
+        "weight": 0.0005075386,
         "benchmark_weight": 0.0012651978,
         "industry": "医药生物"
       },
       {
         "symbol": "600219",
         "name": "南山铝业",
-        "weight": 0.0005,
+        "weight": 0.0005016429,
         "benchmark_weight": 0.0013474871,
         "industry": "有色金属"
       },
       {
         "symbol": "600221",
         "name": "海航控股",
-        "weight": 0.0005,
+        "weight": 0.0005000912,
         "benchmark_weight": 0.0013063424,
         "industry": "交通运输"
       },
       {
         "symbol": "600233",
         "name": "圆通速递",
-        "weight": 0.0005,
+        "weight": 0.0004908364,
         "benchmark_weight": 0.0012651978,
         "industry": "交通运输"
       },
       {
         "symbol": "600276",
         "name": "恒瑞医药",
-        "weight": 0.0005,
+        "weight": 0.0005128813,
         "benchmark_weight": 0.008753523,
         "industry": "医药生物"
       },
       {
         "symbol": "600309",
         "name": "万华化学",
-        "weight": 0.0072733691,
+        "weight": 0.0074048683,
         "benchmark_weight": 0.0053796622,
         "industry": "基础化工"
       },
       {
         "symbol": "600346",
         "name": "恒力石化",
-        "weight": 0.0005,
+        "weight": 0.0005073007,
         "benchmark_weight": 0.0014092041,
         "industry": "石油石化"
       },
       {
         "symbol": "600362",
         "name": "江西铜业",
-        "weight": 0.0005,
+        "weight": 0.000486641,
         "benchmark_weight": 0.0018000782,
         "industry": "有色金属"
       },
       {
         "symbol": "600372",
         "name": "中航机载",
-        "weight": 0.0161314777,
+        "weight": 0.0163157282,
         "benchmark_weight": 0.0011314777,
         "industry": "国防军工"
       },
       {
         "symbol": "600406",
         "name": "国电南瑞",
-        "weight": 0.0187544488,
+        "weight": 0.0191297485,
         "benchmark_weight": 0.0037544488,
         "industry": "电力设备"
       },
       {
         "symbol": "600415",
         "name": "小商品城",
-        "weight": 0.0005,
+        "weight": 0.0005122659,
         "benchmark_weight": 0.0012651978,
         "industry": "商贸零售"
       },
       {
         "symbol": "600426",
         "name": "华鲁恒升",
-        "weight": 0.0005,
+        "weight": 0.0005160004,
         "benchmark_weight": 0.0015532103,
         "industry": "基础化工"
       },
       {
         "symbol": "600436",
         "name": "片仔癀",
-        "weight": 0.0005,
+        "weight": 0.0005151632,
         "benchmark_weight": 0.0014812072,
         "industry": "医药生物"
       },
       {
         "symbol": "600460",
         "name": "士兰微",
-        "weight": 0.0005,
+        "weight": 0.0005091324,
         "benchmark_weight": 0.0014914933,
         "industry": "电子"
       },
       {
         "symbol": "600482",
         "name": "中国动力",
-        "weight": 0.0005,
+        "weight": 0.0004900728,
         "benchmark_weight": 0.0015840688,
         "industry": "电力设备"
       },
       {
         "symbol": "600489",
         "name": "中金黄金",
-        "weight": 0.0005,
+        "weight": 0.0005101656,
         "benchmark_weight": 0.0026435434,
         "industry": "有色金属"
       },
       {
         "symbol": "600515",
         "name": "海南机场",
-        "weight": 0.0005,
+        "weight": 0.0004983106,
         "benchmark_weight": 0.0006480281,
         "industry": "房地产"
       },
       {
         "symbol": "600519",
         "name": "贵州茅台",
-        "weight": 0.0281743868,
+        "weight": 0.0284623728,
         "benchmark_weight": 0.0326894197,
         "industry": "食品饮料"
       },
       {
         "symbol": "600522",
         "name": "中天科技",
-        "weight": 0.0005,
+        "weight": 0.0005347042,
         "benchmark_weight": 0.0035281532,
         "industry": "通信"
       },
       {
         "symbol": "600547",
         "name": "山东黄金",
-        "weight": 0.0005,
+        "weight": 0.0005133845,
         "benchmark_weight": 0.002046946,
         "industry": "有色金属"
       },
       {
         "symbol": "600549",
         "name": "厦门钨业",
-        "weight": 0.0005,
+        "weight": 0.0005056526,
         "benchmark_weight": 0.0020366599,
         "industry": "有色金属"
       },
       {
         "symbol": "600570",
         "name": "恒生电子",
-        "weight": 0.0005,
+        "weight": 0.0005042737,
         "benchmark_weight": 0.0012240532,
         "industry": "计算机"
       },
       {
         "symbol": "600584",
         "name": "长电科技",
-        "weight": 0.0005,
+        "weight": 0.0005065758,
         "benchmark_weight": 0.0038264519,
         "industry": "电子"
       },
       {
         "symbol": "600585",
         "name": "海螺水泥",
-        "weight": 0.0005,
+        "weight": 0.0004888697,
         "benchmark_weight": 0.0017486474,
         "industry": "建筑材料"
       },
       {
         "symbol": "600588",
         "name": "用友网络",
-        "weight": 0.0005,
+        "weight": 0.0005279894,
         "benchmark_weight": 0.0007817482,
         "industry": "计算机"
       },
       {
         "symbol": "600600",
         "name": "青岛啤酒",
-        "weight": 0.0005,
+        "weight": 0.0004953741,
         "benchmark_weight": 0.0007406036,
         "industry": "食品饮料"
       },
       {
         "symbol": "600660",
         "name": "福耀玻璃",
-        "weight": 0.0185692979,
+        "weight": 0.0188791451,
         "benchmark_weight": 0.0035692979,
         "industry": "汽车"
       },
       {
         "symbol": "600674",
         "name": "川投能源",
-        "weight": 0.0005,
+        "weight": 0.0005022803,
         "benchmark_weight": 0.0013474871,
         "industry": "公用事业"
       },
       {
         "symbol": "600690",
         "name": "海尔智家",
-        "weight": 0.0005,
+        "weight": 0.0004985664,
         "benchmark_weight": 0.0031784237,
         "industry": "家用电器"
       },
       {
         "symbol": "600741",
         "name": "华域汽车",
-        "weight": 0.0005,
+        "weight": 0.0004988443,
         "benchmark_weight": 0.0010080438,
         "industry": "汽车"
       },
       {
         "symbol": "600760",
         "name": "中航沈飞",
-        "weight": 0.0170572322,
+        "weight": 0.0177114951,
         "benchmark_weight": 0.0020572322,
         "industry": "国防军工"
       },
       {
         "symbol": "600795",
         "name": "国电电力",
-        "weight": 0.0005,
+        "weight": 0.0004927963,
         "benchmark_weight": 0.0019749429,
         "industry": "公用事业"
       },
       {
         "symbol": "600803",
         "name": "新奥股份",
-        "weight": 0.0005,
+        "weight": 0.0005083294,
         "benchmark_weight": 0.0007406036,
         "industry": "公用事业"
       },
       {
         "symbol": "600809",
         "name": "山西汾酒",
-        "weight": 0.0005,
+        "weight": 0.0005068691,
         "benchmark_weight": 0.0023452447,
         "industry": "食品饮料"
       },
       {
         "symbol": "600845",
         "name": "宝信软件",
-        "weight": 0.0005,
+        "weight": 0.0005236582,
         "benchmark_weight": 0.0006274558,
         "industry": "计算机"
       },
       {
         "symbol": "600875",
         "name": "东方电气",
-        "weight": 0.0005,
+        "weight": 0.0005054051,
         "benchmark_weight": 0.0014606349,
         "industry": "电力设备"
       },
       {
         "symbol": "600886",
         "name": "国投电力",
-        "weight": 0.0005,
+        "weight": 0.0005071699,
         "benchmark_weight": 0.0015223518,
         "industry": "公用事业"
       },
       {
         "symbol": "600887",
         "name": "伊利股份",
-        "weight": 0.0005,
+        "weight": 0.0005016946,
         "benchmark_weight": 0.0071797404,
         "industry": "食品饮料"
       },
       {
         "symbol": "600893",
         "name": "航发动力",
-        "weight": 0.0005,
+        "weight": 0.0005092505,
         "benchmark_weight": 0.0021498076,
         "industry": "国防军工"
       },
       {
         "symbol": "600900",
         "name": "长江电力",
-        "weight": 0.0005,
+        "weight": 0.000509302,
         "benchmark_weight": 0.014503487,
         "industry": "公用事业"
       },
       {
         "symbol": "600905",
         "name": "三峡能源",
-        "weight": 0.0005,
+        "weight": 0.0004930318,
         "benchmark_weight": 0.0020880907,
         "industry": "公用事业"
       },
       {
         "symbol": "600918",
         "name": "中泰证券",
-        "weight": 0.0005,
+        "weight": 0.0005004816,
         "benchmark_weight": 0.0007097451,
         "industry": "非银金融"
       },
       {
         "symbol": "600919",
         "name": "江苏银行",
-        "weight": 0.0005,
+        "weight": 0.0005066612,
         "benchmark_weight": 0.0075500422,
         "industry": "银行"
       },
       {
         "symbol": "600926",
         "name": "杭州银行",
-        "weight": 0.0005,
+        "weight": 0.0005045646,
         "benchmark_weight": 0.0036104425,
         "industry": "银行"
       },
       {
         "symbol": "600930",
         "name": "华电新能",
-        "weight": 0.0005,
+        "weight": 0.0005002759,
         "benchmark_weight": 0.0005348804,
         "industry": "公用事业"
       },
       {
         "symbol": "600938",
         "name": "中国海油",
-        "weight": 0.0005,
+        "weight": 0.0005163619,
         "benchmark_weight": 0.00332243,
         "industry": "石油石化"
       },
       {
         "symbol": "600941",
         "name": "中国移动",
-        "weight": 0.0005,
+        "weight": 0.0005058562,
         "benchmark_weight": 0.0035898702,
         "industry": "通信"
       },
       {
         "symbol": "600989",
         "name": "宝丰能源",
-        "weight": 0.0005,
+        "weight": 0.0005051127,
         "benchmark_weight": 0.0020572322,
         "industry": "基础化工"
       },
       {
         "symbol": "600999",
         "name": "招商证券",
-        "weight": 0.0005,
+        "weight": 0.0004942565,
         "benchmark_weight": 0.0026332572,
         "industry": "非银金融"
       },
       {
         "symbol": "601006",
         "name": "大秦铁路",
-        "weight": 0.0005,
+        "weight": 0.0004988793,
         "benchmark_weight": 0.0023452447,
         "industry": "交通运输"
       },
       {
         "symbol": "601009",
         "name": "南京银行",
-        "weight": 0.0005,
+        "weight": 0.0005044325,
         "benchmark_weight": 0.0030755621,
         "industry": "银行"
       },
       {
         "symbol": "601012",
         "name": "隆基绿能",
-        "weight": 0.0005,
+        "weight": 0.0005067867,
         "benchmark_weight": 0.0028286943,
         "industry": "电力设备"
       },
       {
         "symbol": "601018",
         "name": "宁波港",
-        "weight": 0.0005,
+        "weight": 0.0005030493,
         "benchmark_weight": 0.0005657389,
         "industry": "交通运输"
       },
       {
         "symbol": "601021",
         "name": "春秋航空",
-        "weight": 0.0005,
+        "weight": 0.0004987201,
         "benchmark_weight": 0.000833179,
         "industry": "交通运输"
       },
       {
         "symbol": "601058",
         "name": "赛轮轮胎",
-        "weight": 0.0005,
+        "weight": 0.0005020343,
         "benchmark_weight": 0.0014503487,
         "industry": "汽车"
       },
       {
         "symbol": "601066",
         "name": "中信建投",
-        "weight": 0.0162446255,
+        "weight": 0.0162014624,
         "benchmark_weight": 0.0012446255,
         "industry": "非银金融"
       },
       {
         "symbol": "601077",
         "name": "渝农商行",
-        "weight": 0.0005,
+        "weight": 0.0005088696,
         "benchmark_weight": 0.0014812072,
         "industry": "银行"
       },
       {
         "symbol": "601088",
         "name": "中国神华",
-        "weight": 0.0204516653,
+        "weight": 0.0207453219,
         "benchmark_weight": 0.0054516653,
         "industry": "煤炭"
       },
       {
         "symbol": "601100",
         "name": "恒立液压",
-        "weight": 0.0029658278,
+        "weight": 0.0032058901,
         "benchmark_weight": 0.0020160876,
         "industry": "机械设备"
       },
       {
         "symbol": "601111",
         "name": "中国国航",
-        "weight": 0.0005,
+        "weight": 0.0004962165,
         "benchmark_weight": 0.0011417639,
         "industry": "交通运输"
       },
       {
         "symbol": "601117",
         "name": "中国化学",
-        "weight": 0.0005,
+        "weight": 0.0004948937,
         "benchmark_weight": 0.0010903331,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601127",
         "name": "赛力斯",
-        "weight": 0.0005,
+        "weight": 0.0004747128,
         "benchmark_weight": 0.001594355,
         "industry": "汽车"
       },
       {
         "symbol": "601136",
         "name": "首创证券",
-        "weight": 0.0005,
+        "weight": 0.0005009201,
         "benchmark_weight": 0.000318871,
         "industry": "非银金融"
       },
       {
         "symbol": "601138",
         "name": "工业富联",
-        "weight": 0.0245969882,
+        "weight": 0.0253073762,
         "benchmark_weight": 0.0095969882,
         "industry": "电子"
       },
       {
         "symbol": "601166",
         "name": "兴业银行",
-        "weight": 0.0005,
+        "weight": 0.0005056601,
         "benchmark_weight": 0.0126931227,
         "industry": "银行"
       },
       {
         "symbol": "601169",
         "name": "北京银行",
-        "weight": 0.0005,
+        "weight": 0.0005023025,
         "benchmark_weight": 0.0034252916,
         "industry": "银行"
       },
       {
         "symbol": "601186",
         "name": "中国铁建",
-        "weight": 0.01615205,
+        "weight": 0.0160774929,
         "benchmark_weight": 0.00115205,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601211",
         "name": "国泰海通",
-        "weight": 0.0005,
+        "weight": 0.0004866387,
         "benchmark_weight": 0.007920344,
         "industry": "非银金融"
       },
       {
         "symbol": "601225",
         "name": "陕西煤业",
-        "weight": 0.0005,
+        "weight": 0.0004969612,
         "benchmark_weight": 0.0041967537,
         "industry": "煤炭"
       },
       {
         "symbol": "601229",
         "name": "上海银行",
-        "weight": 0.0005,
+        "weight": 0.0004966647,
         "benchmark_weight": 0.0040321751,
         "industry": "银行"
       },
       {
         "symbol": "601288",
         "name": "农业银行",
-        "weight": 0.0005,
+        "weight": 0.0005159318,
         "benchmark_weight": 0.0083215042,
         "industry": "银行"
       },
       {
         "symbol": "601318",
         "name": "中国平安",
-        "weight": 0.0086067395,
+        "weight": 0.0085622512,
         "benchmark_weight": 0.0236067395,
         "industry": "非银金融"
       },
       {
         "symbol": "601319",
         "name": "中国人保",
-        "weight": 0.0055165366,
+        "weight": 0.0053969621,
         "benchmark_weight": 0.0010594746,
         "industry": "非银金融"
       },
       {
         "symbol": "601328",
         "name": "交通银行",
-        "weight": 0.0005,
+        "weight": 0.000512724,
         "benchmark_weight": 0.0085889444,
         "industry": "银行"
       },
       {
         "symbol": "601336",
         "name": "新华保险",
-        "weight": 0.0005,
+        "weight": 0.0004949694,
         "benchmark_weight": 0.0019543706,
         "industry": "非银金融"
       },
       {
         "symbol": "601360",
         "name": "三六零",
-        "weight": 0.0005,
+        "weight": 0.0005070902,
         "benchmark_weight": 0.0013063424,
         "industry": "计算机"
       },
       {
         "symbol": "601377",
         "name": "兴业证券",
-        "weight": 0.0005,
+        "weight": 0.0004996949,
         "benchmark_weight": 0.0016457858,
         "industry": "非银金融"
       },
       {
         "symbol": "601390",
         "name": "中国中铁",
-        "weight": 0.0005,
+        "weight": 0.0004969309,
         "benchmark_weight": 0.0018412228,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601398",
         "name": "工商银行",
-        "weight": 0.0261296262,
+        "weight": 0.0266542114,
         "benchmark_weight": 0.0111296262,
         "industry": "银行"
       },
       {
         "symbol": "601456",
         "name": "国联民生",
-        "weight": 0.0005,
+        "weight": 0.0005023139,
         "benchmark_weight": 0.0011109054,
         "industry": "非银金融"
       },
       {
         "symbol": "601600",
         "name": "中国铝业",
-        "weight": 0.0005,
+        "weight": 0.0005060885,
         "benchmark_weight": 0.002941842,
         "industry": "有色金属"
       },
       {
         "symbol": "601601",
         "name": "中国太保",
-        "weight": 0.0005,
+        "weight": 0.0004943909,
         "benchmark_weight": 0.0044127631,
         "industry": "非银金融"
       },
       {
         "symbol": "601607",
         "name": "上海医药",
-        "weight": 0.0157508898,
+        "weight": 0.0157250795,
         "benchmark_weight": 0.0007508898,
         "industry": "医药生物"
       },
       {
         "symbol": "601618",
         "name": "中国中冶",
-        "weight": 0.0005,
+        "weight": 0.0004889733,
         "benchmark_weight": 0.0007508898,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601628",
         "name": "中国人寿",
-        "weight": 0.016355534,
+        "weight": 0.0164625154,
         "benchmark_weight": 0.0025406818,
         "industry": "非银金融"
       },
       {
         "symbol": "601633",
         "name": "长城汽车",
-        "weight": 0.0005,
+        "weight": 0.0005108249,
         "benchmark_weight": 0.0007097451,
         "industry": "汽车"
       },
       {
         "symbol": "601658",
         "name": "邮储银行",
-        "weight": 0.0005,
+        "weight": 0.0005165367,
         "benchmark_weight": 0.0024995371,
         "industry": "银行"
       },
       {
         "symbol": "601668",
         "name": "中国建筑",
-        "weight": 0.0005,
+        "weight": 0.0005031428,
         "benchmark_weight": 0.0037235903,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601669",
         "name": "中国电建",
-        "weight": 0.0005,
+        "weight": 0.0004999929,
         "benchmark_weight": 0.0016354996,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601688",
         "name": "华泰证券",
-        "weight": 0.0005,
+        "weight": 0.0004885226,
         "benchmark_weight": 0.0043201876,
         "industry": "非银金融"
       },
       {
         "symbol": "601689",
         "name": "拓普集团",
-        "weight": 0.0005,
+        "weight": 0.000533884,
         "benchmark_weight": 0.0016766442,
         "industry": "汽车"
       },
       {
         "symbol": "601698",
         "name": "中国卫通",
-        "weight": 0.0005,
+        "weight": 0.0005169016,
         "benchmark_weight": 0.0011931947,
         "industry": "国防军工"
       },
       {
         "symbol": "601727",
         "name": "上海电气",
-        "weight": 0.0166869304,
+        "weight": 0.0165626232,
         "benchmark_weight": 0.0016869304,
         "industry": "电力设备"
       },
       {
         "symbol": "601728",
         "name": "中国电信",
-        "weight": 0.0005,
+        "weight": 0.0005057667,
         "benchmark_weight": 0.0040527474,
         "industry": "通信"
       },
       {
         "symbol": "601766",
         "name": "中国中车",
-        "weight": 0.0181269929,
+        "weight": 0.0181596568,
         "benchmark_weight": 0.0031269929,
         "industry": "机械设备"
       },
       {
         "symbol": "601788",
         "name": "光大证券",
-        "weight": 0.0005,
+        "weight": 0.0005006697,
         "benchmark_weight": 0.0011109054,
         "industry": "非银金融"
       },
       {
         "symbol": "601800",
         "name": "中国交建",
-        "weight": 0.0005,
+        "weight": 0.0005034726,
         "benchmark_weight": 0.0008743237,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601816",
         "name": "京沪高铁",
-        "weight": 0.0005,
+        "weight": 0.0005111552,
         "benchmark_weight": 0.0058013948,
         "industry": "交通运输"
       },
       {
         "symbol": "601818",
         "name": "光大银行",
-        "weight": 0.0005,
+        "weight": 0.0004994505,
         "benchmark_weight": 0.0023452447,
         "industry": "银行"
       },
       {
         "symbol": "601825",
         "name": "沪农商行",
-        "weight": 0.0005,
+        "weight": 0.0005036021,
         "benchmark_weight": 0.0020675184,
         "industry": "银行"
       },
       {
         "symbol": "601838",
         "name": "成都银行",
-        "weight": 0.0079735131,
+        "weight": 0.0080293318,
         "benchmark_weight": 0.0020366599,
         "industry": "银行"
       },
       {
         "symbol": "601857",
         "name": "中国石油",
-        "weight": 0.0005,
+        "weight": 0.0005075695,
         "benchmark_weight": 0.0060379765,
         "industry": "石油石化"
       },
       {
         "symbol": "601868",
         "name": "中国能建",
-        "weight": 0.0005,
+        "weight": 0.0004979945,
         "benchmark_weight": 0.0013886317,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601872",
         "name": "招商轮船",
-        "weight": 0.0005,
+        "weight": 0.0004872493,
         "benchmark_weight": 0.0027052603,
         "industry": "交通运输"
       },
       {
         "symbol": "601877",
         "name": "正泰电器",
-        "weight": 0.0161109054,
+        "weight": 0.0163417959,
         "benchmark_weight": 0.0011109054,
         "industry": "电力设备"
       },
       {
         "symbol": "601878",
         "name": "浙商证券",
-        "weight": 0.0005,
+        "weight": 0.0005030126,
         "benchmark_weight": 0.0010183299,
         "industry": "非银金融"
       },
       {
         "symbol": "601881",
         "name": "中国银河",
-        "weight": 0.0005,
+        "weight": 0.000496994,
         "benchmark_weight": 0.0010491884,
         "industry": "非银金融"
       },
       {
         "symbol": "601888",
         "name": "中国中免",
-        "weight": 0.0005,
+        "weight": 0.0005068657,
         "benchmark_weight": 0.0020880907,
         "industry": "商贸零售"
       },
       {
         "symbol": "601898",
         "name": "中煤能源",
-        "weight": 0.0005,
+        "weight": 0.000511287,
         "benchmark_weight": 0.0010491884,
         "industry": "煤炭"
       },
       {
         "symbol": "601899",
         "name": "紫金矿业",
-        "weight": 0.0353974573,
+        "weight": 0.0346578988,
         "benchmark_weight": 0.0203974573,
         "industry": "有色金属"
       },
       {
         "symbol": "601901",
         "name": "方正证券",
-        "weight": 0.0005,
+        "weight": 0.0004977618,
         "benchmark_weight": 0.00115205,
         "industry": "非银金融"
       },
       {
         "symbol": "601916",
         "name": "浙商银行",
-        "weight": 0.0005,
+        "weight": 0.0005051908,
         "benchmark_weight": 0.0018000782,
         "industry": "银行"
       },
       {
         "symbol": "601919",
         "name": "中远海控",
-        "weight": 0.0005,
+        "weight": 0.0004965284,
         "benchmark_weight": 0.0042687568,
         "industry": "交通运输"
       },
       {
         "symbol": "601939",
         "name": "建设银行",
-        "weight": 0.0005,
+        "weight": 0.0005062672,
         "benchmark_weight": 0.003898455,
         "industry": "银行"
       },
       {
         "symbol": "601985",
         "name": "中国核电",
-        "weight": 0.0005,
+        "weight": 0.000509562,
         "benchmark_weight": 0.0030961345,
         "industry": "公用事业"
       },
       {
         "symbol": "601988",
         "name": "中国银行",
-        "weight": 0.0190013166,
+        "weight": 0.0198766308,
         "benchmark_weight": 0.0040013166,
         "industry": "银行"
       },
       {
         "symbol": "601998",
         "name": "中信银行",
-        "weight": 0.0170058014,
+        "weight": 0.0171603191,
         "benchmark_weight": 0.0020058014,
         "industry": "银行"
       },
       {
         "symbol": "603019",
         "name": "中科曙光",
-        "weight": 0.0005,
+        "weight": 0.0005353464,
         "benchmark_weight": 0.0048344957,
         "industry": "计算机"
       },
       {
         "symbol": "603259",
         "name": "药明康德",
-        "weight": 0.0021984612,
+        "weight": 0.0022676962,
         "benchmark_weight": 0.0171984612,
         "industry": "医药生物"
       },
       {
         "symbol": "603260",
         "name": "合盛硅业",
-        "weight": 0.0005,
+        "weight": 0.000478262,
         "benchmark_weight": 0.0004628772,
         "industry": "基础化工"
       },
       {
         "symbol": "603288",
         "name": "海天味业",
-        "weight": 0.0005,
+        "weight": 0.0004963066,
         "benchmark_weight": 0.0023041001,
         "industry": "食品饮料"
       },
       {
         "symbol": "603296",
         "name": "华勤技术",
-        "weight": 0.0005,
+        "weight": 0.0005250907,
         "benchmark_weight": 0.0017589335,
         "industry": "电子"
       },
       {
         "symbol": "603369",
         "name": "今世缘",
-        "weight": 0.0005,
+        "weight": 0.0005140934,
         "benchmark_weight": 0.0008743237,
         "industry": "食品饮料"
       },
       {
         "symbol": "603392",
         "name": "万泰生物",
-        "weight": 0.0005,
+        "weight": 0.0005155116,
         "benchmark_weight": 0.0004320188,
         "industry": "医药生物"
       },
       {
         "symbol": "603501",
         "name": "豪威集团",
-        "weight": 0.0005,
+        "weight": 0.0005419198,
         "benchmark_weight": 0.0028904112,
         "industry": "电子"
       },
       {
         "symbol": "603799",
         "name": "华友钴业",
-        "weight": 0.0005,
+        "weight": 0.0005041397,
         "benchmark_weight": 0.0022115246,
         "industry": "有色金属"
       },
       {
         "symbol": "603893",
         "name": "瑞芯微",
-        "weight": 0.0005,
+        "weight": 0.0005571434,
         "benchmark_weight": 0.0018823675,
         "industry": "电子"
       },
       {
         "symbol": "603986",
         "name": "兆易创新",
-        "weight": 0.0005,
+        "weight": 0.0005050364,
         "benchmark_weight": 0.0098232838,
         "industry": "电子"
       },
       {
         "symbol": "603993",
         "name": "洛阳钼业",
-        "weight": 0.0211202658,
+        "weight": 0.01921216,
         "benchmark_weight": 0.0061202658,
         "industry": "有色金属"
       },
       {
         "symbol": "605117",
         "name": "德业股份",
-        "weight": 0.0005,
+        "weight": 0.000494576,
         "benchmark_weight": 0.0016560719,
         "industry": "电力设备"
       },
       {
         "symbol": "605499",
         "name": "东鹏饮料",
-        "weight": 0.0005,
+        "weight": 0.0004715421,
         "benchmark_weight": 0.0012651978,
         "industry": "食品饮料"
       },
       {
         "symbol": "688008",
         "name": "澜起科技",
-        "weight": 0.0005,
+        "weight": 0.0005042206,
         "benchmark_weight": 0.0096381329,
         "industry": "电子"
       },
       {
         "symbol": "688009",
         "name": "中国通号",
-        "weight": 0.0071740388,
+        "weight": 0.0072553312,
         "benchmark_weight": 0.0005040219,
         "industry": "机械设备"
       },
       {
         "symbol": "688036",
         "name": "传音控股",
-        "weight": 0.0005,
+        "weight": 0.0005886625,
         "benchmark_weight": 0.0012857701,
         "industry": "电子"
       },
       {
         "symbol": "688041",
         "name": "海光信息",
-        "weight": 0.0045391038,
+        "weight": 0.0045625673,
         "benchmark_weight": 0.0087638092,
         "industry": "电子"
       },
       {
         "symbol": "688047",
         "name": "龙芯中科",
-        "weight": 0.0005,
+        "weight": 0.0005132224,
         "benchmark_weight": 0.0008126067,
         "industry": "电子"
       },
       {
         "symbol": "688082",
         "name": "盛美上海",
-        "weight": 0.0144268879,
+        "weight": 0.0134413976,
         "benchmark_weight": 0.0017692197,
         "industry": "电子"
       },
       {
         "symbol": "688111",
         "name": "金山办公",
-        "weight": 0.0005,
+        "weight": 0.0005093315,
         "benchmark_weight": 0.002108663,
         "industry": "计算机"
       },
       {
         "symbol": "688126",
         "name": "沪硅产业",
-        "weight": 0.0005,
+        "weight": 0.0005129766,
         "benchmark_weight": 0.0016046411,
         "industry": "电子"
       },
       {
         "symbol": "688183",
         "name": "生益电子",
-        "weight": 0.0005,
+        "weight": 0.0004926387,
         "benchmark_weight": 0.0014914933,
         "industry": "电子"
       },
       {
         "symbol": "688223",
         "name": "晶科能源",
-        "weight": 0.0005,
+        "weight": 0.0005146575,
         "benchmark_weight": 0.0006583143,
         "industry": "电力设备"
       },
       {
         "symbol": "688256",
         "name": "寒武纪",
-        "weight": 0.0180985526,
+        "weight": 0.0183635513,
         "benchmark_weight": 0.0131662861,
         "industry": "电子"
       },
       {
         "symbol": "688271",
         "name": "联影医疗",
-        "weight": 0.0005,
+        "weight": 0.0005131725,
         "benchmark_weight": 0.0022012385,
         "industry": "医药生物"
       },
       {
         "symbol": "688303",
         "name": "大全能源",
-        "weight": 0.0049271317,
+        "weight": 0.0049393371,
         "benchmark_weight": 0.0004320188,
         "industry": "电力设备"
       },
       {
         "symbol": "688396",
         "name": "华润微",
-        "weight": 0.0013950226,
+        "weight": 0.0014462679,
         "benchmark_weight": 0.001213767,
         "industry": "电子"
       },
       {
         "symbol": "688472",
         "name": "阿特斯",
-        "weight": 0.0005,
+        "weight": 0.0005033994,
         "benchmark_weight": 0.000514308,
         "industry": "电力设备"
       },
       {
         "symbol": "688506",
         "name": "百利天恒",
-        "weight": 0.0005,
+        "weight": 0.0005457185,
         "benchmark_weight": 0.000833179,
         "industry": "医药生物"
       },
       {
         "symbol": "688521",
         "name": "芯原股份",
-        "weight": 0.0005,
+        "weight": 0.0005196068,
         "benchmark_weight": 0.003003559,
         "industry": "电子"
       },
       {
         "symbol": "688981",
         "name": "中芯国际",
-        "weight": 0.0194254656,
+        "weight": 0.0194518879,
         "benchmark_weight": 0.0094838404,
         "industry": "电子"
       }
@@ -2077,6 +2077,16 @@
         "date": "2026-10-16T00:00:00.000",
         "nav": 1.0,
         "benchmark_nav": 1.0
+      },
+      {
+        "date": "2026-10-19T00:00:00.000",
+        "nav": 1.0001624636,
+        "benchmark_nav": 1.0009403893
+      },
+      {
+        "date": "2026-10-20T00:00:00.000",
+        "nav": 0.9920268499,
+        "benchmark_nav": 0.9955630024
       }
     ]
   }
