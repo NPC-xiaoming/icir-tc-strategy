@@ -4,21 +4,21 @@
   "quote_provider": "sina",
   "baseline_date": "2026-10-16",
   "migration_note": "沿用旧口径最后可信持仓权重；切换日收盘建立新基准，不计算此前收益",
-  "last_run": "2026-10-27",
-  "nav": 0.9632814005516792,
-  "benchmark_nav": 0.9709728523045941,
+  "last_run": "2026-10-28",
+  "nav": 0.97254710319362,
+  "benchmark_nav": 0.9792013788988019,
   "version": "1.1.0",
   "config_hash": "7affd102c8272645a27e82b61bccb6e751b97cc984f62c606060260277669b35",
-  "recorded_at": "2026-10-27T23:19:24.940397+08:00",
+  "recorded_at": "2026-10-28T23:58:36.813991+08:00",
   "benchmark": "沪深300官方价格指数",
   "missing_symbols": [],
   "held_missing_symbols": [],
   "provisional": false,
   "unresolved_quotes": [],
   "chart_metrics": {
-    "online_nav": 0.9632814005516792,
-    "benchmark_nav": 0.9709728523045941,
-    "excess": -0.007921387024013349,
-    "drawdown": -0.03687507219134223
+    "online_nav": 0.97254710319362,
+    "benchmark_nav": 0.9792013788988019,
+    "excess": -0.006795615129407961,
+    "drawdown": -0.02761087464428602
   }
 }
