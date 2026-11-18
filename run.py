@@ -55,12 +55,20 @@ def resolve_trade_date(calendar,today):
     return pd.Timestamp(eligible.max()) if len(eligible) else None
 
 
+def latest_closed_session(calendar, now):
+    now=now.tz_convert('Asia/Shanghai')
+    cutoff=now.tz_localize(None).normalize()
+    if now.hour<16:
+        cutoff-=pd.Timedelta(days=1)
+    return resolve_trade_date(calendar,cutoff)
+
+
 def is_rebalance_day(calendar,trade_date):
     days=calendar[(calendar>=trade_date.replace(day=1))&(calendar<=trade_date)]
     return len(days)>0 and days.min()==trade_date
 
 
-def run_daily():
+def run_daily(through=None, calendar=None):
     cfg=load_config()
     provider=cfg['data'].get('quote_provider','eastmoney')
     if provider not in ('eastmoney','sina'): raise ValueError('Unsupported quote provider')
@@ -80,16 +88,13 @@ def run_daily():
     unresolved=[]
     now=current_time()
     today=now.tz_localize(None).normalize()
-    calendar=trading_calendar()
+    calendar=trading_calendar() if calendar is None else calendar
     if calendar.empty or calendar.max()<today:
         raise ValueError('交易日历尚未覆盖今天，拒绝按旧日期运行')
-    if today not in calendar:
-        print('[skip] 非交易日，不重复计算上一交易日')
-        return 0
-    if now.hour<16:
-        print('[skip] 北京时间 16:00 前不启动收盘跟踪，请收盘数据落定后再运行')
-        return 0
-    trade_date=resolve_trade_date(calendar,today)
+    closed=latest_closed_session(calendar,now)
+    trade_date=pd.Timestamp(through) if through is not None else closed
+    if trade_date is None or trade_date not in calendar or trade_date>closed:
+        raise ValueError('目标日期不是已收盘交易日')
     if migrating:
         if state.last_run is not None and state.last_run>trade_date:
             raise ValueError('Cannot migrate a future ledger')
@@ -116,7 +121,21 @@ def run_daily():
     constituents=None
     symbols=set(held)
     if needs_rebalance:
-        constituents=data_mod.fetch_constituents(cfg['index']['code'])
+        snapshots=ROOT/'state/constituents'
+        snapshots.mkdir(parents=True,exist_ok=True)
+        try:
+            fresh_constituents=data_mod.fetch_constituents(cfg['index']['code'])
+            snapshot_date=pd.Timestamp(fresh_constituents.as_of.max()).date()
+            snapshot_path=snapshots/f'{snapshot_date}.parquet'
+            temporary=snapshot_path.with_suffix('.parquet.tmp')
+            fresh_constituents.to_parquet(temporary,index=False)
+            os.replace(temporary,snapshot_path)
+        except Exception:
+            if not list(snapshots.glob('*.parquet')): raise
+        candidates=sorted(p for p in snapshots.glob('*.parquet') if pd.Timestamp(p.stem)<=signal_date)
+        if not candidates:
+            raise ValueError('缺少调仓信号日以前的指数权重快照，无法历史模拟调仓')
+        constituents=pd.read_parquet(candidates[-1])
         if len(constituents)!=int(cfg['data'].get('expected_constituents',300)):
             raise ValueError('指数成分数量不完整，拒绝改变投资范围')
         symbols.update(constituents.symbol)
@@ -133,7 +152,7 @@ def run_daily():
         timeout=float(cfg['data'].get('timeout_seconds',12)),allow_partial=True,
         cache_path=ROOT/'state/market_history.parquet',
         required_dates=calendar[(calendar>=start)&(calendar<=trade_date)],calendar=calendar,
-        require_turnover=needs_rebalance,primary_provider=provider) if symbols else pd.DataFrame()
+        require_turnover=needs_rebalance,primary_provider=provider,download_end=closed) if symbols else pd.DataFrame()
     quality={'through':str(trade_date.date()),'sources':history.attrs.get('sources',{}),
              'errors':history.attrs.get('errors',[]),'days':[]}
     atomic_text(ROOT/'logs/data_quality.json',json.dumps(quality,ensure_ascii=False,indent=2))
@@ -183,7 +202,7 @@ def run_daily():
         if replaying:
             notes.append('已从暂估前检查点重新计算，本报告替代此前暂估结果。')
         if len(pending)>1:
-            notes.append('缺日按原持仓补估值；未倒填过去调仓。')
+            notes.append('按交易日顺序恢复模拟估值与月度调仓。')
         if day==trade_date and needs_rebalance and not unresolved:
             available=set(history.symbol.unique())
             constituents=constituents[constituents.symbol.isin(available)].copy()
@@ -207,7 +226,7 @@ def run_daily():
                 start_date=day,end_date=day,workers=int(cfg['data'].get('workers',3)),
                 timeout=float(cfg['data'].get('timeout_seconds',12)),allow_partial=True,
                 cache_path=ROOT/'state/market_history.parquet',required_dates=pd.DatetimeIndex([day]),
-                calendar=calendar,primary_provider=provider)
+                calendar=calendar,primary_provider=provider,download_end=closed)
             spot=(data_mod.fetch_spot(history=unadjusted) if provider=='sina' else data_mod.fetch_spot())
             spot_symbols=set(spot.loc[spot['close'].notna() & spot['circ_mv'].notna(),'symbol'])
             missing.update(set(constituents.symbol)-spot_symbols)
@@ -228,6 +247,8 @@ def run_daily():
             if not is_rebalance_day(calendar,day):
                 notes.append('本次为首次建仓或延期调仓，执行日为本日。')
             if diag['cold_start']: notes.append(cold_note)
+            if day<today:
+                notes.append(f'历史恢复模拟：于 {today.date()} 使用 {signal_date.date()} 信号和 {day.date()} 历史行情重建。')
             text=report_mod.render_rebalance(day,signal_date,fw,state.holdings,changes,diag,cfg)
             text+='\n'+ '\n'.join('- '+n for n in notes)+'\n'
             outputs[ROOT/'reports/rebalance'/f'{day.date()}.md']=text
@@ -248,6 +269,8 @@ def run_daily():
             text+=f"- 新口径基准日：{state.meta['baseline_date']}，组合和沪深300均从 1 起算；此前旧口径报告不参与累计。\n"
         if migrating:
             text+='- 本日仅建立新基准，沿用最后可信持仓权重，不计算切换前收益，不发生调仓；收益跟踪从下一交易日开始。\n'
+        if trade_date<today:
+            text+=f'- 历史恢复模拟：于 {today.date()} 按本交易日历史数据补算，月度信号使用调仓前一交易日数据。\n'
         text+=f'- 当日持仓行情缺失：{", ".join(day_missing) if day_missing else "无"}；缺失权重 {missing_weight:.2%}。\n'
         if actual_rebalance:
             text+=f'- 调仓数据不完整或被过滤的股票：{", ".join(sorted(missing)) if missing else "无"}。\n'
@@ -289,14 +312,46 @@ def run_daily():
     return 0
 
 
-def main():
+def main(through=None):
     with data_mod.network_timeout(12):
-        return run_daily()
+        calendar=trading_calendar()
+        now=current_time()
+        today=now.tz_localize(None).normalize()
+        if calendar.empty or calendar.max()<today:
+            raise ValueError('交易日历尚未覆盖今天')
+        target=latest_closed_session(calendar,now)
+        if through is not None:
+            requested=pd.Timestamp(through)
+            if requested not in calendar or requested>target:
+                raise ValueError('补算截止日期必须是已收盘交易日')
+            target=requested
+        state=State.load(ROOT/'state')
+        checkpoint=ROOT/'state/valuation_checkpoint.json'
+        if state.meta.get('provisional') and checkpoint.is_file():
+            state=State.load(ROOT/'state','valuation_checkpoint.json')
+        if state.meta.get('quote_provider','eastmoney')!=load_config()['data'].get('quote_provider','eastmoney'):
+            return run_daily(through=target,calendar=calendar)
+        pending=calendar[(calendar>state.last_run)&(calendar<=target)] if state.last_run is not None else pd.DatetimeIndex([target])
+        if pending.empty:
+            print(f'[skip] {target.date()} 已成功记账，无待处理交易日')
+            return 0
+        print(f'[catchup] sessions={len(pending)} from={pending[0].date()} through={target.date()}',flush=True)
+        for day in pending:
+            run_daily(through=day,calendar=calendar)
+            saved=State.load(ROOT/'state')
+            if saved.meta.get('provisional'):
+                print('[pending] 本日为暂估，等待行情补齐后继续恢复',flush=True)
+                return 0
+        return 0
 
 
 if __name__=='__main__':
     try:
-        raise SystemExit(main())
+        import argparse
+        parser=argparse.ArgumentParser(description=__doc__)
+        parser.add_argument('--through',help='可选补算截止交易日 YYYY-MM-DD，默认最近已收盘日')
+        args=parser.parse_args()
+        raise SystemExit(main(through=args.through))
     except Exception as exc:
         print(f'[FAILED] {type(exc).__name__}: {exc}',file=sys.stderr)
         raise SystemExit(1)

@@ -63,11 +63,12 @@ def _provider_frame(provider, symbol, start, end, adjust, timeout, calendar=None
 
 def fetch_history(symbols, days=300, adjust='hfq', pause=.15, start_date=None,
                   end_date=None, workers=2, timeout=12, allow_partial=False,
-                  cache_path=None, required_dates=None, calendar=None, require_turnover=False, primary_provider='eastmoney'):
+                  cache_path=None, required_dates=None, calendar=None, require_turnover=False, primary_provider='eastmoney', download_end=None):
     if primary_provider not in ('eastmoney','sina'):
         raise ValueError('Unsupported primary quote provider')
     providers=PROVIDERS if primary_provider=='eastmoney' else ('sina',)
     end=pd.Timestamp(end_date) if end_date is not None else pd.Timestamp.now(tz='Asia/Shanghai').tz_localize(None).normalize()
+    download_end=max(end,pd.Timestamp(download_end)) if download_end is not None else end
     start=pd.Timestamp(start_date) if start_date is not None else end-pd.Timedelta(days=int(days*1.7))
     required=pd.DatetimeIndex(required_dates) if required_dates is not None else pd.bdate_range(start,end)
     cached=pd.read_parquet(cache_path) if cache_path and Path(cache_path).is_file() else pd.DataFrame(columns=COLUMNS)
@@ -108,7 +109,7 @@ def fetch_history(symbols, days=300, adjust='hfq', pause=.15, start_date=None,
             for attempt in range(2):
                 try:
                     time.sleep(pause+random.uniform(0,.1))
-                    fresh=_provider_frame(provider,symbol,start,end,adjust,timeout,calendar=calendar)
+                    fresh=_provider_frame(provider,symbol,start,download_end,adjust,timeout,calendar=calendar)
                     if fresh.empty: raise ValueError('no valid dated returns')
                     break
                 except Exception as exc:

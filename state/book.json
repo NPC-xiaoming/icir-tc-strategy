@@ -2,27 +2,34 @@
   "schema_version": 2,
   "meta": {
     "initialized": true,
-    "last_rebalance": "2026-10-13",
+    "last_rebalance": "2026-11-02",
     "quote_provider": "sina",
     "baseline_date": "2026-10-16",
     "migration_note": "沿用旧口径最后可信持仓权重；切换日收盘建立新基准，不计算此前收益",
-    "last_run": "2026-10-30",
-    "nav": 0.9504623998583075,
-    "benchmark_nav": 0.9556151578790043,
-    "version": "1.1.0",
-    "config_hash": "7affd102c8272645a27e82b61bccb6e751b97cc984f62c606060260277669b35",
-    "recorded_at": "2026-10-30T23:51:45.479111+08:00",
+    "last_run": "2026-11-17",
+    "nav": 0.9559306618629936,
+    "benchmark_nav": 0.9534480902201226,
+    "version": "1.1.1",
+    "config_hash": "0da370995361970c814a493000c9a93337df483047e8cf739fc8b9b61fefc1c3",
+    "recorded_at": "2026-11-18T16:45:50.005293+08:00",
     "benchmark": "沪深300官方价格指数",
     "missing_symbols": [],
     "held_missing_symbols": [],
     "provisional": false,
     "unresolved_quotes": [],
     "chart_metrics": {
-      "online_nav": 0.9504623998583075,
-      "benchmark_nav": 0.9556151578790043,
-      "excess": -0.005392084855720958,
-      "drawdown": -0.04969199060200813
-    }
+      "online_nav": 0.9559306618629936,
+      "benchmark_nav": 0.9534480902201226,
+      "excess": 0.0026037827002178826,
+      "drawdown": -0.044224616846544884
+    },
+    "last_signal_date": "2026-10-30",
+    "factor_weights": {
+      "momentum_120_20": 0.3333333333333333,
+      "volatility_60": 0.3333333333333333,
+      "turnover_20": 0.3333333333333333
+    },
+    "last_status": "optimal"
   },
   "holdings": {
     "columns": [
@@ -36,2024 +43,2031 @@
       {
         "symbol": "000001",
         "name": "平安银行",
-        "weight": 0.0005324654,
-        "benchmark_weight": 0.0046596309,
+        "weight": 0.000557037,
+        "benchmark_weight": 0.0051017795,
         "industry": "银行"
       },
       {
         "symbol": "000002",
         "name": "万科A",
-        "weight": 0.0004585038,
-        "benchmark_weight": 0.0012034808,
+        "weight": 0.0004603583,
+        "benchmark_weight": 0.0009834756,
         "industry": "房地产"
       },
       {
         "symbol": "000063",
         "name": "中兴通讯",
-        "weight": 0.0005311102,
-        "benchmark_weight": 0.0040938921,
+        "weight": 0.0004980374,
+        "benchmark_weight": 0.0039851249,
         "industry": "通信"
       },
       {
         "symbol": "000100",
         "name": "TCL科技",
-        "weight": 0.0201941657,
-        "benchmark_weight": 0.0043716184,
+        "weight": 0.0210020264,
+        "benchmark_weight": 0.0044563736,
         "industry": "电子"
       },
       {
         "symbol": "000157",
         "name": "中联重科",
-        "weight": 0.0005260599,
-        "benchmark_weight": 0.0012343393,
+        "weight": 0.0004910639,
+        "benchmark_weight": 0.0013215453,
         "industry": "机械设备"
       },
       {
         "symbol": "000166",
         "name": "申万宏源",
-        "weight": 0.0004972446,
-        "benchmark_weight": 0.0016354996,
+        "weight": 0.0005038355,
+        "benchmark_weight": 0.0017108377,
         "industry": "非银金融"
       },
       {
         "symbol": "000301",
         "name": "东方盛虹",
-        "weight": 0.0004607672,
-        "benchmark_weight": 0.0014194902,
+        "weight": 0.0004743292,
+        "benchmark_weight": 0.0012600781,
         "industry": "石油石化"
       },
       {
         "symbol": "000333",
         "name": "美的集团",
-        "weight": 0.0345806372,
-        "benchmark_weight": 0.0161801313,
+        "weight": 0.035975216,
+        "benchmark_weight": 0.0195875549,
         "industry": "家用电器"
       },
       {
         "symbol": "000338",
         "name": "潍柴动力",
-        "weight": 0.0005000471,
-        "benchmark_weight": 0.0056059577,
+        "weight": 0.0004578528,
+        "benchmark_weight": 0.0048968887,
         "industry": "汽车"
       },
       {
         "symbol": "000408",
         "name": "藏格矿业",
-        "weight": 0.0005102344,
-        "benchmark_weight": 0.0023041001,
+        "weight": 0.000477616,
+        "benchmark_weight": 0.0024074662,
         "industry": "基础化工"
       },
       {
         "symbol": "000425",
         "name": "徐工机械",
-        "weight": 0.000510952,
-        "benchmark_weight": 0.0024481063,
+        "weight": 0.0004716748,
+        "benchmark_weight": 0.0024689334,
         "industry": "机械设备"
       },
       {
         "symbol": "000538",
         "name": "云南白药",
-        "weight": 0.0179622052,
-        "benchmark_weight": 0.0018720813,
+        "weight": 0.0177604159,
+        "benchmark_weight": 0.0021615973,
         "industry": "医药生物"
       },
       {
         "symbol": "000568",
         "name": "泸州老窖",
-        "weight": 0.000563574,
-        "benchmark_weight": 0.0022115246,
+        "weight": 0.0005101577,
+        "benchmark_weight": 0.0025611343,
         "industry": "食品饮料"
       },
       {
         "symbol": "000596",
         "name": "古井贡酒",
-        "weight": 0.0005917935,
-        "benchmark_weight": 0.000637742,
+        "weight": 0.0005347441,
+        "benchmark_weight": 0.0007068731,
         "industry": "食品饮料"
       },
       {
         "symbol": "000617",
         "name": "中油资本",
-        "weight": 0.0005034898,
-        "benchmark_weight": 0.0006891728,
+        "weight": 0.0004694524,
+        "benchmark_weight": 0.0007068731,
         "industry": "非银金融"
       },
       {
         "symbol": "000625",
         "name": "长安汽车",
-        "weight": 0.0005215784,
-        "benchmark_weight": 0.001470921,
+        "weight": 0.0004926699,
+        "benchmark_weight": 0.0015674142,
         "industry": "汽车"
       },
       {
         "symbol": "000630",
         "name": "铜陵有色",
-        "weight": 0.0094294155,
-        "benchmark_weight": 0.0019337983,
+        "weight": 0.0116681124,
+        "benchmark_weight": 0.0017518158,
         "industry": "有色金属"
       },
       {
         "symbol": "000651",
         "name": "格力电器",
-        "weight": 0.0226920818,
-        "benchmark_weight": 0.0071283096,
+        "weight": 0.0114142732,
+        "benchmark_weight": 0.0077858482,
         "industry": "家用电器"
       },
       {
         "symbol": "000657",
         "name": "中钨高新",
-        "weight": 0.0004314837,
-        "benchmark_weight": 0.0019955152,
+        "weight": 0.0004790055,
+        "benchmark_weight": 0.0014752133,
         "industry": "有色金属"
       },
       {
         "symbol": "000708",
         "name": "中信特钢",
-        "weight": 0.0004842189,
-        "benchmark_weight": 0.0005451665,
+        "weight": 0.0005287308,
+        "benchmark_weight": 0.000553205,
         "industry": "钢铁"
       },
       {
         "symbol": "000725",
         "name": "京东方A",
-        "weight": 0.0004573208,
-        "benchmark_weight": 0.0086403752,
+        "weight": 0.0088662623,
+        "benchmark_weight": 0.007324844,
         "industry": "电子"
       },
       {
         "symbol": "000768",
         "name": "中航西飞",
-        "weight": 0.000491483,
-        "benchmark_weight": 0.0013372009,
+        "weight": 0.0004781472,
+        "benchmark_weight": 0.0013830125,
         "industry": "国防军工"
       },
       {
         "symbol": "000776",
         "name": "广发证券",
-        "weight": 0.0004927253,
-        "benchmark_weight": 0.0024378202,
+        "weight": 0.0004778234,
+        "benchmark_weight": 0.0024074662,
         "industry": "非银金融"
       },
       {
         "symbol": "000792",
         "name": "盐湖股份",
-        "weight": 0.0004961871,
-        "benchmark_weight": 0.0031475653,
+        "weight": 0.0004972207,
+        "benchmark_weight": 0.0031143393,
         "industry": "基础化工"
       },
       {
         "symbol": "000807",
         "name": "云铝股份",
-        "weight": 0.0005478977,
-        "benchmark_weight": 0.0022629554,
+        "weight": 0.0004870745,
+        "benchmark_weight": 0.0023869771,
         "industry": "有色金属"
       },
       {
         "symbol": "000858",
         "name": "五 粮 液",
-        "weight": 0.000545258,
-        "benchmark_weight": 0.0056471024,
+        "weight": 0.0004958722,
+        "benchmark_weight": 0.0065462592,
         "industry": "食品饮料"
       },
       {
         "symbol": "000895",
         "name": "双汇发展",
-        "weight": 0.0005361604,
-        "benchmark_weight": 0.0010183299,
+        "weight": 0.000520122,
+        "benchmark_weight": 0.0011473882,
         "industry": "食品饮料"
       },
       {
         "symbol": "000938",
         "name": "紫光股份",
-        "weight": 0.0004784868,
-        "benchmark_weight": 0.0029521282,
+        "weight": 0.0005248738,
+        "benchmark_weight": 0.0023767326,
         "industry": "计算机"
       },
       {
         "symbol": "000963",
         "name": "华东医药",
-        "weight": 0.0005334742,
-        "benchmark_weight": 0.0010080438,
+        "weight": 0.0004804095,
+        "benchmark_weight": 0.0010551873,
         "industry": "医药生物"
       },
       {
         "symbol": "000975",
         "name": "山金国际",
-        "weight": 0.0004624127,
-        "benchmark_weight": 0.0015737826,
+        "weight": 0.0005450857,
+        "benchmark_weight": 0.0016288814,
         "industry": "有色金属"
       },
       {
         "symbol": "000977",
         "name": "浪潮信息",
-        "weight": 0.0005041886,
-        "benchmark_weight": 0.0028184081,
+        "weight": 0.0004581479,
+        "benchmark_weight": 0.0025201561,
         "industry": "计算机"
       },
       {
         "symbol": "000988",
         "name": "华工科技",
-        "weight": 0.000431898,
-        "benchmark_weight": 0.0038573104,
+        "weight": 0.0004783622,
+        "benchmark_weight": 0.0028274922,
         "industry": "机械设备"
       },
       {
         "symbol": "000999",
         "name": "华润三九",
-        "weight": 0.0005201347,
-        "benchmark_weight": 0.0006686005,
+        "weight": 0.000514263,
+        "benchmark_weight": 0.0007580957,
         "industry": "医药生物"
       },
       {
         "symbol": "001391",
         "name": "国货航",
-        "weight": 0.0005146786,
-        "benchmark_weight": 0.0002365817,
+        "weight": 0.0004881094,
+        "benchmark_weight": 0.000266358,
         "industry": "交通运输"
       },
       {
         "symbol": "001965",
         "name": "招商公路",
-        "weight": 0.0164230651,
-        "benchmark_weight": 0.0008537514,
+        "weight": 0.016900722,
+        "benchmark_weight": 0.0009424974,
         "industry": "交通运输"
       },
       {
         "symbol": "001979",
         "name": "招商蛇口",
-        "weight": 0.0005570333,
-        "benchmark_weight": 0.0011314777,
+        "weight": 0.0004826266,
+        "benchmark_weight": 0.0013215453,
         "industry": "房地产"
       },
       {
         "symbol": "002001",
         "name": "新和成",
-        "weight": 0.0005151936,
-        "benchmark_weight": 0.0016560719,
+        "weight": 0.0005211333,
+        "benchmark_weight": 0.0017723049,
         "industry": "基础化工"
       },
       {
         "symbol": "002027",
         "name": "分众传媒",
-        "weight": 0.0134916719,
-        "benchmark_weight": 0.0019852291,
+        "weight": 0.0005205965,
+        "benchmark_weight": 0.0023972217,
         "industry": "传媒"
       },
       {
         "symbol": "002028",
         "name": "思源电气",
-        "weight": 0.0004544794,
-        "benchmark_weight": 0.0031167068,
+        "weight": 0.0005060635,
+        "benchmark_weight": 0.0028684704,
         "industry": "电力设备"
       },
       {
         "symbol": "002050",
         "name": "三花智控",
-        "weight": 0.0005565348,
-        "benchmark_weight": 0.00332243,
+        "weight": 0.0004880255,
+        "benchmark_weight": 0.0033602082,
         "industry": "家用电器"
       },
       {
         "symbol": "002074",
         "name": "国轩高科",
-        "weight": 0.0004277879,
-        "benchmark_weight": 0.0013269148,
+        "weight": 0.0004953273,
+        "benchmark_weight": 0.00110641,
         "industry": "电力设备"
       },
       {
         "symbol": "002142",
         "name": "宁波银行",
-        "weight": 0.0005328684,
-        "benchmark_weight": 0.0048653542,
+        "weight": 0.0005261174,
+        "benchmark_weight": 0.005245203,
         "industry": "银行"
       },
       {
         "symbol": "002179",
         "name": "中航光电",
-        "weight": 0.000533963,
-        "benchmark_weight": 0.0017589335,
+        "weight": 0.0045070064,
+        "benchmark_weight": 0.0019054839,
         "industry": "国防军工"
       },
       {
         "symbol": "002202",
         "name": "金风科技",
-        "weight": 0.0005003523,
-        "benchmark_weight": 0.0019749429,
+        "weight": 0.0004663371,
+        "benchmark_weight": 0.001792794,
         "industry": "电力设备"
       },
       {
         "symbol": "002230",
         "name": "科大讯飞",
-        "weight": 0.000529567,
-        "benchmark_weight": 0.0029727005,
+        "weight": 0.0005304889,
+        "benchmark_weight": 0.0031450729,
         "industry": "计算机"
       },
       {
         "symbol": "002236",
         "name": "大华股份",
-        "weight": 0.0163582066,
-        "benchmark_weight": 0.0012446255,
+        "weight": 0.0163449156,
+        "benchmark_weight": 0.0012498335,
         "industry": "计算机"
       },
       {
         "symbol": "002241",
         "name": "歌尔股份",
-        "weight": 0.0005838658,
-        "benchmark_weight": 0.0023555309,
+        "weight": 0.0005219925,
+        "benchmark_weight": 0.002479178,
         "industry": "电子"
+      },
+      {
+        "symbol": "002294",
+        "name": "信立泰",
+        "weight": 0.0004351729,
+        "benchmark_weight": 0.0007478512,
+        "industry": "医药生物"
       },
       {
         "symbol": "002304",
         "name": "洋河股份",
-        "weight": 0.0005134665,
-        "benchmark_weight": 0.0009360407,
+        "weight": 0.0004755897,
+        "benchmark_weight": 0.0010039646,
         "industry": "食品饮料"
       },
       {
         "symbol": "002311",
         "name": "海大集团",
-        "weight": 0.0005773759,
-        "benchmark_weight": 0.0014400625,
+        "weight": 0.0005161386,
+        "benchmark_weight": 0.0017518158,
         "industry": "农林牧渔"
       },
       {
         "symbol": "002352",
         "name": "顺丰控股",
-        "weight": 0.0005537241,
-        "benchmark_weight": 0.0030549898,
+        "weight": 0.0005086775,
+        "benchmark_weight": 0.0035548544,
         "industry": "交通运输"
       },
       {
         "symbol": "002353",
         "name": "杰瑞股份",
-        "weight": 0.000545177,
-        "benchmark_weight": 0.0028184081,
+        "weight": 0.0003869724,
+        "benchmark_weight": 0.0024484444,
         "industry": "机械设备"
       },
       {
         "symbol": "002371",
         "name": "北方华创",
-        "weight": 0.0221272078,
-        "benchmark_weight": 0.0110781954,
+        "weight": 0.0273659483,
+        "benchmark_weight": 0.0093635069,
         "industry": "电子"
       },
       {
         "symbol": "002384",
         "name": "东山精密",
-        "weight": 0.0003690619,
-        "benchmark_weight": 0.0089181016,
+        "weight": 0.0003873494,
+        "benchmark_weight": 0.004978845,
         "industry": "电子"
       },
       {
         "symbol": "002415",
         "name": "海康威视",
-        "weight": 0.0215423385,
-        "benchmark_weight": 0.0049476434,
+        "weight": 0.0208388628,
+        "benchmark_weight": 0.0057164517,
         "industry": "计算机"
       },
       {
         "symbol": "002422",
         "name": "科伦药业",
-        "weight": 0.0005302439,
-        "benchmark_weight": 0.0018926536,
+        "weight": 0.0005224988,
+        "benchmark_weight": 0.0020181738,
         "industry": "医药生物"
       },
       {
         "symbol": "002460",
         "name": "赣锋锂业",
-        "weight": 0.0004680829,
-        "benchmark_weight": 0.0020366599,
+        "weight": 0.0004919489,
+        "benchmark_weight": 0.0017825495,
         "industry": "有色金属"
       },
       {
         "symbol": "002463",
         "name": "沪电股份",
-        "weight": 0.0004052354,
-        "benchmark_weight": 0.0064905676,
+        "weight": 0.0004216206,
+        "benchmark_weight": 0.0053169148,
         "industry": "电子"
       },
       {
         "symbol": "002466",
         "name": "天齐锂业",
-        "weight": 0.000498044,
-        "benchmark_weight": 0.001728075,
+        "weight": 0.0004831256,
+        "benchmark_weight": 0.0016083923,
         "industry": "有色金属"
       },
       {
         "symbol": "002475",
         "name": "立讯精密",
-        "weight": 0.0065278651,
-        "benchmark_weight": 0.0104713119,
+        "weight": 0.0067736319,
+        "benchmark_weight": 0.0105006505,
         "industry": "电子"
       },
       {
         "symbol": "002493",
         "name": "荣盛石化",
-        "weight": 0.0005452277,
-        "benchmark_weight": 0.0016560719,
+        "weight": 0.0004821774,
+        "benchmark_weight": 0.0016186369,
         "industry": "石油石化"
       },
       {
         "symbol": "002532",
         "name": "天山铝业",
-        "weight": 0.0005457114,
-        "benchmark_weight": 0.0016354996,
+        "weight": 0.0004605527,
+        "benchmark_weight": 0.0017415713,
         "industry": "有色金属"
       },
       {
         "symbol": "002558",
         "name": "巨人网络",
-        "weight": 0.0004720366,
-        "benchmark_weight": 0.0012446255,
+        "weight": 0.0004550453,
+        "benchmark_weight": 0.0011268991,
         "industry": "传媒"
       },
       {
         "symbol": "002594",
         "name": "比亚迪",
-        "weight": 0.0005192425,
-        "benchmark_weight": 0.0094015512,
+        "weight": 0.0005079388,
+        "benchmark_weight": 0.0100191573,
         "industry": "汽车"
       },
       {
         "symbol": "002600",
         "name": "领益智造",
-        "weight": 0.0005911172,
-        "benchmark_weight": 0.0018000782,
+        "weight": 0.0005678219,
+        "benchmark_weight": 0.0018542612,
         "industry": "电子"
       },
       {
         "symbol": "002625",
         "name": "光启技术",
-        "weight": 0.0004216029,
-        "benchmark_weight": 0.0016869304,
+        "weight": 0.0004735168,
+        "benchmark_weight": 0.0014547243,
         "industry": "国防军工"
       },
       {
         "symbol": "002648",
         "name": "卫星化学",
-        "weight": 0.0005323994,
-        "benchmark_weight": 0.001851509,
+        "weight": 0.0004697325,
+        "benchmark_weight": 0.0019157284,
         "industry": "基础化工"
       },
       {
         "symbol": "002709",
         "name": "天赐材料",
-        "weight": 0.0004782781,
-        "benchmark_weight": 0.001851509,
+        "weight": 0.0004928974,
+        "benchmark_weight": 0.0016801041,
         "industry": "电力设备"
       },
       {
         "symbol": "002714",
         "name": "牧原股份",
-        "weight": 0.0005170971,
-        "benchmark_weight": 0.0048139233,
+        "weight": 0.0005504173,
+        "benchmark_weight": 0.004978845,
         "industry": "农林牧渔"
       },
       {
         "symbol": "002736",
         "name": "国信证券",
-        "weight": 0.0004546097,
-        "benchmark_weight": 0.0012549116,
+        "weight": 0.0005144743,
+        "benchmark_weight": 0.0011781218,
         "industry": "非银金融"
       },
       {
         "symbol": "002837",
         "name": "英维克",
-        "weight": 0.0004448589,
-        "benchmark_weight": 0.0017177889,
+        "weight": 0.0004419312,
+        "benchmark_weight": 0.0013010562,
         "industry": "机械设备"
       },
       {
         "symbol": "002916",
         "name": "深南电路",
-        "weight": 0.0021794115,
-        "benchmark_weight": 0.0042276122,
+        "weight": 0.0017006137,
+        "benchmark_weight": 0.0028684704,
         "industry": "电子"
       },
       {
         "symbol": "002920",
         "name": "德赛西威",
-        "weight": 0.0005493332,
-        "benchmark_weight": 0.0009874715,
+        "weight": 0.0005120117,
+        "benchmark_weight": 0.0010346982,
         "industry": "计算机"
       },
       {
         "symbol": "002938",
         "name": "鹏鼎控股",
-        "weight": 0.0136384432,
-        "benchmark_weight": 0.0022938139,
+        "weight": 0.0039152001,
+        "benchmark_weight": 0.0017415713,
         "industry": "电子"
       },
       {
         "symbol": "003816",
         "name": "中国广核",
-        "weight": 0.0005490569,
-        "benchmark_weight": 0.0013783456,
+        "weight": 0.0004898081,
+        "benchmark_weight": 0.0017005932,
         "industry": "公用事业"
       },
       {
         "symbol": "300014",
         "name": "亿纬锂能",
-        "weight": 0.0005233735,
-        "benchmark_weight": 0.0031475653,
+        "weight": 0.0004793556,
+        "benchmark_weight": 0.0032167846,
         "industry": "电力设备"
       },
       {
         "symbol": "300015",
         "name": "爱尔眼科",
-        "weight": 0.0005746159,
-        "benchmark_weight": 0.0015429241,
+        "weight": 0.0005246289,
+        "benchmark_weight": 0.001792794,
         "industry": "医药生物"
       },
       {
         "symbol": "300033",
         "name": "同花顺",
-        "weight": 0.0004962433,
-        "benchmark_weight": 0.0024686786,
+        "weight": 0.0004676386,
+        "benchmark_weight": 0.0025918679,
         "industry": "计算机"
       },
       {
         "symbol": "300059",
         "name": "东方财富",
-        "weight": 0.000511243,
-        "benchmark_weight": 0.0093604065,
+        "weight": 0.0004886372,
+        "benchmark_weight": 0.0100601354,
         "industry": "非银金融"
       },
       {
         "symbol": "300122",
         "name": "智飞生物",
-        "weight": 0.000564555,
-        "benchmark_weight": 0.0006994589,
+        "weight": 0.0004858359,
+        "benchmark_weight": 0.0007273621,
         "industry": "医药生物"
       },
       {
         "symbol": "300124",
         "name": "汇川技术",
-        "weight": 0.0005862855,
-        "benchmark_weight": 0.0040836059,
+        "weight": 0.0004763848,
+        "benchmark_weight": 0.0047432207,
         "industry": "机械设备"
       },
       {
         "symbol": "300251",
         "name": "光线传媒",
-        "weight": 0.0005088278,
-        "benchmark_weight": 0.0006686005,
+        "weight": 0.0004654607,
+        "benchmark_weight": 0.0007478512,
         "industry": "传媒"
       },
       {
         "symbol": "300274",
         "name": "阳光电源",
-        "weight": 0.0004468674,
-        "benchmark_weight": 0.0049785019,
+        "weight": 0.0005144517,
+        "benchmark_weight": 0.0042822165,
         "industry": "电力设备"
       },
       {
         "symbol": "300308",
         "name": "中际旭创",
-        "weight": 0.0229611627,
-        "benchmark_weight": 0.0374621984,
+        "weight": 0.0091428049,
+        "benchmark_weight": 0.0278548964,
         "industry": "通信"
       },
       {
         "symbol": "300316",
         "name": "晶盛机电",
-        "weight": 0.00307633,
-        "benchmark_weight": 0.0009771853,
+        "weight": 0.0058811259,
+        "benchmark_weight": 0.0009220083,
         "industry": "电力设备"
       },
       {
         "symbol": "300394",
         "name": "天孚通信",
-        "weight": 0.0003658683,
-        "benchmark_weight": 0.0070871649,
+        "weight": 0.000367283,
+        "benchmark_weight": 0.0043744173,
         "industry": "通信"
       },
       {
         "symbol": "300408",
         "name": "三环集团",
-        "weight": 0.009104288,
-        "benchmark_weight": 0.0065419984,
+        "weight": 0.0072088498,
+        "benchmark_weight": 0.0048046879,
         "industry": "电子"
       },
       {
         "symbol": "300413",
         "name": "芒果超媒",
-        "weight": 0.0004968617,
-        "benchmark_weight": 0.0006480281,
+        "weight": 0.0005404358,
+        "benchmark_weight": 0.0007580957,
         "industry": "传媒"
       },
       {
         "symbol": "300418",
         "name": "昆仑万维",
-        "weight": 0.0004375053,
-        "benchmark_weight": 0.0015017795,
+        "weight": 0.0004936995,
+        "benchmark_weight": 0.0013522789,
         "industry": "传媒"
       },
       {
         "symbol": "300433",
         "name": "蓝思科技",
-        "weight": 0.0005348048,
-        "benchmark_weight": 0.0026744019,
+        "weight": 0.0005164711,
+        "benchmark_weight": 0.0023050208,
         "industry": "电子"
       },
       {
         "symbol": "300450",
         "name": "先导智能",
-        "weight": 0.0005160602,
-        "benchmark_weight": 0.001594355,
+        "weight": 0.0004857515,
+        "benchmark_weight": 0.001505947,
         "industry": "电力设备"
       },
       {
         "symbol": "300476",
         "name": "胜宏科技",
-        "weight": 0.0004018889,
-        "benchmark_weight": 0.0053385176,
+        "weight": 0.00039396,
+        "benchmark_weight": 0.0038314569,
         "industry": "电子"
       },
       {
         "symbol": "300498",
         "name": "温氏股份",
-        "weight": 0.0005404896,
-        "benchmark_weight": 0.0033430023,
+        "weight": 0.0005473489,
+        "benchmark_weight": 0.0037699897,
         "industry": "农林牧渔"
       },
       {
         "symbol": "300502",
         "name": "新易盛",
-        "weight": 0.0050641569,
-        "benchmark_weight": 0.0225369787,
+        "weight": 0.0004158606,
+        "benchmark_weight": 0.0123446672,
         "industry": "通信"
       },
       {
         "symbol": "300628",
         "name": "亿联网络",
-        "weight": 0.0005402697,
-        "benchmark_weight": 0.000833179,
+        "weight": 0.0005443339,
+        "benchmark_weight": 0.000840052,
         "industry": "通信"
       },
       {
         "symbol": "300661",
         "name": "圣邦股份",
-        "weight": 0.0004740739,
-        "benchmark_weight": 0.0019852291,
+        "weight": 0.0004558055,
+        "benchmark_weight": 0.0015981478,
         "industry": "电子"
       },
       {
         "symbol": "300750",
         "name": "宁德时代",
-        "weight": 0.0387235421,
-        "benchmark_weight": 0.0319899607,
+        "weight": 0.012675041,
+        "benchmark_weight": 0.0278241628,
         "industry": "电力设备"
       },
       {
         "symbol": "300760",
         "name": "迈瑞医疗",
-        "weight": 0.0005715049,
-        "benchmark_weight": 0.0040630336,
+        "weight": 0.0005182535,
+        "benchmark_weight": 0.004978845,
         "industry": "医药生物"
       },
       {
         "symbol": "300803",
         "name": "指南针",
-        "weight": 0.0003774283,
-        "benchmark_weight": 0.0011726224,
+        "weight": 0.0004704924,
+        "benchmark_weight": 0.0009117638,
         "industry": "计算机"
       },
       {
         "symbol": "300832",
         "name": "新产业",
-        "weight": 0.0006459922,
-        "benchmark_weight": 0.0008228929,
+        "weight": 0.0005300359,
+        "benchmark_weight": 0.0010961655,
         "industry": "医药生物"
       },
       {
         "symbol": "300866",
         "name": "安克创新",
-        "weight": 0.0154945856,
-        "benchmark_weight": 0.0011109054,
+        "weight": 0.0162986817,
+        "benchmark_weight": 0.0010449428,
         "industry": "电子"
       },
       {
         "symbol": "300896",
         "name": "爱美客",
-        "weight": 0.0004789733,
-        "benchmark_weight": 0.0005965973,
+        "weight": 0.0004973376,
+        "benchmark_weight": 0.0005941832,
         "industry": "美容护理"
       },
       {
         "symbol": "300999",
         "name": "金龙鱼",
-        "weight": 0.0005164,
-        "benchmark_weight": 0.0005965973,
+        "weight": 0.0004858216,
+        "benchmark_weight": 0.0006761394,
         "industry": "农林牧渔"
       },
       {
         "symbol": "301165",
         "name": "锐捷网络",
-        "weight": 0.0127680709,
-        "benchmark_weight": 0.0005554527,
+        "weight": 0.0180785345,
+        "benchmark_weight": 0.0003892924,
         "industry": "通信"
       },
       {
         "symbol": "301236",
         "name": "软通动力",
-        "weight": 0.0004856303,
-        "benchmark_weight": 0.0009051822,
+        "weight": 0.0005135758,
+        "benchmark_weight": 0.0008707857,
         "industry": "计算机"
       },
       {
         "symbol": "301269",
         "name": "华大九天",
-        "weight": 0.0004609073,
-        "benchmark_weight": 0.0007714621,
+        "weight": 0.0005066698,
+        "benchmark_weight": 0.0008502966,
         "industry": "计算机"
       },
       {
         "symbol": "301308",
         "name": "江波龙",
-        "weight": 0.0004618841,
-        "benchmark_weight": 0.0031887099,
+        "weight": 0.0004652749,
+        "benchmark_weight": 0.0024279553,
         "industry": "电子"
       },
       {
         "symbol": "302132",
         "name": "中航成飞",
-        "weight": 0.0005256322,
-        "benchmark_weight": 0.0007097451,
+        "weight": 0.0005090869,
+        "benchmark_weight": 0.0008298075,
         "industry": "国防军工"
       },
       {
         "symbol": "600000",
         "name": "浦发银行",
-        "weight": 0.0005417277,
-        "benchmark_weight": 0.0052459421,
+        "weight": 0.0005372476,
+        "benchmark_weight": 0.0060340324,
         "industry": "银行"
       },
       {
         "symbol": "600009",
         "name": "上海机场",
-        "weight": 0.0005415608,
-        "benchmark_weight": 0.0011623362,
+        "weight": 0.0005052256,
+        "benchmark_weight": 0.0013522789,
         "industry": "交通运输"
       },
       {
         "symbol": "600010",
         "name": "包钢股份",
-        "weight": 0.0004981222,
-        "benchmark_weight": 0.0019646568,
+        "weight": 0.0004752329,
+        "benchmark_weight": 0.0020181738,
         "industry": "钢铁"
       },
       {
         "symbol": "600011",
         "name": "华能国际",
-        "weight": 0.0005253081,
-        "benchmark_weight": 0.0012857701,
+        "weight": 0.0005279883,
+        "benchmark_weight": 0.0014854579,
         "industry": "公用事业"
       },
       {
         "symbol": "600015",
         "name": "华夏银行",
-        "weight": 0.0005301348,
-        "benchmark_weight": 0.0016560719,
+        "weight": 0.0005136817,
+        "benchmark_weight": 0.0018337721,
         "industry": "银行"
       },
       {
         "symbol": "600016",
         "name": "民生银行",
-        "weight": 0.0005320658,
-        "benchmark_weight": 0.0036207287,
+        "weight": 0.0005107637,
+        "benchmark_weight": 0.0039646359,
         "industry": "银行"
       },
       {
         "symbol": "600018",
         "name": "上港集团",
-        "weight": 0.0175353506,
-        "benchmark_weight": 0.0006891728,
+        "weight": 0.0161356943,
+        "benchmark_weight": 0.0007888294,
         "industry": "交通运输"
       },
       {
         "symbol": "600019",
         "name": "宝钢股份",
-        "weight": 0.0005253365,
-        "benchmark_weight": 0.0021498076,
+        "weight": 0.0005404265,
+        "benchmark_weight": 0.0023767326,
         "industry": "钢铁"
       },
       {
         "symbol": "600023",
         "name": "浙能电力",
-        "weight": 0.0005149945,
-        "benchmark_weight": 0.0008743237,
+        "weight": 0.0005260316,
+        "benchmark_weight": 0.000952742,
         "industry": "公用事业"
       },
       {
         "symbol": "600025",
         "name": "华能水电",
-        "weight": 0.0005465087,
-        "benchmark_weight": 0.0007611759,
+        "weight": 0.0005145013,
+        "benchmark_weight": 0.0009015193,
         "industry": "公用事业"
       },
       {
         "symbol": "600026",
         "name": "中远海能",
-        "weight": 0.0005047422,
-        "benchmark_weight": 0.0014297764,
+        "weight": 0.0004198199,
+        "benchmark_weight": 0.0014342352,
         "industry": "交通运输"
       },
       {
         "symbol": "600027",
         "name": "华电国际",
-        "weight": 0.0005166581,
-        "benchmark_weight": 0.0008126067,
+        "weight": 0.0005154103,
+        "benchmark_weight": 0.0009117638,
         "industry": "公用事业"
       },
       {
         "symbol": "600028",
         "name": "中国石化",
-        "weight": 0.0005612905,
-        "benchmark_weight": 0.0031989961,
+        "weight": 0.0005569578,
+        "benchmark_weight": 0.0038826796,
         "industry": "石油石化"
       },
       {
         "symbol": "600029",
         "name": "南方航空",
-        "weight": 0.000539783,
-        "benchmark_weight": 0.0011006192,
+        "weight": 0.0005154969,
+        "benchmark_weight": 0.0011883663,
         "industry": "交通运输"
       },
       {
         "symbol": "600030",
         "name": "中信证券",
-        "weight": 0.0004893967,
-        "benchmark_weight": 0.0104918842,
+        "weight": 0.0004904643,
+        "benchmark_weight": 0.0107157858,
         "industry": "非银金融"
       },
       {
         "symbol": "600031",
         "name": "三一重工",
-        "weight": 0.000528141,
-        "benchmark_weight": 0.0043099015,
+        "weight": 0.0005177257,
+        "benchmark_weight": 0.0047534652,
         "industry": "机械设备"
       },
       {
         "symbol": "600036",
         "name": "招商银行",
-        "weight": 0.006714219,
-        "benchmark_weight": 0.0212203501,
+        "weight": 0.0289732929,
+        "benchmark_weight": 0.0243410202,
         "industry": "银行"
       },
       {
         "symbol": "600039",
         "name": "四川路桥",
-        "weight": 0.0005063026,
-        "benchmark_weight": 0.0009463268,
+        "weight": 0.0005221776,
+        "benchmark_weight": 0.0009937201,
         "industry": "建筑装饰"
       },
       {
         "symbol": "600048",
         "name": "保利发展",
-        "weight": 0.0005146135,
-        "benchmark_weight": 0.0017177889,
+        "weight": 0.0004829371,
+        "benchmark_weight": 0.0017518158,
         "industry": "房地产"
       },
       {
         "symbol": "600050",
         "name": "中国联通",
-        "weight": 0.0005273443,
-        "benchmark_weight": 0.002746405,
+        "weight": 0.0004940912,
+        "benchmark_weight": 0.0031040947,
         "industry": "通信"
       },
       {
         "symbol": "600061",
         "name": "国投资本",
-        "weight": 0.0004964282,
-        "benchmark_weight": 0.0006583143,
+        "weight": 0.0004871466,
+        "benchmark_weight": 0.0006761394,
         "industry": "非银金融"
       },
       {
         "symbol": "600066",
         "name": "宇通客车",
-        "weight": 0.0005335721,
-        "benchmark_weight": 0.001470921,
+        "weight": 0.0005439252,
+        "benchmark_weight": 0.0017518158,
         "industry": "汽车"
       },
       {
         "symbol": "600085",
         "name": "同仁堂",
-        "weight": 0.0005413889,
-        "benchmark_weight": 0.0006788866,
+        "weight": 0.0004813282,
+        "benchmark_weight": 0.0007785848,
         "industry": "医药生物"
       },
       {
         "symbol": "600089",
         "name": "特变电工",
-        "weight": 0.0005297197,
-        "benchmark_weight": 0.003641301,
+        "weight": 0.0005453651,
+        "benchmark_weight": 0.0039646359,
         "industry": "电力设备"
       },
       {
         "symbol": "600104",
         "name": "上汽集团",
-        "weight": 0.0168929633,
-        "benchmark_weight": 0.0020778045,
+        "weight": 0.0163641938,
+        "benchmark_weight": 0.0021206192,
         "industry": "汽车"
       },
       {
         "symbol": "600111",
         "name": "北方稀土",
-        "weight": 0.0018203818,
-        "benchmark_weight": 0.0037133041,
+        "weight": 0.0017011389,
+        "benchmark_weight": 0.0039134132,
         "industry": "有色金属"
       },
       {
         "symbol": "600115",
         "name": "中国东航",
-        "weight": 0.0005416733,
-        "benchmark_weight": 0.0012034808,
+        "weight": 0.0005214306,
+        "benchmark_weight": 0.0012498335,
         "industry": "交通运输"
       },
       {
         "symbol": "600118",
         "name": "中国卫星",
-        "weight": 0.0005777253,
-        "benchmark_weight": 0.0013474871,
+        "weight": 0.0004520242,
+        "benchmark_weight": 0.0014957024,
         "industry": "国防军工"
       },
       {
         "symbol": "600150",
         "name": "中国船舶",
-        "weight": 0.0004977704,
-        "benchmark_weight": 0.0073340328,
+        "weight": 0.0004957723,
+        "benchmark_weight": 0.0068126172,
         "industry": "国防军工"
       },
       {
         "symbol": "600160",
         "name": "巨化股份",
-        "weight": 0.0005085464,
-        "benchmark_weight": 0.0018617951,
+        "weight": 0.0005118874,
+        "benchmark_weight": 0.0017518158,
         "industry": "基础化工"
       },
       {
         "symbol": "600176",
         "name": "中国巨石",
-        "weight": 0.0004295414,
-        "benchmark_weight": 0.0039293135,
+        "weight": 0.0004605849,
+        "benchmark_weight": 0.0030016494,
         "industry": "建筑材料"
       },
       {
         "symbol": "600183",
         "name": "生益科技",
-        "weight": 0.018266153,
-        "benchmark_weight": 0.0078689132,
+        "weight": 0.0126934379,
+        "benchmark_weight": 0.0057266962,
         "industry": "电子"
       },
       {
         "symbol": "600188",
         "name": "兖矿能源",
-        "weight": 0.000537723,
-        "benchmark_weight": 0.0014400625,
+        "weight": 0.0004589587,
+        "benchmark_weight": 0.0015571696,
         "industry": "煤炭"
       },
       {
         "symbol": "600196",
         "name": "复星医药",
-        "weight": 0.0005187421,
-        "benchmark_weight": 0.0012651978,
+        "weight": 0.0004546349,
+        "benchmark_weight": 0.0013010562,
         "industry": "医药生物"
       },
       {
         "symbol": "600219",
         "name": "南山铝业",
-        "weight": 0.0005187516,
-        "benchmark_weight": 0.0013474871,
+        "weight": 0.0005095697,
+        "benchmark_weight": 0.0013317898,
         "industry": "有色金属"
       },
       {
         "symbol": "600221",
         "name": "海航控股",
-        "weight": 0.0005041976,
-        "benchmark_weight": 0.0013063424,
+        "weight": 0.0004923857,
+        "benchmark_weight": 0.0013317898,
         "industry": "交通运输"
       },
       {
         "symbol": "600233",
         "name": "圆通速递",
-        "weight": 0.0005212443,
-        "benchmark_weight": 0.0012651978,
+        "weight": 0.0005171405,
+        "benchmark_weight": 0.0013522789,
         "industry": "交通运输"
       },
       {
         "symbol": "600276",
         "name": "恒瑞医药",
-        "weight": 0.0005467043,
-        "benchmark_weight": 0.008753523,
+        "weight": 0.0004871521,
+        "benchmark_weight": 0.0097732884,
         "industry": "医药生物"
       },
       {
         "symbol": "600309",
         "name": "万华化学",
-        "weight": 0.0081099206,
-        "benchmark_weight": 0.0053796622,
+        "weight": 0.0079445645,
+        "benchmark_weight": 0.0059520761,
         "industry": "基础化工"
       },
       {
         "symbol": "600346",
         "name": "恒力石化",
-        "weight": 0.0005434779,
-        "benchmark_weight": 0.0014092041,
+        "weight": 0.0005215958,
+        "benchmark_weight": 0.0015161915,
         "industry": "石油石化"
       },
       {
         "symbol": "600362",
         "name": "江西铜业",
-        "weight": 0.0004297582,
-        "benchmark_weight": 0.0018000782,
+        "weight": 0.0004725481,
+        "benchmark_weight": 0.001505947,
         "industry": "有色金属"
       },
       {
         "symbol": "600372",
         "name": "中航机载",
-        "weight": 0.0162266789,
-        "benchmark_weight": 0.0011314777,
+        "weight": 0.0164593334,
+        "benchmark_weight": 0.0011883663,
         "industry": "国防军工"
       },
       {
         "symbol": "600406",
         "name": "国电南瑞",
-        "weight": 0.0201053168,
-        "benchmark_weight": 0.0037544488,
+        "weight": 0.0198905946,
+        "benchmark_weight": 0.0042002602,
         "industry": "电力设备"
       },
       {
         "symbol": "600415",
         "name": "小商品城",
-        "weight": 0.0005502201,
-        "benchmark_weight": 0.0012651978,
+        "weight": 0.0005472713,
+        "benchmark_weight": 0.0014137461,
         "industry": "商贸零售"
       },
       {
         "symbol": "600426",
         "name": "华鲁恒升",
-        "weight": 0.0005367401,
-        "benchmark_weight": 0.0015532103,
+        "weight": 0.0004741026,
+        "benchmark_weight": 0.001659615,
         "industry": "基础化工"
       },
       {
         "symbol": "600436",
         "name": "片仔癀",
-        "weight": 0.0005602602,
-        "benchmark_weight": 0.0014812072,
+        "weight": 0.000512886,
+        "benchmark_weight": 0.0017518158,
         "industry": "医药生物"
       },
       {
         "symbol": "600460",
         "name": "士兰微",
-        "weight": 0.0004692547,
-        "benchmark_weight": 0.0014914933,
+        "weight": 0.0004888702,
+        "benchmark_weight": 0.0012088554,
         "industry": "电子"
       },
       {
         "symbol": "600482",
         "name": "中国动力",
-        "weight": 0.0004992819,
-        "benchmark_weight": 0.0015840688,
+        "weight": 0.0069399039,
+        "benchmark_weight": 0.001526436,
         "industry": "电力设备"
       },
       {
         "symbol": "600489",
         "name": "中金黄金",
-        "weight": 0.000474497,
-        "benchmark_weight": 0.0026435434,
+        "weight": 0.000510566,
+        "benchmark_weight": 0.0025304007,
         "industry": "有色金属"
       },
       {
         "symbol": "600515",
         "name": "海南机场",
-        "weight": 0.0005099741,
-        "benchmark_weight": 0.0006480281,
+        "weight": 0.0004844623,
+        "benchmark_weight": 0.0006658949,
         "industry": "房地产"
       },
       {
         "symbol": "600519",
         "name": "贵州茅台",
-        "weight": 0.0310491203,
-        "benchmark_weight": 0.0326894197,
+        "weight": 0.0547446763,
+        "benchmark_weight": 0.0392980443,
         "industry": "食品饮料"
       },
       {
         "symbol": "600522",
         "name": "中天科技",
-        "weight": 0.0004578948,
-        "benchmark_weight": 0.0035281532,
+        "weight": 0.0004565511,
+        "benchmark_weight": 0.0028582259,
         "industry": "通信"
       },
       {
         "symbol": "600547",
         "name": "山东黄金",
-        "weight": 0.0004650141,
-        "benchmark_weight": 0.002046946,
+        "weight": 0.0005277815,
+        "benchmark_weight": 0.0019054839,
         "industry": "有色金属"
       },
       {
         "symbol": "600549",
         "name": "厦门钨业",
-        "weight": 0.000471903,
-        "benchmark_weight": 0.0020366599,
+        "weight": 0.000482368,
+        "benchmark_weight": 0.001659615,
         "industry": "有色金属"
       },
       {
         "symbol": "600570",
         "name": "恒生电子",
-        "weight": 0.0004988181,
-        "benchmark_weight": 0.0012240532,
+        "weight": 0.0004945626,
+        "benchmark_weight": 0.0012908117,
         "industry": "计算机"
       },
       {
         "symbol": "600584",
         "name": "长电科技",
-        "weight": 0.000452549,
-        "benchmark_weight": 0.0038264519,
+        "weight": 0.0005143131,
+        "benchmark_weight": 0.003165562,
         "industry": "电子"
       },
       {
         "symbol": "600585",
         "name": "海螺水泥",
-        "weight": 0.0005122359,
-        "benchmark_weight": 0.0017486474,
+        "weight": 0.000510458,
+        "benchmark_weight": 0.0019669511,
         "industry": "建筑材料"
       },
       {
         "symbol": "600588",
         "name": "用友网络",
-        "weight": 0.0005033133,
-        "benchmark_weight": 0.0007817482,
+        "weight": 0.000463167,
+        "benchmark_weight": 0.000819563,
         "industry": "计算机"
       },
       {
         "symbol": "600600",
         "name": "青岛啤酒",
-        "weight": 0.0005074029,
-        "benchmark_weight": 0.0007406036,
+        "weight": 0.0005278337,
+        "benchmark_weight": 0.0008093184,
         "industry": "食品饮料"
       },
       {
         "symbol": "600660",
         "name": "福耀玻璃",
-        "weight": 0.0190770328,
-        "benchmark_weight": 0.0035692979,
+        "weight": 0.0198963094,
+        "benchmark_weight": 0.003872435,
         "industry": "汽车"
       },
       {
         "symbol": "600674",
         "name": "川投能源",
-        "weight": 0.0005405742,
-        "benchmark_weight": 0.0013474871,
+        "weight": 0.000523134,
+        "benchmark_weight": 0.0015776587,
         "industry": "公用事业"
       },
       {
         "symbol": "600690",
         "name": "海尔智家",
-        "weight": 0.0005366693,
-        "benchmark_weight": 0.0031784237,
+        "weight": 0.0005400618,
+        "benchmark_weight": 0.0035138762,
         "industry": "家用电器"
       },
       {
         "symbol": "600741",
         "name": "华域汽车",
-        "weight": 0.0005425911,
-        "benchmark_weight": 0.0010080438,
+        "weight": 0.0005635147,
+        "benchmark_weight": 0.0011473882,
         "industry": "汽车"
       },
       {
         "symbol": "600760",
         "name": "中航沈飞",
-        "weight": 0.0186383196,
-        "benchmark_weight": 0.0020572322,
+        "weight": 0.0169980982,
+        "benchmark_weight": 0.0024381998,
         "industry": "国防军工"
       },
       {
         "symbol": "600795",
         "name": "国电电力",
-        "weight": 0.0005221553,
-        "benchmark_weight": 0.0019749429,
+        "weight": 0.0005222346,
+        "benchmark_weight": 0.0021513528,
         "industry": "公用事业"
       },
       {
         "symbol": "600803",
         "name": "新奥股份",
-        "weight": 0.0005477412,
-        "benchmark_weight": 0.0007406036,
+        "weight": 0.00053712,
+        "benchmark_weight": 0.0008707857,
         "industry": "公用事业"
       },
       {
         "symbol": "600809",
         "name": "山西汾酒",
-        "weight": 0.0005691992,
-        "benchmark_weight": 0.0023452447,
+        "weight": 0.0005015576,
+        "benchmark_weight": 0.0027865141,
         "industry": "食品饮料"
       },
       {
         "symbol": "600845",
         "name": "宝信软件",
-        "weight": 0.0004974782,
-        "benchmark_weight": 0.0006274558,
+        "weight": 0.0004880009,
+        "benchmark_weight": 0.0006249168,
         "industry": "计算机"
       },
       {
         "symbol": "600875",
         "name": "东方电气",
-        "weight": 0.0005146206,
-        "benchmark_weight": 0.0014606349,
+        "weight": 0.0004774317,
+        "benchmark_weight": 0.0014854579,
         "industry": "电力设备"
       },
       {
         "symbol": "600886",
         "name": "国投电力",
-        "weight": 0.0005306656,
-        "benchmark_weight": 0.0015223518,
+        "weight": 0.0004986189,
+        "benchmark_weight": 0.0017518158,
         "industry": "公用事业"
       },
       {
         "symbol": "600887",
         "name": "伊利股份",
-        "weight": 0.0005624357,
-        "benchmark_weight": 0.0071797404,
+        "weight": 0.000526774,
+        "benchmark_weight": 0.0086156557,
         "industry": "食品饮料"
       },
       {
         "symbol": "600893",
         "name": "航发动力",
-        "weight": 0.0004934033,
-        "benchmark_weight": 0.0021498076,
+        "weight": 0.0004623405,
+        "benchmark_weight": 0.0022333091,
         "industry": "国防军工"
       },
       {
         "symbol": "600900",
         "name": "长江电力",
-        "weight": 0.0005324856,
-        "benchmark_weight": 0.014503487,
+        "weight": 0.0014787291,
+        "benchmark_weight": 0.0164322375,
         "industry": "公用事业"
       },
       {
         "symbol": "600905",
         "name": "三峡能源",
-        "weight": 0.0005131591,
-        "benchmark_weight": 0.0020880907,
+        "weight": 0.0004772277,
+        "benchmark_weight": 0.0021615973,
         "industry": "公用事业"
       },
       {
         "symbol": "600918",
         "name": "中泰证券",
-        "weight": 0.0004974493,
-        "benchmark_weight": 0.0007097451,
+        "weight": 0.0004931557,
+        "benchmark_weight": 0.0007376067,
         "industry": "非银金融"
       },
       {
         "symbol": "600919",
         "name": "江苏银行",
-        "weight": 0.0005543938,
-        "benchmark_weight": 0.0075500422,
+        "weight": 0.0005770194,
+        "benchmark_weight": 0.0085951666,
         "industry": "银行"
       },
       {
         "symbol": "600926",
         "name": "杭州银行",
-        "weight": 0.0005354048,
-        "benchmark_weight": 0.0036104425,
+        "weight": 0.0005314579,
+        "benchmark_weight": 0.0039236577,
         "industry": "银行"
       },
       {
         "symbol": "600930",
         "name": "华电新能",
-        "weight": 0.0005052258,
-        "benchmark_weight": 0.0005348804,
+        "weight": 0.0005102795,
+        "benchmark_weight": 0.0005736941,
         "industry": "公用事业"
       },
       {
         "symbol": "600938",
         "name": "中国海油",
-        "weight": 0.0005447063,
-        "benchmark_weight": 0.00332243,
+        "weight": 0.0004231072,
+        "benchmark_weight": 0.0038826796,
         "industry": "石油石化"
       },
       {
         "symbol": "600941",
         "name": "中国移动",
-        "weight": 0.0005298548,
-        "benchmark_weight": 0.0035898702,
+        "weight": 0.0005091003,
+        "benchmark_weight": 0.0041592821,
         "industry": "通信"
       },
       {
         "symbol": "600989",
         "name": "宝丰能源",
-        "weight": 0.0005239662,
-        "benchmark_weight": 0.0020572322,
+        "weight": 0.0004548786,
+        "benchmark_weight": 0.00221282,
         "industry": "基础化工"
       },
       {
         "symbol": "600999",
         "name": "招商证券",
-        "weight": 0.0004918637,
-        "benchmark_weight": 0.0026332572,
+        "weight": 0.0005005934,
+        "benchmark_weight": 0.0026021124,
         "industry": "非银金融"
       },
       {
         "symbol": "601006",
         "name": "大秦铁路",
-        "weight": 0.0005153317,
-        "benchmark_weight": 0.0023452447,
+        "weight": 0.0005076857,
+        "benchmark_weight": 0.002612357,
         "industry": "交通运输"
       },
       {
         "symbol": "601009",
         "name": "南京银行",
-        "weight": 0.0005524121,
-        "benchmark_weight": 0.0030755621,
+        "weight": 0.0005362528,
+        "benchmark_weight": 0.003452409,
         "industry": "银行"
       },
       {
         "symbol": "601012",
         "name": "隆基绿能",
-        "weight": 0.0005313727,
-        "benchmark_weight": 0.0028286943,
+        "weight": 0.000487305,
+        "benchmark_weight": 0.0030118939,
         "industry": "电力设备"
       },
       {
         "symbol": "601018",
         "name": "宁波港",
-        "weight": 0.0005199898,
-        "benchmark_weight": 0.0005657389,
+        "weight": 0.000501516,
+        "benchmark_weight": 0.0006249168,
         "industry": "交通运输"
       },
       {
         "symbol": "601021",
         "name": "春秋航空",
-        "weight": 0.0005458198,
-        "benchmark_weight": 0.000833179,
+        "weight": 0.0005481879,
+        "benchmark_weight": 0.0008912747,
         "industry": "交通运输"
       },
       {
         "symbol": "601058",
         "name": "赛轮轮胎",
-        "weight": 0.0004943275,
-        "benchmark_weight": 0.0014503487,
+        "weight": 0.0005428412,
+        "benchmark_weight": 0.0013830125,
         "industry": "汽车"
       },
       {
         "symbol": "601066",
         "name": "中信建投",
-        "weight": 0.0161108044,
-        "benchmark_weight": 0.0012446255,
+        "weight": 0.0159918259,
+        "benchmark_weight": 0.0012703226,
         "industry": "非银金融"
       },
       {
         "symbol": "601077",
         "name": "渝农商行",
-        "weight": 0.0005463122,
-        "benchmark_weight": 0.0014812072,
+        "weight": 0.0005150683,
+        "benchmark_weight": 0.0017415713,
         "industry": "银行"
       },
       {
         "symbol": "601088",
         "name": "中国神华",
-        "weight": 0.0223808752,
-        "benchmark_weight": 0.0054516653,
+        "weight": 0.0208307074,
+        "benchmark_weight": 0.0064540584,
         "industry": "煤炭"
       },
       {
         "symbol": "601100",
         "name": "恒立液压",
-        "weight": 0.0033144953,
-        "benchmark_weight": 0.0020160876,
+        "weight": 0.0018016454,
+        "benchmark_weight": 0.0020079293,
         "industry": "机械设备"
       },
       {
         "symbol": "601111",
         "name": "中国国航",
-        "weight": 0.0005374604,
-        "benchmark_weight": 0.0011417639,
+        "weight": 0.0005166812,
+        "benchmark_weight": 0.0012190999,
         "industry": "交通运输"
       },
       {
         "symbol": "601117",
         "name": "中国化学",
-        "weight": 0.0005316621,
-        "benchmark_weight": 0.0010903331,
+        "weight": 0.0005034428,
+        "benchmark_weight": 0.0011781218,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601127",
         "name": "赛力斯",
-        "weight": 0.0004599825,
-        "benchmark_weight": 0.001594355,
+        "weight": 0.0004779135,
+        "benchmark_weight": 0.0014957024,
         "industry": "汽车"
       },
       {
         "symbol": "601136",
         "name": "首创证券",
-        "weight": 0.0004628176,
-        "benchmark_weight": 0.000318871,
+        "weight": 0.0004887865,
+        "benchmark_weight": 0.0003073361,
         "industry": "非银金融"
       },
       {
         "symbol": "601138",
         "name": "工业富联",
-        "weight": 0.0243725489,
-        "benchmark_weight": 0.0095969882,
+        "weight": 0.0185635615,
+        "benchmark_weight": 0.0080624507,
         "industry": "电子"
       },
       {
         "symbol": "601166",
         "name": "兴业银行",
-        "weight": 0.0005602771,
-        "benchmark_weight": 0.0126931227,
+        "weight": 0.0005121321,
+        "benchmark_weight": 0.0150287359,
         "industry": "银行"
       },
       {
         "symbol": "601169",
         "name": "北京银行",
-        "weight": 0.00052803,
-        "benchmark_weight": 0.0034252916,
+        "weight": 0.0005349614,
+        "benchmark_weight": 0.0037802342,
         "industry": "银行"
       },
       {
         "symbol": "601186",
         "name": "中国铁建",
-        "weight": 0.0166916938,
-        "benchmark_weight": 0.00115205,
+        "weight": 0.0160799964,
+        "benchmark_weight": 0.0012600781,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601211",
         "name": "国泰海通",
-        "weight": 0.0005011172,
-        "benchmark_weight": 0.007920344,
+        "weight": 0.0004992135,
+        "benchmark_weight": 0.0080931843,
         "industry": "非银金融"
       },
       {
         "symbol": "601225",
         "name": "陕西煤业",
-        "weight": 0.000523502,
-        "benchmark_weight": 0.0041967537,
+        "weight": 0.0005131685,
+        "benchmark_weight": 0.0049173778,
         "industry": "煤炭"
       },
       {
         "symbol": "601229",
         "name": "上海银行",
-        "weight": 0.0005260597,
-        "benchmark_weight": 0.0040321751,
+        "weight": 0.000513606,
+        "benchmark_weight": 0.0041797711,
         "industry": "银行"
       },
       {
         "symbol": "601288",
         "name": "农业银行",
-        "weight": 0.0005531599,
-        "benchmark_weight": 0.0083215042,
+        "weight": 0.0005068698,
+        "benchmark_weight": 0.0097118212,
         "industry": "银行"
       },
       {
         "symbol": "601318",
         "name": "中国平安",
-        "weight": 0.0092157909,
-        "benchmark_weight": 0.0236067395,
+        "weight": 0.0106668565,
+        "benchmark_weight": 0.0254166965,
         "industry": "非银金融"
       },
       {
         "symbol": "601319",
         "name": "中国人保",
-        "weight": 0.0056836658,
-        "benchmark_weight": 0.0010594746,
+        "weight": 0.0160912891,
+        "benchmark_weight": 0.0010756764,
         "industry": "非银金融"
       },
       {
         "symbol": "601328",
         "name": "交通银行",
-        "weight": 0.0005612391,
-        "benchmark_weight": 0.0085889444,
+        "weight": 0.000507043,
+        "benchmark_weight": 0.0103982052,
         "industry": "银行"
       },
       {
         "symbol": "601336",
         "name": "新华保险",
-        "weight": 0.0005053395,
-        "benchmark_weight": 0.0019543706,
+        "weight": 0.000506928,
+        "benchmark_weight": 0.0018952394,
         "industry": "非银金融"
       },
       {
         "symbol": "601360",
         "name": "三六零",
-        "weight": 0.000490212,
-        "benchmark_weight": 0.0013063424,
+        "weight": 0.0004795983,
+        "benchmark_weight": 0.001239589,
         "industry": "计算机"
       },
       {
         "symbol": "601377",
         "name": "兴业证券",
-        "weight": 0.0004935033,
-        "benchmark_weight": 0.0016457858,
+        "weight": 0.0004841098,
+        "benchmark_weight": 0.001659615,
         "industry": "非银金融"
       },
       {
         "symbol": "601390",
         "name": "中国中铁",
-        "weight": 0.0005161961,
-        "benchmark_weight": 0.0018412228,
+        "weight": 0.0005008552,
+        "benchmark_weight": 0.0019669511,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601398",
         "name": "工商银行",
-        "weight": 0.0288805853,
-        "benchmark_weight": 0.0111296262,
+        "weight": 0.0288375367,
+        "benchmark_weight": 0.0127851823,
         "industry": "银行"
       },
       {
         "symbol": "601456",
         "name": "国联民生",
-        "weight": 0.0004886958,
-        "benchmark_weight": 0.0011109054,
+        "weight": 0.0005011484,
+        "benchmark_weight": 0.0011166545,
         "industry": "非银金融"
       },
       {
         "symbol": "601600",
         "name": "中国铝业",
-        "weight": 0.0005293004,
-        "benchmark_weight": 0.002941842,
+        "weight": 0.000491255,
+        "benchmark_weight": 0.0030631166,
         "industry": "有色金属"
       },
       {
         "symbol": "601601",
         "name": "中国太保",
-        "weight": 0.0005583437,
-        "benchmark_weight": 0.0044127631,
+        "weight": 0.0005239732,
+        "benchmark_weight": 0.0047432207,
         "industry": "非银金融"
       },
       {
         "symbol": "601607",
         "name": "上海医药",
-        "weight": 0.0164825048,
-        "benchmark_weight": 0.0007508898,
+        "weight": 0.0155584481,
+        "benchmark_weight": 0.0008298075,
         "industry": "医药生物"
       },
       {
         "symbol": "601618",
         "name": "中国中冶",
-        "weight": 0.0005025049,
-        "benchmark_weight": 0.0007508898,
+        "weight": 0.0004917377,
+        "benchmark_weight": 0.0007888294,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601628",
         "name": "中国人寿",
-        "weight": 0.0174487999,
-        "benchmark_weight": 0.0025406818,
+        "weight": 0.0175530379,
+        "benchmark_weight": 0.0026021124,
         "industry": "非银金融"
       },
       {
         "symbol": "601633",
         "name": "长城汽车",
-        "weight": 0.0005256908,
-        "benchmark_weight": 0.0007097451,
+        "weight": 0.0004616972,
+        "benchmark_weight": 0.0007888294,
         "industry": "汽车"
       },
       {
         "symbol": "601658",
         "name": "邮储银行",
-        "weight": 0.0005466895,
-        "benchmark_weight": 0.0024995371,
+        "weight": 0.0005020678,
+        "benchmark_weight": 0.0028582259,
         "industry": "银行"
       },
       {
         "symbol": "601668",
         "name": "中国建筑",
-        "weight": 0.0005388569,
-        "benchmark_weight": 0.0037235903,
+        "weight": 0.0005031677,
+        "benchmark_weight": 0.0043436837,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601669",
         "name": "中国电建",
-        "weight": 0.0005092528,
-        "benchmark_weight": 0.0016354996,
+        "weight": 0.0004895481,
+        "benchmark_weight": 0.0017210822,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601688",
         "name": "华泰证券",
-        "weight": 0.000506361,
-        "benchmark_weight": 0.0043201876,
+        "weight": 0.0004887965,
+        "benchmark_weight": 0.0044871073,
         "industry": "非银金融"
       },
       {
         "symbol": "601689",
         "name": "拓普集团",
-        "weight": 0.0005694164,
-        "benchmark_weight": 0.0016766442,
+        "weight": 0.0005472165,
+        "benchmark_weight": 0.0016903486,
         "industry": "汽车"
       },
       {
         "symbol": "601698",
         "name": "中国卫通",
-        "weight": 0.0005244085,
-        "benchmark_weight": 0.0011931947,
+        "weight": 0.0004688944,
+        "benchmark_weight": 0.0012600781,
         "industry": "国防军工"
       },
       {
         "symbol": "601727",
         "name": "上海电气",
-        "weight": 0.0167229489,
-        "benchmark_weight": 0.0016869304,
+        "weight": 0.0159226903,
+        "benchmark_weight": 0.0016903486,
         "industry": "电力设备"
       },
       {
         "symbol": "601728",
         "name": "中国电信",
-        "weight": 0.000538223,
-        "benchmark_weight": 0.0040527474,
+        "weight": 0.0005326042,
+        "benchmark_weight": 0.0049173778,
         "industry": "通信"
       },
       {
         "symbol": "601766",
         "name": "中国中车",
-        "weight": 0.0195829641,
-        "benchmark_weight": 0.0031269929,
+        "weight": 0.0198468944,
+        "benchmark_weight": 0.0035958325,
         "industry": "机械设备"
       },
       {
         "symbol": "601788",
         "name": "光大证券",
-        "weight": 0.0005024657,
-        "benchmark_weight": 0.0011109054,
+        "weight": 0.0004896976,
+        "benchmark_weight": 0.0011576327,
         "industry": "非银金融"
       },
       {
         "symbol": "601800",
         "name": "中国交建",
-        "weight": 0.0005294794,
-        "benchmark_weight": 0.0008743237,
+        "weight": 0.0004874687,
+        "benchmark_weight": 0.0009937201,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601816",
         "name": "京沪高铁",
-        "weight": 0.0005325773,
-        "benchmark_weight": 0.0058013948,
+        "weight": 0.0005141252,
+        "benchmark_weight": 0.0068945735,
         "industry": "交通运输"
       },
       {
         "symbol": "601818",
         "name": "光大银行",
-        "weight": 0.0005260599,
-        "benchmark_weight": 0.0023452447,
+        "weight": 0.0005521591,
+        "benchmark_weight": 0.0026021124,
         "industry": "银行"
       },
       {
         "symbol": "601825",
         "name": "沪农商行",
-        "weight": 0.0005469283,
-        "benchmark_weight": 0.0020675184,
+        "weight": 0.0005326122,
+        "benchmark_weight": 0.002345999,
         "industry": "银行"
       },
       {
         "symbol": "601838",
         "name": "成都银行",
-        "weight": 0.0087629594,
-        "benchmark_weight": 0.0020366599,
+        "weight": 0.0005265882,
+        "benchmark_weight": 0.0022947763,
         "industry": "银行"
       },
       {
         "symbol": "601857",
         "name": "中国石油",
-        "weight": 0.0005705339,
-        "benchmark_weight": 0.0060379765,
+        "weight": 0.0146643873,
+        "benchmark_weight": 0.0080931843,
         "industry": "石油石化"
       },
       {
         "symbol": "601868",
         "name": "中国能建",
-        "weight": 0.0005030053,
-        "benchmark_weight": 0.0013886317,
+        "weight": 0.0004874819,
+        "benchmark_weight": 0.0014239907,
         "industry": "建筑装饰"
       },
       {
         "symbol": "601872",
         "name": "招商轮船",
-        "weight": 0.0005164088,
-        "benchmark_weight": 0.0027052603,
+        "weight": 0.0004195243,
+        "benchmark_weight": 0.0025816233,
         "industry": "交通运输"
       },
       {
         "symbol": "601877",
         "name": "正泰电器",
-        "weight": 0.0162031172,
-        "benchmark_weight": 0.0011109054,
+        "weight": 0.016073887,
+        "benchmark_weight": 0.0011576327,
         "industry": "电力设备"
       },
       {
         "symbol": "601878",
         "name": "浙商证券",
-        "weight": 0.0005055843,
-        "benchmark_weight": 0.0010183299,
+        "weight": 0.0005093623,
+        "benchmark_weight": 0.0010551873,
         "industry": "非银金融"
       },
       {
         "symbol": "601881",
         "name": "中国银河",
-        "weight": 0.0004912335,
-        "benchmark_weight": 0.0010491884,
+        "weight": 0.0005116348,
+        "benchmark_weight": 0.0010859209,
         "industry": "非银金融"
       },
       {
         "symbol": "601888",
         "name": "中国中免",
-        "weight": 0.000537809,
-        "benchmark_weight": 0.0020880907,
+        "weight": 0.0004909521,
+        "benchmark_weight": 0.00221282,
         "industry": "商贸零售"
       },
       {
         "symbol": "601898",
         "name": "中煤能源",
-        "weight": 0.0004971372,
-        "benchmark_weight": 0.0010491884,
+        "weight": 0.0004795654,
+        "benchmark_weight": 0.0011473882,
         "industry": "煤炭"
       },
       {
         "symbol": "601899",
         "name": "紫金矿业",
-        "weight": 0.034358716,
-        "benchmark_weight": 0.0203974573,
+        "weight": 0.0321622444,
+        "benchmark_weight": 0.0205402969,
         "industry": "有色金属"
       },
       {
         "symbol": "601901",
         "name": "方正证券",
-        "weight": 0.0005122734,
-        "benchmark_weight": 0.00115205,
+        "weight": 0.0005024328,
+        "benchmark_weight": 0.0011986108,
         "industry": "非银金融"
       },
       {
         "symbol": "601916",
         "name": "浙商银行",
-        "weight": 0.0005223897,
-        "benchmark_weight": 0.0018000782,
+        "weight": 0.0005117323,
+        "benchmark_weight": 0.0020079293,
         "industry": "银行"
       },
       {
         "symbol": "601919",
         "name": "中远海控",
-        "weight": 0.0005710749,
-        "benchmark_weight": 0.0042687568,
+        "weight": 0.0005540167,
+        "benchmark_weight": 0.0050608013,
         "industry": "交通运输"
       },
       {
         "symbol": "601939",
         "name": "建设银行",
-        "weight": 0.0005504311,
-        "benchmark_weight": 0.003898455,
+        "weight": 0.0005075723,
+        "benchmark_weight": 0.0045895526,
         "industry": "银行"
       },
       {
         "symbol": "601985",
         "name": "中国核电",
-        "weight": 0.0005478676,
-        "benchmark_weight": 0.0030961345,
+        "weight": 0.0005033727,
+        "benchmark_weight": 0.0036368107,
         "industry": "公用事业"
       },
       {
         "symbol": "601988",
         "name": "中国银行",
-        "weight": 0.0204835222,
-        "benchmark_weight": 0.0040013166,
+        "weight": 0.0203995352,
+        "benchmark_weight": 0.0045793081,
         "industry": "银行"
       },
       {
         "symbol": "601998",
         "name": "中信银行",
-        "weight": 0.0186182464,
-        "benchmark_weight": 0.0020058014,
+        "weight": 0.0174713592,
+        "benchmark_weight": 0.0022640427,
         "industry": "银行"
       },
       {
         "symbol": "603019",
         "name": "中科曙光",
-        "weight": 0.0005321223,
-        "benchmark_weight": 0.0048344957,
+        "weight": 0.0005505967,
+        "benchmark_weight": 0.0047124871,
         "industry": "计算机"
       },
       {
         "symbol": "603259",
         "name": "药明康德",
-        "weight": 0.0022763396,
-        "benchmark_weight": 0.0171984612,
+        "weight": 0.0009002973,
+        "benchmark_weight": 0.0158585434,
         "industry": "医药生物"
       },
       {
         "symbol": "603260",
         "name": "合盛硅业",
-        "weight": 0.000473161,
-        "benchmark_weight": 0.0004628772,
+        "weight": 0.0004709885,
+        "benchmark_weight": 0.0004610042,
         "industry": "基础化工"
       },
       {
         "symbol": "603288",
         "name": "海天味业",
-        "weight": 0.0005297123,
-        "benchmark_weight": 0.0023041001,
+        "weight": 0.0083710346,
+        "benchmark_weight": 0.0026226015,
         "industry": "食品饮料"
       },
       {
         "symbol": "603296",
         "name": "华勤技术",
-        "weight": 0.0004984316,
-        "benchmark_weight": 0.0017589335,
+        "weight": 0.00053657,
+        "benchmark_weight": 0.0016186369,
         "industry": "电子"
       },
       {
         "symbol": "603369",
         "name": "今世缘",
-        "weight": 0.0005963373,
-        "benchmark_weight": 0.0008743237,
+        "weight": 0.00047605,
+        "benchmark_weight": 0.0011371436,
         "industry": "食品饮料"
       },
       {
         "symbol": "603392",
         "name": "万泰生物",
-        "weight": 0.0004842571,
-        "benchmark_weight": 0.0004320188,
+        "weight": 0.0004568716,
+        "benchmark_weight": 0.0003995369,
         "industry": "医药生物"
       },
       {
         "symbol": "603501",
         "name": "豪威集团",
-        "weight": 0.0006063514,
-        "benchmark_weight": 0.0028904112,
+        "weight": 0.0006440325,
+        "benchmark_weight": 0.0031553174,
         "industry": "电子"
       },
       {
         "symbol": "603799",
         "name": "华友钴业",
-        "weight": 0.0004908079,
-        "benchmark_weight": 0.0022115246,
+        "weight": 0.0005040395,
+        "benchmark_weight": 0.002059152,
         "industry": "有色金属"
       },
       {
         "symbol": "603893",
         "name": "瑞芯微",
-        "weight": 0.0005500348,
-        "benchmark_weight": 0.0018823675,
+        "weight": 0.0005623916,
+        "benchmark_weight": 0.0017005932,
         "industry": "电子"
       },
       {
         "symbol": "603986",
         "name": "兆易创新",
-        "weight": 0.0004811549,
-        "benchmark_weight": 0.0098232838,
+        "weight": 0.0004019351,
+        "benchmark_weight": 0.0077756037,
         "industry": "电子"
       },
       {
         "symbol": "603993",
         "name": "洛阳钼业",
-        "weight": 0.0190736179,
-        "benchmark_weight": 0.0061202658,
+        "weight": 0.0174603316,
+        "benchmark_weight": 0.005378382,
         "industry": "有色金属"
       },
       {
         "symbol": "605117",
         "name": "德业股份",
-        "weight": 0.0004970148,
-        "benchmark_weight": 0.0016560719,
+        "weight": 0.000514083,
+        "benchmark_weight": 0.0015571696,
         "industry": "电力设备"
       },
       {
         "symbol": "605499",
         "name": "东鹏饮料",
-        "weight": 0.0004972745,
-        "benchmark_weight": 0.0012651978,
+        "weight": 0.0005274428,
+        "benchmark_weight": 0.0013215453,
         "industry": "食品饮料"
       },
       {
         "symbol": "688008",
         "name": "澜起科技",
-        "weight": 0.0004927274,
-        "benchmark_weight": 0.0096381329,
+        "weight": 0.0003949439,
+        "benchmark_weight": 0.0081956297,
         "industry": "电子"
       },
       {
         "symbol": "688009",
         "name": "中国通号",
-        "weight": 0.0075972789,
-        "benchmark_weight": 0.0005040219,
+        "weight": 0.016029896,
+        "benchmark_weight": 0.0005736941,
         "industry": "机械设备"
       },
       {
         "symbol": "688036",
         "name": "传音控股",
-        "weight": 0.0006030248,
-        "benchmark_weight": 0.0012857701,
+        "weight": 0.0005750716,
+        "benchmark_weight": 0.0014342352,
         "industry": "电子"
       },
       {
         "symbol": "688041",
         "name": "海光信息",
-        "weight": 0.0042215514,
-        "benchmark_weight": 0.0087638092,
+        "weight": 0.0017604953,
+        "benchmark_weight": 0.0071506869,
         "industry": "电子"
       },
       {
         "symbol": "688047",
         "name": "龙芯中科",
-        "weight": 0.0004807229,
-        "benchmark_weight": 0.0008126067,
+        "weight": 0.0005199643,
+        "benchmark_weight": 0.0007478512,
         "industry": "电子"
       },
       {
         "symbol": "688082",
         "name": "盛美上海",
-        "weight": 0.0095496874,
-        "benchmark_weight": 0.0017692197,
+        "weight": 0.0168839449,
+        "benchmark_weight": 0.0010859209,
         "industry": "电子"
       },
       {
         "symbol": "688111",
         "name": "金山办公",
-        "weight": 0.0004754181,
-        "benchmark_weight": 0.002108663,
+        "weight": 0.0004929065,
+        "benchmark_weight": 0.0021923309,
         "industry": "计算机"
       },
       {
         "symbol": "688126",
         "name": "沪硅产业",
-        "weight": 0.000447687,
-        "benchmark_weight": 0.0016046411,
+        "weight": 0.0005668644,
+        "benchmark_weight": 0.0012088554,
         "industry": "电子"
       },
       {
         "symbol": "688183",
         "name": "生益电子",
-        "weight": 0.0003608017,
-        "benchmark_weight": 0.0014914933,
+        "weight": 0.0004553336,
+        "benchmark_weight": 0.0009834756,
         "industry": "电子"
       },
       {
         "symbol": "688223",
         "name": "晶科能源",
-        "weight": 0.0005454921,
-        "benchmark_weight": 0.0006583143,
+        "weight": 0.0004781634,
+        "benchmark_weight": 0.0007068731,
         "industry": "电力设备"
       },
       {
         "symbol": "688256",
         "name": "寒武纪",
-        "weight": 0.0183133527,
-        "benchmark_weight": 0.0131662861,
+        "weight": 0.0018648072,
+        "benchmark_weight": 0.0124880907,
         "industry": "电子"
       },
       {
         "symbol": "688271",
         "name": "联影医疗",
-        "weight": 0.0005599337,
-        "benchmark_weight": 0.0022012385,
+        "weight": 0.0005115931,
+        "benchmark_weight": 0.0025713788,
         "industry": "医药生物"
       },
       {
         "symbol": "688303",
         "name": "大全能源",
-        "weight": 0.0051038706,
-        "benchmark_weight": 0.0004320188,
+        "weight": 0.0052099511,
+        "benchmark_weight": 0.0004712487,
         "industry": "电力设备"
       },
       {
         "symbol": "688396",
         "name": "华润微",
-        "weight": 0.0013473813,
-        "benchmark_weight": 0.001213767,
+        "weight": 0.0013893869,
+        "benchmark_weight": 0.0010859209,
         "industry": "电子"
       },
       {
         "symbol": "688472",
         "name": "阿特斯",
-        "weight": 0.0005118418,
-        "benchmark_weight": 0.000514308,
+        "weight": 0.0004921911,
+        "benchmark_weight": 0.0005019823,
         "industry": "电力设备"
       },
       {
         "symbol": "688506",
         "name": "百利天恒",
-        "weight": 0.0005489798,
-        "benchmark_weight": 0.000833179,
+        "weight": 0.0004553692,
+        "benchmark_weight": 0.0009117638,
         "industry": "医药生物"
       },
       {
         "symbol": "688521",
         "name": "芯原股份",
-        "weight": 0.0004096257,
-        "benchmark_weight": 0.003003559,
+        "weight": 0.0004595265,
+        "benchmark_weight": 0.0018645058,
         "industry": "电子"
       },
       {
         "symbol": "688981",
         "name": "中芯国际",
-        "weight": 0.0192692906,
-        "benchmark_weight": 0.0094838404,
+        "weight": 0.0224517125,
+        "benchmark_weight": 0.0089025027,
         "industry": "电子"
       }
     ]
@@ -2063,8 +2077,1754 @@
     "rows": []
   },
   "signal_cache": {
-    "columns": [],
-    "rows": []
+    "columns": [
+      "symbol",
+      "momentum_120_20",
+      "volatility_60",
+      "turnover_20"
+    ],
+    "rows": [
+      {
+        "symbol": "000001",
+        "momentum_120_20": -0.1699794851,
+        "volatility_60": -1.604970578,
+        "turnover_20": 0.5001599499
+      },
+      {
+        "symbol": "000002",
+        "momentum_120_20": 0.1630842468,
+        "volatility_60": 1.0412341614,
+        "turnover_20": 3.2994181402
+      },
+      {
+        "symbol": "000063",
+        "momentum_120_20": -1.4401708074,
+        "volatility_60": -0.8439789675,
+        "turnover_20": -0.3277701475
+      },
+      {
+        "symbol": "000100",
+        "momentum_120_20": 0.2796401106,
+        "volatility_60": -2.0452432148,
+        "turnover_20": -0.497501713
+      },
+      {
+        "symbol": "000157",
+        "momentum_120_20": -0.5937273225,
+        "volatility_60": -1.0640318733,
+        "turnover_20": -0.781977822
+      },
+      {
+        "symbol": "000166",
+        "momentum_120_20": -0.1688619139,
+        "volatility_60": -1.0988369106,
+        "turnover_20": -0.9356599904
+      },
+      {
+        "symbol": "000301",
+        "momentum_120_20": 0.7682141748,
+        "volatility_60": 1.1001240542,
+        "turnover_20": -0.4071388092
+      },
+      {
+        "symbol": "000333",
+        "momentum_120_20": 0.9463539066,
+        "volatility_60": -0.7691338663,
+        "turnover_20": -0.7106518849
+      },
+      {
+        "symbol": "000338",
+        "momentum_120_20": -0.3998938283,
+        "volatility_60": 1.7121858531,
+        "turnover_20": 1.3624345172
+      },
+      {
+        "symbol": "000408",
+        "momentum_120_20": 0.3006870153,
+        "volatility_60": 2.0534799247,
+        "turnover_20": -1.8311063243
+      },
+      {
+        "symbol": "000425",
+        "momentum_120_20": -1.1191392711,
+        "volatility_60": -0.4037759278,
+        "turnover_20": -0.2972902135
+      },
+      {
+        "symbol": "000538",
+        "momentum_120_20": 0.3091991611,
+        "volatility_60": -1.4360968144,
+        "turnover_20": -0.8017193309
+      },
+      {
+        "symbol": "000568",
+        "momentum_120_20": -1.1705885032,
+        "volatility_60": 0.711366479,
+        "turnover_20": 1.1987067472
+      },
+      {
+        "symbol": "000596",
+        "momentum_120_20": 0.4313669604,
+        "volatility_60": 2.079060928,
+        "turnover_20": 1.180141618
+      },
+      {
+        "symbol": "000617",
+        "momentum_120_20": -2.4415024496,
+        "volatility_60": 1.0760198631,
+        "turnover_20": -0.359110501
+      },
+      {
+        "symbol": "000625",
+        "momentum_120_20": -0.3091139821,
+        "volatility_60": -1.3494081681,
+        "turnover_20": -0.5802750918
+      },
+      {
+        "symbol": "000630",
+        "momentum_120_20": 0.971316744,
+        "volatility_60": -0.4766194455,
+        "turnover_20": -0.63423695
+      },
+      {
+        "symbol": "000651",
+        "momentum_120_20": 0.5784589346,
+        "volatility_60": -0.8808350718,
+        "turnover_20": -0.284467801
+      },
+      {
+        "symbol": "000657",
+        "momentum_120_20": 1.0432510219,
+        "volatility_60": 2.4197944488,
+        "turnover_20": 1.8287707915
+      },
+      {
+        "symbol": "000708",
+        "momentum_120_20": -0.1953968115,
+        "volatility_60": -0.4970819511,
+        "turnover_20": -0.8655323403
+      },
+      {
+        "symbol": "000725",
+        "momentum_120_20": 1.2049660713,
+        "volatility_60": -0.9995917093,
+        "turnover_20": 0.2874854069
+      },
+      {
+        "symbol": "000768",
+        "momentum_120_20": 1.0029884094,
+        "volatility_60": -0.1815870325,
+        "turnover_20": 0.0158411009
+      },
+      {
+        "symbol": "000776",
+        "momentum_120_20": 0.4154749884,
+        "volatility_60": 1.3110169594,
+        "turnover_20": 0.9097248791
+      },
+      {
+        "symbol": "000792",
+        "momentum_120_20": -1.7094811042,
+        "volatility_60": -1.1380212123,
+        "turnover_20": 0.5555860662
+      },
+      {
+        "symbol": "000807",
+        "momentum_120_20": 0.2387708988,
+        "volatility_60": -0.7754779297,
+        "turnover_20": -0.4446350664
+      },
+      {
+        "symbol": "000858",
+        "momentum_120_20": -0.9156356375,
+        "volatility_60": -0.78674769,
+        "turnover_20": 0.3610494519
+      },
+      {
+        "symbol": "000895",
+        "momentum_120_20": -0.2805269936,
+        "volatility_60": -0.7482049342,
+        "turnover_20": -1.3330180723
+      },
+      {
+        "symbol": "000938",
+        "momentum_120_20": 2.2649627116,
+        "volatility_60": 1.4267463065,
+        "turnover_20": 2.3643887527
+      },
+      {
+        "symbol": "000963",
+        "momentum_120_20": -0.5569580066,
+        "volatility_60": -0.2855906076,
+        "turnover_20": 0.0184660449
+      },
+      {
+        "symbol": "000975",
+        "momentum_120_20": 0.4601377025,
+        "volatility_60": 0.4875370837,
+        "turnover_20": 0.2641878845
+      },
+      {
+        "symbol": "000977",
+        "momentum_120_20": 1.2520260292,
+        "volatility_60": 1.166422437,
+        "turnover_20": 1.6157324883
+      },
+      {
+        "symbol": "000988",
+        "momentum_120_20": -0.0447326006,
+        "volatility_60": 1.387936618,
+        "turnover_20": 1.7446433132
+      },
+      {
+        "symbol": "000999",
+        "momentum_120_20": 0.1101543512,
+        "volatility_60": -0.7954429253,
+        "turnover_20": -0.3380597069
+      },
+      {
+        "symbol": "001391",
+        "momentum_120_20": -1.3861828416,
+        "volatility_60": -0.1381525212,
+        "turnover_20": -0.3918969852
+      },
+      {
+        "symbol": "001965",
+        "momentum_120_20": 1.1838122839,
+        "volatility_60": -0.3499869913,
+        "turnover_20": -0.9286348964
+      },
+      {
+        "symbol": "001979",
+        "momentum_120_20": -0.6065265619,
+        "volatility_60": 0.5039723226,
+        "turnover_20": 0.0369900141
+      },
+      {
+        "symbol": "002001",
+        "momentum_120_20": 0.0486630269,
+        "volatility_60": -0.8624584259,
+        "turnover_20": -0.8397050075
+      },
+      {
+        "symbol": "002027",
+        "momentum_120_20": -0.5032536944,
+        "volatility_60": -1.1028100982,
+        "turnover_20": -0.8225435462
+      },
+      {
+        "symbol": "002028",
+        "momentum_120_20": -0.6259015673,
+        "volatility_60": 1.4954981716,
+        "turnover_20": 0.1969961582
+      },
+      {
+        "symbol": "002050",
+        "momentum_120_20": -0.8567206672,
+        "volatility_60": 0.319905192,
+        "turnover_20": 0.3345987408
+      },
+      {
+        "symbol": "002074",
+        "momentum_120_20": 0.1647076115,
+        "volatility_60": 0.9445579994,
+        "turnover_20": 1.2516392363
+      },
+      {
+        "symbol": "002142",
+        "momentum_120_20": 0.5868222519,
+        "volatility_60": 0.9619116123,
+        "turnover_20": -0.0615832401
+      },
+      {
+        "symbol": "002179",
+        "momentum_120_20": 0.9191761739,
+        "volatility_60": -0.8843875384,
+        "turnover_20": -0.3519538919
+      },
+      {
+        "symbol": "002202",
+        "momentum_120_20": -0.2916680597,
+        "volatility_60": 0.8278102661,
+        "turnover_20": 0.3222139142
+      },
+      {
+        "symbol": "002230",
+        "momentum_120_20": -0.9000724117,
+        "volatility_60": -1.3175792928,
+        "turnover_20": -0.7902744895
+      },
+      {
+        "symbol": "002236",
+        "momentum_120_20": 0.3777456381,
+        "volatility_60": -1.720289872,
+        "turnover_20": -0.8357907515
+      },
+      {
+        "symbol": "002241",
+        "momentum_120_20": -0.4269655062,
+        "volatility_60": -1.0589428178,
+        "turnover_20": 0.3783376402
+      },
+      {
+        "symbol": "002294",
+        "momentum_120_20": -1.630381888,
+        "volatility_60": -0.1234243596,
+        "turnover_20": 0.4156361797
+      },
+      {
+        "symbol": "002304",
+        "momentum_120_20": -0.7134321724,
+        "volatility_60": -0.6507131151,
+        "turnover_20": -0.8214775258
+      },
+      {
+        "symbol": "002311",
+        "momentum_120_20": -0.1729650055,
+        "volatility_60": -0.3545799474,
+        "turnover_20": -0.6124094104
+      },
+      {
+        "symbol": "002352",
+        "momentum_120_20": -0.6754219181,
+        "volatility_60": -0.313170733,
+        "turnover_20": -0.4294510032
+      },
+      {
+        "symbol": "002353",
+        "momentum_120_20": -0.5498704694,
+        "volatility_60": 1.1751333228,
+        "turnover_20": 1.6473597622
+      },
+      {
+        "symbol": "002371",
+        "momentum_120_20": 0.4281921509,
+        "volatility_60": -0.7529245964,
+        "turnover_20": -0.8674950148
+      },
+      {
+        "symbol": "002384",
+        "momentum_120_20": -0.4087360013,
+        "volatility_60": 1.0162932498,
+        "turnover_20": 2.2888369708
+      },
+      {
+        "symbol": "002415",
+        "momentum_120_20": 1.0801751808,
+        "volatility_60": -1.1762962816,
+        "turnover_20": -1.1713744279
+      },
+      {
+        "symbol": "002422",
+        "momentum_120_20": 1.3703011274,
+        "volatility_60": 1.45768844,
+        "turnover_20": 1.4957771966
+      },
+      {
+        "symbol": "002460",
+        "momentum_120_20": -2.0426358489,
+        "volatility_60": -0.6220383396,
+        "turnover_20": 2.5182847135
+      },
+      {
+        "symbol": "002463",
+        "momentum_120_20": 0.3943212465,
+        "volatility_60": 0.5770353092,
+        "turnover_20": 0.582978013
+      },
+      {
+        "symbol": "002466",
+        "momentum_120_20": -1.9159617243,
+        "volatility_60": -0.7713485351,
+        "turnover_20": 0.5668118256
+      },
+      {
+        "symbol": "002475",
+        "momentum_120_20": -1.1104810566,
+        "volatility_60": -0.9102438603,
+        "turnover_20": -0.7969222147
+      },
+      {
+        "symbol": "002493",
+        "momentum_120_20": 0.4087241657,
+        "volatility_60": 1.2901870518,
+        "turnover_20": -0.094986219
+      },
+      {
+        "symbol": "002532",
+        "momentum_120_20": -0.2735182408,
+        "volatility_60": -0.4373372989,
+        "turnover_20": -0.6036797703
+      },
+      {
+        "symbol": "002558",
+        "momentum_120_20": -0.6662116127,
+        "volatility_60": -0.6130152016,
+        "turnover_20": -0.5198613229
+      },
+      {
+        "symbol": "002594",
+        "momentum_120_20": 0.4493293635,
+        "volatility_60": -0.7341258917,
+        "turnover_20": -0.402237574
+      },
+      {
+        "symbol": "002600",
+        "momentum_120_20": -0.776322125,
+        "volatility_60": -1.3401849786,
+        "turnover_20": -0.7711809293
+      },
+      {
+        "symbol": "002625",
+        "momentum_120_20": -1.2763270964,
+        "volatility_60": 1.635537632,
+        "turnover_20": 0.1747850242
+      },
+      {
+        "symbol": "002648",
+        "momentum_120_20": 1.4564688728,
+        "volatility_60": -0.5188731623,
+        "turnover_20": 0.6323093976
+      },
+      {
+        "symbol": "002709",
+        "momentum_120_20": -1.5547702333,
+        "volatility_60": 0.7049190104,
+        "turnover_20": 2.2797723473
+      },
+      {
+        "symbol": "002714",
+        "momentum_120_20": 0.0470672436,
+        "volatility_60": -0.2811830306,
+        "turnover_20": 0.0025212699
+      },
+      {
+        "symbol": "002736",
+        "momentum_120_20": -0.08389112,
+        "volatility_60": 0.6395459743,
+        "turnover_20": -1.0306456421
+      },
+      {
+        "symbol": "002837",
+        "momentum_120_20": -0.722359265,
+        "volatility_60": 1.4045613201,
+        "turnover_20": 0.8700536283
+      },
+      {
+        "symbol": "002916",
+        "momentum_120_20": 0.5981372511,
+        "volatility_60": 0.9039060714,
+        "turnover_20": -0.598812206
+      },
+      {
+        "symbol": "002920",
+        "momentum_120_20": -0.6943416863,
+        "volatility_60": -0.2821107423,
+        "turnover_20": -0.8255505311
+      },
+      {
+        "symbol": "002938",
+        "momentum_120_20": 0.1212228323,
+        "volatility_60": 0.4605425844,
+        "turnover_20": -0.8815337221
+      },
+      {
+        "symbol": "003816",
+        "momentum_120_20": -0.4565868189,
+        "volatility_60": 1.869437804,
+        "turnover_20": -0.7885750912
+      },
+      {
+        "symbol": "300014",
+        "momentum_120_20": -0.2375247475,
+        "volatility_60": 0.0442607092,
+        "turnover_20": 0.159672017
+      },
+      {
+        "symbol": "300015",
+        "momentum_120_20": -0.9293056342,
+        "volatility_60": -0.8416234297,
+        "turnover_20": -0.2112362488
+      },
+      {
+        "symbol": "300033",
+        "momentum_120_20": -0.2541327855,
+        "volatility_60": 0.4255015026,
+        "turnover_20": 0.9647487796
+      },
+      {
+        "symbol": "300059",
+        "momentum_120_20": -0.8474425307,
+        "volatility_60": 0.5177121969,
+        "turnover_20": 3.0532260512
+      },
+      {
+        "symbol": "300122",
+        "momentum_120_20": -0.3680659487,
+        "volatility_60": 2.1033282787,
+        "turnover_20": 2.4328972181
+      },
+      {
+        "symbol": "300124",
+        "momentum_120_20": -1.0267821812,
+        "volatility_60": -0.1510426541,
+        "turnover_20": 0.087311989
+      },
+      {
+        "symbol": "300251",
+        "momentum_120_20": -0.6652877742,
+        "volatility_60": -0.5961343005,
+        "turnover_20": -0.6636440248
+      },
+      {
+        "symbol": "300274",
+        "momentum_120_20": -0.6622218593,
+        "volatility_60": 0.856799779,
+        "turnover_20": 0.7287206509
+      },
+      {
+        "symbol": "300308",
+        "momentum_120_20": -0.3104409311,
+        "volatility_60": 0.864153779,
+        "turnover_20": 0.5534484107
+      },
+      {
+        "symbol": "300316",
+        "momentum_120_20": 2.088125209,
+        "volatility_60": 0.4755151299,
+        "turnover_20": -0.5591417051
+      },
+      {
+        "symbol": "300394",
+        "momentum_120_20": 0.5335553515,
+        "volatility_60": 1.4130415113,
+        "turnover_20": 1.1381101877
+      },
+      {
+        "symbol": "300408",
+        "momentum_120_20": 1.3760532079,
+        "volatility_60": 0.3883140554,
+        "turnover_20": 0.2201670511
+      },
+      {
+        "symbol": "300413",
+        "momentum_120_20": 1.9607198564,
+        "volatility_60": 1.5919084347,
+        "turnover_20": 1.8976268294
+      },
+      {
+        "symbol": "300418",
+        "momentum_120_20": -0.1259667749,
+        "volatility_60": 0.7200511656,
+        "turnover_20": 0.1084220645
+      },
+      {
+        "symbol": "300433",
+        "momentum_120_20": 0.599282407,
+        "volatility_60": -0.2334691924,
+        "turnover_20": -0.4807212695
+      },
+      {
+        "symbol": "300450",
+        "momentum_120_20": -1.0219254526,
+        "volatility_60": 1.6287363913,
+        "turnover_20": 2.7420536871
+      },
+      {
+        "symbol": "300476",
+        "momentum_120_20": -1.3408078189,
+        "volatility_60": 1.7659266043,
+        "turnover_20": 1.0034359919
+      },
+      {
+        "symbol": "300498",
+        "momentum_120_20": -0.1136915815,
+        "volatility_60": -0.3308205354,
+        "turnover_20": -0.4136918136
+      },
+      {
+        "symbol": "300502",
+        "momentum_120_20": 0.3955887348,
+        "volatility_60": 1.1039982977,
+        "turnover_20": 1.5726759356
+      },
+      {
+        "symbol": "300628",
+        "momentum_120_20": 0.3857328176,
+        "volatility_60": -0.7311496401,
+        "turnover_20": -0.6913250607
+      },
+      {
+        "symbol": "300661",
+        "momentum_120_20": 1.0390942881,
+        "volatility_60": 0.4431553881,
+        "turnover_20": -0.1509782608
+      },
+      {
+        "symbol": "300750",
+        "momentum_120_20": -0.3514737195,
+        "volatility_60": 0.4775279957,
+        "turnover_20": -0.2666140386
+      },
+      {
+        "symbol": "300760",
+        "momentum_120_20": -0.0196756095,
+        "volatility_60": -0.3933768314,
+        "turnover_20": -0.276035111
+      },
+      {
+        "symbol": "300803",
+        "momentum_120_20": -0.6700857855,
+        "volatility_60": 1.4647411652,
+        "turnover_20": 1.0942876422
+      },
+      {
+        "symbol": "300832",
+        "momentum_120_20": 0.7223145787,
+        "volatility_60": 0.5686542449,
+        "turnover_20": 0.4340540597
+      },
+      {
+        "symbol": "300866",
+        "momentum_120_20": -0.259644091,
+        "volatility_60": -0.8461763993,
+        "turnover_20": -0.8032140809
+      },
+      {
+        "symbol": "300896",
+        "momentum_120_20": -0.5694186938,
+        "volatility_60": 0.2659327844,
+        "turnover_20": 0.3296357115
+      },
+      {
+        "symbol": "300999",
+        "momentum_120_20": -0.2519444193,
+        "volatility_60": -0.3940606065,
+        "turnover_20": 0.8985180062
+      },
+      {
+        "symbol": "301165",
+        "momentum_120_20": 2.4335535295,
+        "volatility_60": 1.0486604175,
+        "turnover_20": -0.8049800598
+      },
+      {
+        "symbol": "301236",
+        "momentum_120_20": 0.1876802323,
+        "volatility_60": 0.5727633186,
+        "turnover_20": -0.1480975918
+      },
+      {
+        "symbol": "301269",
+        "momentum_120_20": 1.4511216655,
+        "volatility_60": 1.3520302868,
+        "turnover_20": 0.1312790028
+      },
+      {
+        "symbol": "301308",
+        "momentum_120_20": -1.4259372897,
+        "volatility_60": -0.0052237942,
+        "turnover_20": 1.7558116366
+      },
+      {
+        "symbol": "302132",
+        "momentum_120_20": 0.3755114169,
+        "volatility_60": 0.2553778624,
+        "turnover_20": 1.3577040593
+      },
+      {
+        "symbol": "600000",
+        "momentum_120_20": -0.556219074,
+        "volatility_60": 0.0286461755,
+        "turnover_20": -1.0201653507
+      },
+      {
+        "symbol": "600009",
+        "momentum_120_20": -0.6938543299,
+        "volatility_60": -0.6167323612,
+        "turnover_20": -0.5382644736
+      },
+      {
+        "symbol": "600010",
+        "momentum_120_20": -0.9288665383,
+        "volatility_60": -0.920153487,
+        "turnover_20": -0.2756961766
+      },
+      {
+        "symbol": "600011",
+        "momentum_120_20": 0.0607059922,
+        "volatility_60": 1.3003760851,
+        "turnover_20": 1.6015274835
+      },
+      {
+        "symbol": "600015",
+        "momentum_120_20": -1.5288007549,
+        "volatility_60": -0.5224327817,
+        "turnover_20": -0.0785867301
+      },
+      {
+        "symbol": "600016",
+        "momentum_120_20": -1.2557684739,
+        "volatility_60": -0.7463901647,
+        "turnover_20": 0.7089079657
+      },
+      {
+        "symbol": "600018",
+        "momentum_120_20": 1.2861177432,
+        "volatility_60": -0.2457220297,
+        "turnover_20": -0.8895477683
+      },
+      {
+        "symbol": "600019",
+        "momentum_120_20": 0.3658513342,
+        "volatility_60": -1.0176672811,
+        "turnover_20": -0.734431228
+      },
+      {
+        "symbol": "600023",
+        "momentum_120_20": -0.3889166934,
+        "volatility_60": -0.8843414155,
+        "turnover_20": -0.7686055017
+      },
+      {
+        "symbol": "600025",
+        "momentum_120_20": 0.4375475811,
+        "volatility_60": 0.0010952351,
+        "turnover_20": -1.3406175439
+      },
+      {
+        "symbol": "600026",
+        "momentum_120_20": 0.4494185763,
+        "volatility_60": 2.3384685845,
+        "turnover_20": 2.733597722
+      },
+      {
+        "symbol": "600027",
+        "momentum_120_20": -0.0262129158,
+        "volatility_60": 0.3793500841,
+        "turnover_20": 1.0867935445
+      },
+      {
+        "symbol": "600028",
+        "momentum_120_20": 0.8877842855,
+        "volatility_60": -0.672192375,
+        "turnover_20": -0.4703087679
+      },
+      {
+        "symbol": "600029",
+        "momentum_120_20": -0.3539893985,
+        "volatility_60": -0.7316547553,
+        "turnover_20": -0.6640360665
+      },
+      {
+        "symbol": "600030",
+        "momentum_120_20": 0.2627884529,
+        "volatility_60": -0.6917887993,
+        "turnover_20": 1.4787100667
+      },
+      {
+        "symbol": "600031",
+        "momentum_120_20": 0.0346920163,
+        "volatility_60": -0.4677959621,
+        "turnover_20": -0.6627474775
+      },
+      {
+        "symbol": "600036",
+        "momentum_120_20": 0.6621617839,
+        "volatility_60": -0.4952480535,
+        "turnover_20": -0.3817482818
+      },
+      {
+        "symbol": "600039",
+        "momentum_120_20": 2.5960484141,
+        "volatility_60": 2.1187992498,
+        "turnover_20": -1.528779169
+      },
+      {
+        "symbol": "600048",
+        "momentum_120_20": -0.18431471,
+        "volatility_60": 0.1741523169,
+        "turnover_20": 0.4345022888
+      },
+      {
+        "symbol": "600050",
+        "momentum_120_20": -0.9042256005,
+        "volatility_60": -1.1774444846,
+        "turnover_20": -1.0615973146
+      },
+      {
+        "symbol": "600061",
+        "momentum_120_20": -0.1036845526,
+        "volatility_60": -0.58057502,
+        "turnover_20": 0.0737796632
+      },
+      {
+        "symbol": "600066",
+        "momentum_120_20": -0.2253674737,
+        "volatility_60": 0.3924281223,
+        "turnover_20": 0.0065257401
+      },
+      {
+        "symbol": "600085",
+        "momentum_120_20": -0.2635298208,
+        "volatility_60": -0.9734665011,
+        "turnover_20": -0.7892996022
+      },
+      {
+        "symbol": "600089",
+        "momentum_120_20": -0.3172109219,
+        "volatility_60": -1.4172964343,
+        "turnover_20": -0.4386975764
+      },
+      {
+        "symbol": "600104",
+        "momentum_120_20": 0.1212814921,
+        "volatility_60": -0.6349534573,
+        "turnover_20": -1.113591394
+      },
+      {
+        "symbol": "600111",
+        "momentum_120_20": -0.7348160204,
+        "volatility_60": -1.2805387725,
+        "turnover_20": -0.8869522013
+      },
+      {
+        "symbol": "600115",
+        "momentum_120_20": -1.3355224623,
+        "volatility_60": -0.2033555886,
+        "turnover_20": 0.4922692263
+      },
+      {
+        "symbol": "600118",
+        "momentum_120_20": -1.8122411029,
+        "volatility_60": 1.7881970895,
+        "turnover_20": 1.9645756513
+      },
+      {
+        "symbol": "600150",
+        "momentum_120_20": 0.9305837234,
+        "volatility_60": 0.1726623853,
+        "turnover_20": 0.3527714164
+      },
+      {
+        "symbol": "600160",
+        "momentum_120_20": 1.531098271,
+        "volatility_60": 0.2035909681,
+        "turnover_20": 1.3113245202
+      },
+      {
+        "symbol": "600176",
+        "momentum_120_20": 1.4497576446,
+        "volatility_60": 1.9947468784,
+        "turnover_20": 2.5391487193
+      },
+      {
+        "symbol": "600183",
+        "momentum_120_20": 2.2909091741,
+        "volatility_60": 1.1704328583,
+        "turnover_20": 0.2990429833
+      },
+      {
+        "symbol": "600188",
+        "momentum_120_20": -0.18012983,
+        "volatility_60": 0.6083696276,
+        "turnover_20": -0.6137463694
+      },
+      {
+        "symbol": "600196",
+        "momentum_120_20": 0.1507038953,
+        "volatility_60": -0.3553810412,
+        "turnover_20": -0.054339188
+      },
+      {
+        "symbol": "600219",
+        "momentum_120_20": 0.6232226029,
+        "volatility_60": -0.6123432775,
+        "turnover_20": -0.7537535275
+      },
+      {
+        "symbol": "600221",
+        "momentum_120_20": -0.902132414,
+        "volatility_60": -0.8152420762,
+        "turnover_20": -0.4627557739
+      },
+      {
+        "symbol": "600233",
+        "momentum_120_20": -0.5902344005,
+        "volatility_60": 0.5239987024,
+        "turnover_20": -0.0170521302
+      },
+      {
+        "symbol": "600276",
+        "momentum_120_20": -0.3919507227,
+        "volatility_60": 0.0608798989,
+        "turnover_20": 0.2188436932
+      },
+      {
+        "symbol": "600309",
+        "momentum_120_20": 0.2256441844,
+        "volatility_60": -1.2320450353,
+        "turnover_20": -0.5395980775
+      },
+      {
+        "symbol": "600346",
+        "momentum_120_20": -1.9905853298,
+        "volatility_60": 0.4436626008,
+        "turnover_20": -0.3584992237
+      },
+      {
+        "symbol": "600362",
+        "momentum_120_20": 0.9946297605,
+        "volatility_60": 1.2903752146,
+        "turnover_20": -0.247032023
+      },
+      {
+        "symbol": "600372",
+        "momentum_120_20": 0.3724649315,
+        "volatility_60": -1.5284624632,
+        "turnover_20": -1.1583423144
+      },
+      {
+        "symbol": "600406",
+        "momentum_120_20": 1.7264458035,
+        "volatility_60": -1.7711207407,
+        "turnover_20": -0.7178886092
+      },
+      {
+        "symbol": "600415",
+        "momentum_120_20": -0.2954187807,
+        "volatility_60": 0.152338705,
+        "turnover_20": -0.4014830697
+      },
+      {
+        "symbol": "600426",
+        "momentum_120_20": -0.9624194953,
+        "volatility_60": 0.245224902,
+        "turnover_20": 1.1907875501
+      },
+      {
+        "symbol": "600436",
+        "momentum_120_20": -0.388917201,
+        "volatility_60": -0.6107812674,
+        "turnover_20": -0.9410179873
+      },
+      {
+        "symbol": "600460",
+        "momentum_120_20": 0.0896280816,
+        "volatility_60": -0.4086098848,
+        "turnover_20": 0.9407590674
+      },
+      {
+        "symbol": "600482",
+        "momentum_120_20": 1.7549505377,
+        "volatility_60": 0.6685248913,
+        "turnover_20": -0.7182630611
+      },
+      {
+        "symbol": "600489",
+        "momentum_120_20": 0.410013128,
+        "volatility_60": 0.6338616952,
+        "turnover_20": -0.4219327046
+      },
+      {
+        "symbol": "600515",
+        "momentum_120_20": -0.7848141791,
+        "volatility_60": -0.700377125,
+        "turnover_20": -0.4012487256
+      },
+      {
+        "symbol": "600519",
+        "momentum_120_20": 0.6942020645,
+        "volatility_60": -0.7094084,
+        "turnover_20": -1.4301982774
+      },
+      {
+        "symbol": "600522",
+        "momentum_120_20": -0.562632598,
+        "volatility_60": 0.394957747,
+        "turnover_20": 1.2992268958
+      },
+      {
+        "symbol": "600547",
+        "momentum_120_20": 0.3455526625,
+        "volatility_60": 1.3036291839,
+        "turnover_20": 0.6988486892
+      },
+      {
+        "symbol": "600549",
+        "momentum_120_20": 0.1123406244,
+        "volatility_60": 1.0457257771,
+        "turnover_20": 0.7259218735
+      },
+      {
+        "symbol": "600570",
+        "momentum_120_20": -1.3402673285,
+        "volatility_60": -1.1536929708,
+        "turnover_20": -0.6634559372
+      },
+      {
+        "symbol": "600584",
+        "momentum_120_20": 1.271214038,
+        "volatility_60": 0.2786797842,
+        "turnover_20": 1.2648142634
+      },
+      {
+        "symbol": "600585",
+        "momentum_120_20": -0.4343594011,
+        "volatility_60": -0.5720110644,
+        "turnover_20": -0.4423983097
+      },
+      {
+        "symbol": "600588",
+        "momentum_120_20": -0.8367183548,
+        "volatility_60": 0.3164564265,
+        "turnover_20": -0.1935347295
+      },
+      {
+        "symbol": "600600",
+        "momentum_120_20": -0.3706394993,
+        "volatility_60": -1.0900921427,
+        "turnover_20": -0.0049704052
+      },
+      {
+        "symbol": "600660",
+        "momentum_120_20": 1.1686888606,
+        "volatility_60": -0.2088120757,
+        "turnover_20": -0.6430596083
+      },
+      {
+        "symbol": "600674",
+        "momentum_120_20": 0.9241073484,
+        "volatility_60": -0.3912305328,
+        "turnover_20": 0.4316473718
+      },
+      {
+        "symbol": "600690",
+        "momentum_120_20": 0.3555698061,
+        "volatility_60": -0.7076155782,
+        "turnover_20": -0.5371196983
+      },
+      {
+        "symbol": "600741",
+        "momentum_120_20": 0.4865420269,
+        "volatility_60": -0.9030999352,
+        "turnover_20": -0.6506395051
+      },
+      {
+        "symbol": "600760",
+        "momentum_120_20": 0.6635196137,
+        "volatility_60": -0.8991371769,
+        "turnover_20": -1.1032731813
+      },
+      {
+        "symbol": "600795",
+        "momentum_120_20": 1.1255372392,
+        "volatility_60": 0.5334864323,
+        "turnover_20": 1.0254901208
+      },
+      {
+        "symbol": "600803",
+        "momentum_120_20": -0.1758101438,
+        "volatility_60": 0.9005166664,
+        "turnover_20": -1.0819010091
+      },
+      {
+        "symbol": "600809",
+        "momentum_120_20": -0.3679302609,
+        "volatility_60": 0.8172481536,
+        "turnover_20": 0.0040289128
+      },
+      {
+        "symbol": "600845",
+        "momentum_120_20": -0.9959182863,
+        "volatility_60": -0.6145473386,
+        "turnover_20": -1.1402683362
+      },
+      {
+        "symbol": "600875",
+        "momentum_120_20": -0.817887103,
+        "volatility_60": -0.0350935042,
+        "turnover_20": -0.311267233
+      },
+      {
+        "symbol": "600886",
+        "momentum_120_20": 1.1523206259,
+        "volatility_60": 0.268878599,
+        "turnover_20": -0.6549259911
+      },
+      {
+        "symbol": "600887",
+        "momentum_120_20": 1.7728525178,
+        "volatility_60": -0.984587459,
+        "turnover_20": 1.1515944146
+      },
+      {
+        "symbol": "600893",
+        "momentum_120_20": 0.1045528722,
+        "volatility_60": -0.1142025873,
+        "turnover_20": -0.0450605779
+      },
+      {
+        "symbol": "600900",
+        "momentum_120_20": 0.7087712902,
+        "volatility_60": -1.0963166347,
+        "turnover_20": -0.3634915747
+      },
+      {
+        "symbol": "600905",
+        "momentum_120_20": -0.8198901675,
+        "volatility_60": -1.8327216909,
+        "turnover_20": -0.8138220483
+      },
+      {
+        "symbol": "600918",
+        "momentum_120_20": -0.544573967,
+        "volatility_60": 0.0074861664,
+        "turnover_20": 0.4720585369
+      },
+      {
+        "symbol": "600919",
+        "momentum_120_20": 0.8709122635,
+        "volatility_60": -0.2649154599,
+        "turnover_20": 0.167214387
+      },
+      {
+        "symbol": "600926",
+        "momentum_120_20": -0.6755005592,
+        "volatility_60": -0.8970648678,
+        "turnover_20": 0.3055354675
+      },
+      {
+        "symbol": "600930",
+        "momentum_120_20": -2.7808392207,
+        "volatility_60": -0.0463141492,
+        "turnover_20": 1.6154584673
+      },
+      {
+        "symbol": "600938",
+        "momentum_120_20": -0.5317667763,
+        "volatility_60": -0.816489379,
+        "turnover_20": 2.180361263
+      },
+      {
+        "symbol": "600941",
+        "momentum_120_20": -0.4108267736,
+        "volatility_60": -1.0654200001,
+        "turnover_20": -0.3545046737
+      },
+      {
+        "symbol": "600989",
+        "momentum_120_20": -0.1755849474,
+        "volatility_60": 0.8187372277,
+        "turnover_20": -0.8270527664
+      },
+      {
+        "symbol": "600999",
+        "momentum_120_20": 2.0507466768,
+        "volatility_60": 0.3330762641,
+        "turnover_20": 0.1616493041
+      },
+      {
+        "symbol": "601006",
+        "momentum_120_20": -0.1225140853,
+        "volatility_60": -0.5821860824,
+        "turnover_20": 0.338074567
+      },
+      {
+        "symbol": "601009",
+        "momentum_120_20": 0.012259771,
+        "volatility_60": 1.1165713075,
+        "turnover_20": -0.140634107
+      },
+      {
+        "symbol": "601012",
+        "momentum_120_20": -0.106280053,
+        "volatility_60": -1.1334712642,
+        "turnover_20": -0.3793016802
+      },
+      {
+        "symbol": "601018",
+        "momentum_120_20": 0.1360015162,
+        "volatility_60": -0.5595569865,
+        "turnover_20": -0.7125475662
+      },
+      {
+        "symbol": "601021",
+        "momentum_120_20": -0.5268177276,
+        "volatility_60": -0.1985159416,
+        "turnover_20": -0.0028668707
+      },
+      {
+        "symbol": "601058",
+        "momentum_120_20": 1.8929522221,
+        "volatility_60": 0.0088385764,
+        "turnover_20": 0.2281103429
+      },
+      {
+        "symbol": "601066",
+        "momentum_120_20": 0.7122848198,
+        "volatility_60": -0.4382140937,
+        "turnover_20": -1.3150540104
+      },
+      {
+        "symbol": "601077",
+        "momentum_120_20": -2.0017140181,
+        "volatility_60": 1.428323723,
+        "turnover_20": 1.3016388651
+      },
+      {
+        "symbol": "601088",
+        "momentum_120_20": 0.6851969205,
+        "volatility_60": -0.6149474853,
+        "turnover_20": -0.9533356432
+      },
+      {
+        "symbol": "601100",
+        "momentum_120_20": 0.62018552,
+        "volatility_60": 0.5250516769,
+        "turnover_20": -0.7302536129
+      },
+      {
+        "symbol": "601111",
+        "momentum_120_20": -0.6082161589,
+        "volatility_60": -0.5334131801,
+        "turnover_20": -0.3537190847
+      },
+      {
+        "symbol": "601117",
+        "momentum_120_20": -0.4361094921,
+        "volatility_60": -0.0828493665,
+        "turnover_20": 1.7447054991
+      },
+      {
+        "symbol": "601127",
+        "momentum_120_20": -2.1722121937,
+        "volatility_60": 1.1646390764,
+        "turnover_20": 1.9671176573
+      },
+      {
+        "symbol": "601136",
+        "momentum_120_20": -1.1927425135,
+        "volatility_60": 2.4719408717,
+        "turnover_20": -0.0568941254
+      },
+      {
+        "symbol": "601138",
+        "momentum_120_20": -0.3763925759,
+        "volatility_60": -0.1641367834,
+        "turnover_20": -1.3438954665
+      },
+      {
+        "symbol": "601166",
+        "momentum_120_20": -0.4586517386,
+        "volatility_60": -0.8820997377,
+        "turnover_20": -0.0515233599
+      },
+      {
+        "symbol": "601169",
+        "momentum_120_20": 0.6528585572,
+        "volatility_60": 0.3520760194,
+        "turnover_20": 1.1902453854
+      },
+      {
+        "symbol": "601186",
+        "momentum_120_20": 0.4655597801,
+        "volatility_60": -1.0174664339,
+        "turnover_20": -0.7324427283
+      },
+      {
+        "symbol": "601211",
+        "momentum_120_20": 1.5085152437,
+        "volatility_60": 0.5175300151,
+        "turnover_20": 0.2789894255
+      },
+      {
+        "symbol": "601225",
+        "momentum_120_20": 0.7374472688,
+        "volatility_60": -0.4900759796,
+        "turnover_20": -0.7805660402
+      },
+      {
+        "symbol": "601229",
+        "momentum_120_20": -0.2165340185,
+        "volatility_60": -0.5633454096,
+        "turnover_20": -0.2689976776
+      },
+      {
+        "symbol": "601288",
+        "momentum_120_20": -0.6419586829,
+        "volatility_60": 1.4203456781,
+        "turnover_20": -1.4644461294
+      },
+      {
+        "symbol": "601318",
+        "momentum_120_20": -0.0683506513,
+        "volatility_60": 0.063479987,
+        "turnover_20": 0.7707084577
+      },
+      {
+        "symbol": "601319",
+        "momentum_120_20": 2.2830885936,
+        "volatility_60": 1.0293520934,
+        "turnover_20": -1.4095992179
+      },
+      {
+        "symbol": "601328",
+        "momentum_120_20": 1.5276944729,
+        "volatility_60": -0.2037991633,
+        "turnover_20": 1.6474012655
+      },
+      {
+        "symbol": "601336",
+        "momentum_120_20": -0.3357785977,
+        "volatility_60": 0.2039275892,
+        "turnover_20": 0.1943179009
+      },
+      {
+        "symbol": "601360",
+        "momentum_120_20": -0.6857439465,
+        "volatility_60": -0.3640841716,
+        "turnover_20": -0.2686008823
+      },
+      {
+        "symbol": "601377",
+        "momentum_120_20": 0.2062375755,
+        "volatility_60": -1.1810635218,
+        "turnover_20": 0.4767809197
+      },
+      {
+        "symbol": "601390",
+        "momentum_120_20": -0.4853009876,
+        "volatility_60": -0.0428569266,
+        "turnover_20": -0.2777415502
+      },
+      {
+        "symbol": "601398",
+        "momentum_120_20": 1.1556877243,
+        "volatility_60": 0.2080201754,
+        "turnover_20": -1.3824015415
+      },
+      {
+        "symbol": "601456",
+        "momentum_120_20": -0.7122366556,
+        "volatility_60": -1.6279255676,
+        "turnover_20": -0.578291495
+      },
+      {
+        "symbol": "601600",
+        "momentum_120_20": -0.2153707523,
+        "volatility_60": -1.2386115804,
+        "turnover_20": -0.7922935984
+      },
+      {
+        "symbol": "601601",
+        "momentum_120_20": -0.9912644276,
+        "volatility_60": 1.436200531,
+        "turnover_20": 0.4072711819
+      },
+      {
+        "symbol": "601607",
+        "momentum_120_20": 0.2666794826,
+        "volatility_60": -1.2358069429,
+        "turnover_20": -1.0195284587
+      },
+      {
+        "symbol": "601618",
+        "momentum_120_20": -0.5737405659,
+        "volatility_60": 1.2112527424,
+        "turnover_20": -0.3193302583
+      },
+      {
+        "symbol": "601628",
+        "momentum_120_20": 1.0345994503,
+        "volatility_60": 0.3957513658,
+        "turnover_20": -1.6122671093
+      },
+      {
+        "symbol": "601633",
+        "momentum_120_20": -0.6800647107,
+        "volatility_60": -0.9035143018,
+        "turnover_20": -1.2342498315
+      },
+      {
+        "symbol": "601658",
+        "momentum_120_20": 0.2284588808,
+        "volatility_60": 0.4190048811,
+        "turnover_20": -1.0185745482
+      },
+      {
+        "symbol": "601668",
+        "momentum_120_20": 0.2875545619,
+        "volatility_60": 0.0005109567,
+        "turnover_20": 0.8945201556
+      },
+      {
+        "symbol": "601669",
+        "momentum_120_20": -0.8027849913,
+        "volatility_60": -1.0466613447,
+        "turnover_20": 0.3686908129
+      },
+      {
+        "symbol": "601688",
+        "momentum_120_20": 0.1218160688,
+        "volatility_60": -0.4027384975,
+        "turnover_20": 0.8307365752
+      },
+      {
+        "symbol": "601689",
+        "momentum_120_20": -0.3321417765,
+        "volatility_60": 1.4558222017,
+        "turnover_20": 1.0598647471
+      },
+      {
+        "symbol": "601698",
+        "momentum_120_20": -1.2802289418,
+        "volatility_60": -0.2439981709,
+        "turnover_20": -1.2070472867
+      },
+      {
+        "symbol": "601727",
+        "momentum_120_20": 1.1683382956,
+        "volatility_60": -1.834595895,
+        "turnover_20": -0.9194273524
+      },
+      {
+        "symbol": "601728",
+        "momentum_120_20": -0.1201337227,
+        "volatility_60": -1.0068186603,
+        "turnover_20": -1.3232841736
+      },
+      {
+        "symbol": "601766",
+        "momentum_120_20": 2.1148974598,
+        "volatility_60": -1.122799151,
+        "turnover_20": -0.7907626248
+      },
+      {
+        "symbol": "601788",
+        "momentum_120_20": -0.4775978542,
+        "volatility_60": -0.8751716926,
+        "turnover_20": -0.4933777827
+      },
+      {
+        "symbol": "601800",
+        "momentum_120_20": -0.5934726721,
+        "volatility_60": -0.2143542996,
+        "turnover_20": -1.0637400263
+      },
+      {
+        "symbol": "601816",
+        "momentum_120_20": 0.4263149346,
+        "volatility_60": -0.5700929485,
+        "turnover_20": -0.561759217
+      },
+      {
+        "symbol": "601818",
+        "momentum_120_20": -1.2284822254,
+        "volatility_60": -1.9429167374,
+        "turnover_20": -0.0907964404
+      },
+      {
+        "symbol": "601825",
+        "momentum_120_20": -0.1991073811,
+        "volatility_60": 0.3423952415,
+        "turnover_20": -0.7781757287
+      },
+      {
+        "symbol": "601838",
+        "momentum_120_20": 0.1532622287,
+        "volatility_60": 1.0738576781,
+        "turnover_20": 0.4991622921
+      },
+      {
+        "symbol": "601857",
+        "momentum_120_20": 0.4576294801,
+        "volatility_60": -1.3452919529,
+        "turnover_20": -0.8494282432
+      },
+      {
+        "symbol": "601868",
+        "momentum_120_20": -0.457754047,
+        "volatility_60": -0.9263745775,
+        "turnover_20": 0.9141172645
+      },
+      {
+        "symbol": "601872",
+        "momentum_120_20": 1.690005195,
+        "volatility_60": 2.8296414353,
+        "turnover_20": 2.2972320878
+      },
+      {
+        "symbol": "601877",
+        "momentum_120_20": 0.8162945457,
+        "volatility_60": -0.5760081026,
+        "turnover_20": -0.7242310608
+      },
+      {
+        "symbol": "601878",
+        "momentum_120_20": -0.3054218768,
+        "volatility_60": -1.4241055492,
+        "turnover_20": -0.3907273091
+      },
+      {
+        "symbol": "601881",
+        "momentum_120_20": -0.207707869,
+        "volatility_60": -0.8586481804,
+        "turnover_20": -0.6517572185
+      },
+      {
+        "symbol": "601888",
+        "momentum_120_20": -0.470382251,
+        "volatility_60": -0.9393466347,
+        "turnover_20": -0.4645143192
+      },
+      {
+        "symbol": "601898",
+        "momentum_120_20": -0.7889881103,
+        "volatility_60": 0.0412475934,
+        "turnover_20": -0.7893388234
+      },
+      {
+        "symbol": "601899",
+        "momentum_120_20": 0.888963066,
+        "volatility_60": -0.340136018,
+        "turnover_20": -1.1225771502
+      },
+      {
+        "symbol": "601901",
+        "momentum_120_20": -0.1144948903,
+        "volatility_60": -0.8239720444,
+        "turnover_20": -0.2745685603
+      },
+      {
+        "symbol": "601916",
+        "momentum_120_20": -1.0391407703,
+        "volatility_60": -1.8602994097,
+        "turnover_20": 0.8302887031
+      },
+      {
+        "symbol": "601919",
+        "momentum_120_20": 2.0232154877,
+        "volatility_60": 0.1656734734,
+        "turnover_20": 0.0913582328
+      },
+      {
+        "symbol": "601939",
+        "momentum_120_20": 1.3834380412,
+        "volatility_60": 0.6737410039,
+        "turnover_20": 2.3524636427
+      },
+      {
+        "symbol": "601985",
+        "momentum_120_20": 0.2392658831,
+        "volatility_60": -1.0022164827,
+        "turnover_20": 0.0510217721
+      },
+      {
+        "symbol": "601988",
+        "momentum_120_20": 1.9216538483,
+        "volatility_60": 1.6447826096,
+        "turnover_20": -1.3251063811
+      },
+      {
+        "symbol": "601998",
+        "momentum_120_20": 0.8166473581,
+        "volatility_60": 0.3138062579,
+        "turnover_20": -1.4402784074
+      },
+      {
+        "symbol": "603019",
+        "momentum_120_20": -0.2908791934,
+        "volatility_60": -0.1392120965,
+        "turnover_20": 0.3782681511
+      },
+      {
+        "symbol": "603259",
+        "momentum_120_20": 3.0211975826,
+        "volatility_60": 1.0194929359,
+        "turnover_20": 1.8971213457
+      },
+      {
+        "symbol": "603260",
+        "momentum_120_20": -0.7150758235,
+        "volatility_60": 0.4303648132,
+        "turnover_20": 0.3474546416
+      },
+      {
+        "symbol": "603288",
+        "momentum_120_20": 0.4066100916,
+        "volatility_60": -0.5325182659,
+        "turnover_20": -1.5282753043
+      },
+      {
+        "symbol": "603296",
+        "momentum_120_20": -0.2231781488,
+        "volatility_60": -0.509531161,
+        "turnover_20": -0.62788176
+      },
+      {
+        "symbol": "603369",
+        "momentum_120_20": 1.8097000719,
+        "volatility_60": 1.2319572855,
+        "turnover_20": 0.8698519368
+      },
+      {
+        "symbol": "603392",
+        "momentum_120_20": -1.3745124458,
+        "volatility_60": 1.3373362075,
+        "turnover_20": -0.9787822976
+      },
+      {
+        "symbol": "603501",
+        "momentum_120_20": -0.9993260936,
+        "volatility_60": -1.4881278501,
+        "turnover_20": -0.819634489
+      },
+      {
+        "symbol": "603799",
+        "momentum_120_20": -1.740697702,
+        "volatility_60": -0.6169852842,
+        "turnover_20": 0.4329085947
+      },
+      {
+        "symbol": "603893",
+        "momentum_120_20": 0.4851394427,
+        "volatility_60": 0.9222514363,
+        "turnover_20": 1.2706692909
+      },
+      {
+        "symbol": "603986",
+        "momentum_120_20": 0.1277988586,
+        "volatility_60": 0.5430524105,
+        "turnover_20": 2.4406902644
+      },
+      {
+        "symbol": "603993",
+        "momentum_120_20": 0.8348020774,
+        "volatility_60": -0.0094869221,
+        "turnover_20": -1.1286413807
+      },
+      {
+        "symbol": "605117",
+        "momentum_120_20": 0.0078618893,
+        "volatility_60": 0.4168260186,
+        "turnover_20": -0.5501770563
+      },
+      {
+        "symbol": "605499",
+        "momentum_120_20": -1.2959786394,
+        "volatility_60": 0.6626391608,
+        "turnover_20": 0.3525665036
+      },
+      {
+        "symbol": "688008",
+        "momentum_120_20": -0.0046062255,
+        "volatility_60": 0.5948420638,
+        "turnover_20": 0.7882280049
+      },
+      {
+        "symbol": "688009",
+        "momentum_120_20": 1.2868361137,
+        "volatility_60": -1.2832373695,
+        "turnover_20": -1.0863369421
+      },
+      {
+        "symbol": "688036",
+        "momentum_120_20": -0.39779406,
+        "volatility_60": -0.1539264063,
+        "turnover_20": -0.7064438741
+      },
+      {
+        "symbol": "688041",
+        "momentum_120_20": -1.3140406214,
+        "volatility_60": -0.5136038243,
+        "turnover_20": -1.0844819517
+      },
+      {
+        "symbol": "688047",
+        "momentum_120_20": -1.6954815105,
+        "volatility_60": -1.2429235874,
+        "turnover_20": -1.152788752
+      },
+      {
+        "symbol": "688082",
+        "momentum_120_20": 2.8453617513,
+        "volatility_60": 1.4078310475,
+        "turnover_20": -0.9176359187
+      },
+      {
+        "symbol": "688111",
+        "momentum_120_20": 0.054448321,
+        "volatility_60": 0.043151323,
+        "turnover_20": -0.5117571397
+      },
+      {
+        "symbol": "688126",
+        "momentum_120_20": 0.1076065864,
+        "volatility_60": -0.3652078503,
+        "turnover_20": -0.4119377148
+      },
+      {
+        "symbol": "688183",
+        "momentum_120_20": -0.0533103622,
+        "volatility_60": 1.9120746699,
+        "turnover_20": -0.3879172532
+      },
+      {
+        "symbol": "688223",
+        "momentum_120_20": -1.1045050051,
+        "volatility_60": -0.5327258947,
+        "turnover_20": -0.6180935076
+      },
+      {
+        "symbol": "688256",
+        "momentum_120_20": -0.6914859537,
+        "volatility_60": 0.0973451578,
+        "turnover_20": -0.4730178186
+      },
+      {
+        "symbol": "688271",
+        "momentum_120_20": 0.1269655464,
+        "volatility_60": -0.6257637346,
+        "turnover_20": -0.3518498521
+      },
+      {
+        "symbol": "688303",
+        "momentum_120_20": 0.2992273507,
+        "volatility_60": -0.4738476217,
+        "turnover_20": -0.8463079905
+      },
+      {
+        "symbol": "688396",
+        "momentum_120_20": -0.1359768362,
+        "volatility_60": -0.2919725638,
+        "turnover_20": -0.8528038238
+      },
+      {
+        "symbol": "688472",
+        "momentum_120_20": -0.9345825209,
+        "volatility_60": -0.7668169051,
+        "turnover_20": -0.6316571397
+      },
+      {
+        "symbol": "688506",
+        "momentum_120_20": -0.1542184479,
+        "volatility_60": 1.1293744495,
+        "turnover_20": -1.1509279544
+      },
+      {
+        "symbol": "688521",
+        "momentum_120_20": -1.2288745374,
+        "volatility_60": 2.0367052172,
+        "turnover_20": 1.3969110189
+      },
+      {
+        "symbol": "688981",
+        "momentum_120_20": -0.3892066845,
+        "volatility_60": -1.1883474336,
+        "turnover_20": -0.2913693703
+      }
+    ]
   },
   "nav_history": {
     "columns": [
@@ -2127,6 +3887,66 @@
         "date": "2026-10-30T00:00:00.000",
         "nav": 0.9504623999,
         "benchmark_nav": 0.9556151579
+      },
+      {
+        "date": "2026-11-02T00:00:00.000",
+        "nav": 0.9514954991,
+        "benchmark_nav": 0.9631481033
+      },
+      {
+        "date": "2026-11-03T00:00:00.000",
+        "nav": 0.9543941945,
+        "benchmark_nav": 0.9612196098
+      },
+      {
+        "date": "2026-11-04T00:00:00.000",
+        "nav": 0.9727227024,
+        "benchmark_nav": 0.9833890127
+      },
+      {
+        "date": "2026-11-05T00:00:00.000",
+        "nav": 0.9750252725,
+        "benchmark_nav": 0.9862845103
+      },
+      {
+        "date": "2026-11-06T00:00:00.000",
+        "nav": 0.9649926683,
+        "benchmark_nav": 0.9721057793
+      },
+      {
+        "date": "2026-11-09T00:00:00.000",
+        "nav": 0.9651448776,
+        "benchmark_nav": 0.9725448035
+      },
+      {
+        "date": "2026-11-10T00:00:00.000",
+        "nav": 0.9628132786,
+        "benchmark_nav": 0.9732648415
+      },
+      {
+        "date": "2026-11-11T00:00:00.000",
+        "nav": 0.9628227783,
+        "benchmark_nav": 0.9772445922
+      },
+      {
+        "date": "2026-11-12T00:00:00.000",
+        "nav": 0.9569972656,
+        "benchmark_nav": 0.9696236501
+      },
+      {
+        "date": "2026-11-13T00:00:00.000",
+        "nav": 0.9546480683,
+        "benchmark_nav": 0.9629975258
+      },
+      {
+        "date": "2026-11-16T00:00:00.000",
+        "nav": 0.9510731045,
+        "benchmark_nav": 0.9542491715
+      },
+      {
+        "date": "2026-11-17T00:00:00.000",
+        "nav": 0.9559306619,
+        "benchmark_nav": 0.9534480902
       }
     ]
   }

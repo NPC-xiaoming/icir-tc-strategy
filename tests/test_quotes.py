@@ -139,3 +139,12 @@ class QuoteTests(unittest.TestCase):
         with patch.object(quotes.ak,'stock_zh_a_daily',return_value=raw):
             out=quotes._provider_frame('sina','000001',self.dates[0],self.dates[1],'',10,calendar=self.dates)
         self.assertEqual(out.iloc[-1].circ_mv,13200.)
+
+    def test_prefetched_future_quotes_are_cached_but_not_used_early(self):
+        with patch.object(quotes,'_provider_frame',return_value=self.raw.copy()) as fn,patch.object(quotes.time,'sleep'):
+            out=quotes.fetch_history(['000001'],start_date=self.dates[0],end_date=self.dates[1],
+                required_dates=self.dates[:2],cache_path=self.cache,primary_provider='sina',
+                download_end=self.dates[-1])
+        self.assertEqual(fn.call_args.args[3],self.dates[-1])
+        self.assertEqual(out.date.max(),self.dates[1])
+        self.assertEqual(pd.read_parquet(self.cache).date.max(),self.dates[-1])

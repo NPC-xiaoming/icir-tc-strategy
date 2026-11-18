@@ -53,7 +53,7 @@ class RunnerTests(unittest.TestCase):
         s.save()
         return s
 
-    def invoke(self, date=None):
+    def invoke(self, date=None, hour=18):
         date = pd.Timestamp(date or self.day)
         def history(symbols, **kwargs):
             frame = self.history[self.history.symbol.isin(symbols)].copy()
@@ -70,9 +70,8 @@ class RunnerTests(unittest.TestCase):
         with contextlib.ExitStack() as st:
             for obj, name, value in [
                 (app, 'ROOT', self.root),
-                (app, 'current_time', lambda: date.tz_localize('Asia/Shanghai')+pd.Timedelta(hours=18)),
+                (app, 'current_time', lambda: date.tz_localize('Asia/Shanghai')+pd.Timedelta(hours=hour)),
                 (app, 'trading_calendar', lambda: self.calendar),
-                (app, 'resolve_trade_date', lambda *_: date),
                 (app.data_mod, 'fetch_constituents', lambda *_: self.cons.copy()),
                 (app.data_mod, 'fetch_spot', lambda **kw: self.spot.copy()),
                 (app.data_mod, 'fetch_stock_history', history),
@@ -132,13 +131,14 @@ class RunnerTests(unittest.TestCase):
         self.assertTrue((self.root/'reports/rebalance/2026-06-03_trades.csv').is_file())
         self.assertEqual(s.meta['last_signal_date'], '2026-06-02')
 
-    def test_late_monthly_rebalance_is_not_backdated(self):
+    def test_recovery_rebalances_on_first_pending_monthly_session(self):
         self.seed(last='2026-05-29', rebalance='2026-05-04')
         self.invoke()
         s = State.load(self.root/'state')
-        self.assertEqual(s.meta['last_rebalance'], '2026-06-03')
-        self.assertAlmostEqual(s.nav_history.loc[s.nav_history.date == '2026-06-02','nav'].iloc[0],1.0201)
-        self.assertFalse((self.root/'reports/rebalance/2026-06-01.md').exists())
+        self.assertEqual(s.meta['last_rebalance'], '2026-06-01')
+        self.assertEqual(s.meta['last_signal_date'],'2026-05-29')
+        self.assertEqual(s.meta['last_run'],'2026-06-03')
+        self.assertTrue((self.root/'reports/rebalance/2026-06-01.md').exists())
 
     def test_official_index_is_the_benchmark(self):
         self.seed()
@@ -161,7 +161,7 @@ class RunnerTests(unittest.TestCase):
         self.assertIn('000001',State.load(self.root/'state').meta['missing_symbols'])
 
     def test_holiday_does_not_revalue(self):
-        self.seed()
+        self.seed(last='2026-06-05')
         before=(self.root/'state/book.json').read_bytes()
         self.invoke('2026-06-06')
         self.assertEqual((self.root/'state/book.json').read_bytes(),before)
@@ -214,13 +214,14 @@ class RunnerTests(unittest.TestCase):
         self.assertFalse((self.root/'state/valuation_checkpoint.json').exists())
         self.assertEqual(len(state.nav_history),2)
 
-    def test_failure_after_partial_day_leaves_authoritative_book_unchanged(self):
+    def test_failure_preserves_preceding_completed_sessions(self):
         self.seed(last='2026-06-01')
         before=(self.root/'state/book.json').read_bytes()
         self.history=self.history[self.history.date!=self.day]
         with self.assertRaises(ValueError): self.invoke()
-        self.assertEqual((self.root/'state/book.json').read_bytes(),before)
-        self.assertFalse((self.root/'reports/daily/2026-06-02.md').exists())
+        self.assertEqual(State.load(self.root/'state').meta['last_run'],'2026-06-02')
+        self.assertTrue((self.root/'reports/daily/2026-06-02.md').exists())
+        self.assertFalse((self.root/'reports/daily/2026-06-03.md').exists())
 
 
     def test_empty_provider_frame_is_a_controlled_failure(self):
@@ -283,3 +284,26 @@ class RunnerTests(unittest.TestCase):
         self.history=self.history[~((self.history.date==self.day)&(self.history.symbol=='000001'))]
         with self.assertRaises(ValueError): self.invoke()
         self.assertNotIn('quote_provider',State.load(self.root/'state').meta)
+
+    def test_delayed_early_morning_run_saves_previous_session_once(self):
+        self.seed()
+        self.invoke('2026-06-04',hour=4)
+        self.assertEqual(State.load(self.root/'state').meta['last_run'],'2026-06-03')
+        before=(self.root/'state/book.json').read_bytes()
+        self.invoke('2026-06-04',hour=5)
+        self.assertEqual((self.root/'state/book.json').read_bytes(),before)
+
+
+
+class ClosedSessionTests(unittest.TestCase):
+    def test_early_morning_uses_previous_session(self):
+        calendar=pd.bdate_range('2026-11-01','2026-11-30')
+        self.assertEqual(app.latest_closed_session(calendar,pd.Timestamp('2026-11-17 04:00',tz='Asia/Shanghai')),pd.Timestamp('2026-11-16'))
+
+    def test_weekend_uses_friday(self):
+        calendar=pd.bdate_range('2026-11-01','2026-11-30')
+        self.assertEqual(app.latest_closed_session(calendar,pd.Timestamp('2026-11-14 18:00',tz='Asia/Shanghai')),pd.Timestamp('2026-11-13'))
+
+    def test_after_close_uses_today(self):
+        calendar=pd.bdate_range('2026-11-01','2026-11-30')
+        self.assertEqual(app.latest_closed_session(calendar,pd.Timestamp('2026-11-17 16:00',tz='Asia/Shanghai')),pd.Timestamp('2026-11-17'))

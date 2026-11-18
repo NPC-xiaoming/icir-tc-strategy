@@ -2,9 +2,9 @@ name: ICIR-TC daily run
 
 on:
   schedule:
-    # Beijing 17:10 and 18:30; the second run safely skips an already-saved date.
-    - cron: "10 9 * * 1-5"
-    - cron: "30 10 * * 1-5"
+    # Beijing 17:10 and 18:30 daily, including recovery of delayed Friday runs.
+    - cron: "10 9 * * *"
+    - cron: "30 10 * * *"
   workflow_dispatch:
 
 permissions:
@@ -57,10 +57,8 @@ jobs:
         shell: bash
         run: bash scripts/commit_results.sh
 
-      - name: Preserve valid quote cache after a failed valuation
+      - name: Preserve completed sessions and quote cache after failure
         if: failure() && steps.track.outcome == 'failure'
-        env:
-          CACHE_ONLY: '1'
         run: bash scripts/commit_results.sh
 
       - name: Upload recovery files and logs
